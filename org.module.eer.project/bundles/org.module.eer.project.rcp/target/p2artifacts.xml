@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<artifacts size='1'>
+  <artifact classifier='osgi.bundle' id='org.module.eer.project.rcp' version='1.0.0.202004290812'>
+    <properties size='5'>
+      <property name='artifact.size' value='4748'/>
+      <property name='download.size' value='4748'/>
+      <property name='maven-groupId' value='org.module.eer.project'/>
+      <property name='maven-artifactId' value='org.module.eer.project.rcp'/>
+      <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+    </properties>
+  </artifact>
+</artifacts>

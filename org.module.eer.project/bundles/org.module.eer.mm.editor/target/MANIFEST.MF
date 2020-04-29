@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.module.eer.mm.editor
+Bundle-SymbolicName: org.module.eer.mm.editor;singleton:=true
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.core.resources;vi
+ sibility:=reexport,org.module.eer.mm.edit;visibility:=reexport,org.ec
+ lipse.emf.ecore.xmi;visibility:=reexport,org.eclipse.emf.edit.ui;visi
+ bility:=reexport,org.eclipse.ui.ide;visibility:=reexport
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Export-Package: org.module.eer.mm.moduleeer.presentation,org.module.ee
+ r.mm.moduleeer.procedure.presentation,org.module.eer.mm.moduleeer.sub
+ system.presentation
+Bundle-Name: %pluginName
+Bundle-Version: 1.0.0.202004290812
+Bundle-ClassPath: .
+Bundle-Localization: plugin
+Bundle-Activator: org.module.eer.mm.moduleeer.presentation.ModuleeerEd
+ itorPlugin$Implementation
+

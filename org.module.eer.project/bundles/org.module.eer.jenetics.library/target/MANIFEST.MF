@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.module.eer.jenetics.library
+Bundle-SymbolicName: org.module.eer.jenetics.library
+Export-Package: io.jenetics,io.jenetics.engine,io.jenetics.internal.co
+ llection,io.jenetics.internal.engine,io.jenetics.internal.math,io.jen
+ etics.internal.util,io.jenetics.stat,io.jenetics.util
+Bundle-Name: Library
+Bundle-Version: 1.0.0
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+

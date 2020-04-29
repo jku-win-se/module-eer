@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+  <extension point="org.eclipse.sirius.componentization">
+    <component class="org.module.eer.design.Activator"
+               id="org.module.eer.design"
+	       name="eer">
+    </component>
+  </extension>
+  <extension
+        point="org.eclipse.sirius.externalJavaAction">
+     <javaActions
+           actionClass="org.module.eer.design.split.SplitModuleAction"
+           id="module.eer.design.split.module">
+     </javaActions>
+  </extension>
+</plugin>
