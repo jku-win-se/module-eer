@@ -7,18 +7,19 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
+import org.module.eer.mm.moduleeer.Aggregation;
 import org.module.eer.mm.moduleeer.Attribute;
 import org.module.eer.mm.moduleeer.CompositeAttribute;
-import org.module.eer.mm.moduleeer.ContextDataModel;
 import org.module.eer.mm.moduleeer.Element;
 import org.module.eer.mm.moduleeer.EntityType;
+import org.module.eer.mm.moduleeer.Generalization;
+import org.module.eer.mm.moduleeer.Link;
 import org.module.eer.mm.moduleeer.MEERModel;
 import org.module.eer.mm.moduleeer.ModularizableElement;
 import org.module.eer.mm.moduleeer.ModuleeerPackage;
 import org.module.eer.mm.moduleeer.NameElement;
 import org.module.eer.mm.moduleeer.RelationshipType;
 import org.module.eer.mm.moduleeer.SingleAttribute;
-import org.module.eer.mm.moduleeer.SubjectArea;
 
 /**
  * <!-- begin-user-doc -->
@@ -101,7 +102,7 @@ public class ModuleeerSwitch<T> extends Switch<T> {
 			org.module.eer.mm.moduleeer.Module module = (org.module.eer.mm.moduleeer.Module) theEObject;
 			T result = caseModule(module);
 			if (result == null)
-				result = caseContextDataModel(module);
+				result = caseModularizableElement(module);
 			if (result == null)
 				result = caseNameElement(module);
 			if (result == null)
@@ -161,26 +162,6 @@ public class ModuleeerSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case ModuleeerPackage.CONTEXT_DATA_MODEL: {
-			ContextDataModel contextDataModel = (ContextDataModel) theEObject;
-			T result = caseContextDataModel(contextDataModel);
-			if (result == null)
-				result = caseNameElement(contextDataModel);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case ModuleeerPackage.SUBJECT_AREA: {
-			SubjectArea subjectArea = (SubjectArea) theEObject;
-			T result = caseSubjectArea(subjectArea);
-			if (result == null)
-				result = caseContextDataModel(subjectArea);
-			if (result == null)
-				result = caseNameElement(subjectArea);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
 		case ModuleeerPackage.ATTRIBUTE: {
 			Attribute attribute = (Attribute) theEObject;
 			T result = caseAttribute(attribute);
@@ -197,6 +178,33 @@ public class ModuleeerSwitch<T> extends Switch<T> {
 				result = caseAttribute(compositeAttribute);
 			if (result == null)
 				result = caseNameElement(compositeAttribute);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case ModuleeerPackage.LINK: {
+			Link link = (Link) theEObject;
+			T result = caseLink(link);
+			if (result == null)
+				result = caseNameElement(link);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case ModuleeerPackage.AGGREGATION: {
+			Aggregation aggregation = (Aggregation) theEObject;
+			T result = caseAggregation(aggregation);
+			if (result == null)
+				result = caseNameElement(aggregation);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case ModuleeerPackage.GENERALIZATION: {
+			Generalization generalization = (Generalization) theEObject;
+			T result = caseGeneralization(generalization);
+			if (result == null)
+				result = caseNameElement(generalization);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -327,36 +335,6 @@ public class ModuleeerSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Context Data Model</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Context Data Model</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseContextDataModel(ContextDataModel object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Subject Area</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Subject Area</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSubjectArea(SubjectArea object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Attribute</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -383,6 +361,51 @@ public class ModuleeerSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCompositeAttribute(CompositeAttribute object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Link</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLink(Link object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Aggregation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Aggregation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAggregation(Aggregation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Generalization</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Generalization</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGeneralization(Generalization object) {
 		return null;
 	}
 

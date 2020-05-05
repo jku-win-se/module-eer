@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <units size='1'>
-  <unit id='202004290812.ModuleEER' version='1.0.0.2--cL6Cg6773733A7K3I57'>
+  <unit id='202005040728.ModuleEER' version='1.0.0.2--cL6Cg6773733C3A3G7I'>
     <properties size='2'>
       <property name='org.eclipse.equinox.p2.name' value='Module EER'/>
       <property name='org.eclipse.equinox.p2.type.category' value='true'/>
     </properties>
     <provides size='1'>
-      <provided namespace='org.eclipse.equinox.p2.iu' name='202004290812.ModuleEER' version='1.0.0.2--cL6Cg6773733A7K3I57'/>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='202005040728.ModuleEER' version='1.0.0.2--cL6Cg6773733C3A3G7I'/>
     </provides>
     <requires size='1'>
-      <required namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.project.feature.feature.group' range='[1.0.0.202004290812,1.0.0.202004290812]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.project.feature.feature.group' range='[1.0.0.202005040728,1.0.0.202005040728]'/>
     </requires>
     <touchpoint id='null' version='0.0.0'/>
   </unit>

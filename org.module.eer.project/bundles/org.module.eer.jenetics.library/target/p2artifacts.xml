@@ -3,8 +3,8 @@
 <artifacts size='1'>
   <artifact classifier='osgi.bundle' id='org.module.eer.jenetics.library' version='1.0.0'>
     <properties size='5'>
-      <property name='artifact.size' value='367284'/>
-      <property name='download.size' value='367284'/>
+      <property name='artifact.size' value='367283'/>
+      <property name='download.size' value='367283'/>
       <property name='maven-groupId' value='org.module.eer.project'/>
       <property name='maven-artifactId' value='org.module.eer.jenetics.library'/>
       <property name='maven-version' value='1.0.0'/>

@@ -12,12 +12,14 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
+/*
 import org.module.eer.jenetics.action.CreateProjectMEERModule;
 import org.module.eer.jenetics.config.ModularizableDependenciesConstraint;
 import org.module.eer.jenetics.config.ff.ModularizableFF;
 import org.module.eer.jenetics.config.principles.MoodyPrinciples;
 import org.module.eer.jenetics.config.utils.ModularizableElementUtils;
 import org.module.eer.jenetics.split.FlattenModuleEER;
+*/
 import org.module.eer.mm.moduleeer.MEERModel;
 import org.module.eer.mm.moduleeer.Module;
 
@@ -32,6 +34,7 @@ public class SplitModuleAction implements IExternalJavaAction {
 
 	@Override
 	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
+		/*
 		Object objectModule = parameters.get("module");
 		if (objectModule instanceof Module) {
 			Module module = (Module) objectModule;
@@ -50,7 +53,8 @@ public class SplitModuleAction implements IExternalJavaAction {
 			//Create Modelling Project with new MEERModel Split Diagram
 			new CreateProjectMEERModule(listOfModuleEER, projectName + ".split", 
 					module.eResource()).createProject();
-		}		
+		}
+		*/		
 	}	
 
 	private String getProjectBySession(Session session) {

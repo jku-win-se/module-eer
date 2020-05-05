@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <units size='1'>
-  <unit id='org.module.eer.design' version='1.0.0.202004290812'>
-    <update id='org.module.eer.design' range='[0.0.0,1.0.0.202004290812)' severity='0'/>
+  <unit id='org.module.eer.design' version='1.0.0.202005040728'>
+    <update id='org.module.eer.design' range='[0.0.0,1.0.0.202005040728)' severity='0'/>
     <properties size='8'>
       <property name='df_LT.pluginName' value='org.module.eer.design'/>
       <property name='df_LT.providerName' value='Eclipse Modeling Project'/>
@@ -13,8 +13,8 @@
       <property name='maven-version' value='1.0.0-SNAPSHOT'/>
     </properties>
     <provides size='4'>
-      <provided namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.design' version='1.0.0.202004290812'/>
-      <provided namespace='osgi.bundle' name='org.module.eer.design' version='1.0.0.202004290812'/>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.design' version='1.0.0.202005040728'/>
+      <provided namespace='osgi.bundle' name='org.module.eer.design' version='1.0.0.202005040728'/>
       <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
       <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
     </provides>
@@ -29,13 +29,13 @@
       <required namespace='osgi.bundle' name='org.module.eer.jenetics.library' range='0.0.0'/>
     </requires>
     <artifacts size='1'>
-      <artifact classifier='osgi.bundle' id='org.module.eer.design' version='1.0.0.202004290812'/>
+      <artifact classifier='osgi.bundle' id='org.module.eer.design' version='1.0.0.202005040728'/>
     </artifacts>
     <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
     <touchpointData size='1'>
       <instructions size='1'>
         <instruction key='manifest'>
-          Bundle-SymbolicName: org.module.eer.design;singleton:=true&#xA;Bundle-Version: 1.0.0.202004290812&#xA;
+          Bundle-SymbolicName: org.module.eer.design;singleton:=true&#xA;Bundle-Version: 1.0.0.202005040728&#xA;
         </instruction>
       </instructions>
     </touchpointData>

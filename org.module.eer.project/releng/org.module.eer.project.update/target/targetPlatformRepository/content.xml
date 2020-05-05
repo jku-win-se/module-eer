@@ -148,29 +148,34 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='org.module.eer.project.feature.feature.group' version='1.0.0.202004290812' singleton='false'>
-      <update id='org.module.eer.project.feature.feature.group' range='[0.0.0,1.0.0.202004290812)' severity='0'/>
-      <properties size='7'>
+    <unit id='org.module.eer.project.feature.feature.jar' version='1.0.0.202005040728'>
+      <properties size='6'>
         <property name='org.eclipse.equinox.p2.name' value='Feature'/>
         <property name='org.eclipse.equinox.p2.description' value='[Enter Feature Description here.]'/>
         <property name='org.eclipse.equinox.p2.description.url' value='http://www.example.com/description'/>
-        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
         <property name='maven-groupId' value='org.module.eer.project'/>
         <property name='maven-artifactId' value='org.module.eer.project.feature'/>
         <property name='maven-version' value='1.0.0-SNAPSHOT'/>
       </properties>
-      <provides size='1'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.project.feature.feature.group' version='1.0.0.202004290812'/>
+      <provides size='3'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.project.feature.feature.jar' version='1.0.0.202005040728'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
+        <provided namespace='org.eclipse.update.feature' name='org.module.eer.project.feature' version='1.0.0.202005040728'/>
       </provides>
-      <requires size='2'>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.mm' range='[0.1.0.202004290812,0.1.0.202004290812]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.project.feature.feature.jar' range='[1.0.0.202004290812,1.0.0.202004290812]'>
-          <filter>
-            (org.eclipse.update.install.features=true)
-          </filter>
-        </required>
-      </requires>
-      <touchpoint id='null' version='0.0.0'/>
+      <filter>
+        (org.eclipse.update.install.features=true)
+      </filter>
+      <artifacts size='1'>
+        <artifact classifier='org.eclipse.update.feature' id='org.module.eer.project.feature' version='1.0.0.202005040728'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
       <licenses size='1'>
         <license uri='http://www.example.com/license' url='http://www.example.com/license'>
           [Enter License Description here.]
@@ -405,49 +410,6 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='org.module.eer.mm' version='0.1.0.202004290812'>
-      <update id='org.module.eer.mm' range='[0.0.0,0.1.0.202004290812)' severity='0'/>
-      <properties size='8'>
-        <property name='df_LT.pluginName' value='org.module.eer.mm'/>
-        <property name='df_LT.providerName' value='www.example.org'/>
-        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
-        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
-        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
-        <property name='maven-groupId' value='org.module.eer.project'/>
-        <property name='maven-artifactId' value='org.module.eer.mm'/>
-        <property name='maven-version' value='0.1.0-SNAPSHOT'/>
-      </properties>
-      <provides size='13'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.mm' version='0.1.0.202004290812'/>
-        <provided namespace='osgi.bundle' name='org.module.eer.mm' version='0.1.0.202004290812'/>
-        <provided namespace='java.package' name='org.module.eer.mm.moduleeer' version='0.0.0'/>
-        <provided namespace='java.package' name='org.module.eer.mm.moduleeer.impl' version='0.0.0'/>
-        <provided namespace='java.package' name='org.module.eer.mm.moduleeer.procedure' version='0.0.0'/>
-        <provided namespace='java.package' name='org.module.eer.mm.moduleeer.procedure.impl' version='0.0.0'/>
-        <provided namespace='java.package' name='org.module.eer.mm.moduleeer.procedure.util' version='0.0.0'/>
-        <provided namespace='java.package' name='org.module.eer.mm.moduleeer.subsystem' version='0.0.0'/>
-        <provided namespace='java.package' name='org.module.eer.mm.moduleeer.subsystem.impl' version='0.0.0'/>
-        <provided namespace='java.package' name='org.module.eer.mm.moduleeer.subsystem.util' version='0.0.0'/>
-        <provided namespace='java.package' name='org.module.eer.mm.moduleeer.util' version='0.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
-      </provides>
-      <requires size='2'>
-        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='org.module.eer.mm' version='0.1.0.202004290812'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='manifest'>
-            Bundle-SymbolicName: org.module.eer.mm;singleton:=true&#xA;Bundle-Version: 0.1.0.202004290812
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
     <unit id='org.eclipse.core.contenttype' version='3.7.500.v20190916-2125'>
       <update id='org.eclipse.core.contenttype' range='[0.0.0,3.7.500.v20190916-2125)' severity='0'/>
       <properties size='8'>
@@ -629,6 +591,38 @@
           </instruction>
         </instructions>
       </touchpointData>
+    </unit>
+    <unit id='org.module.eer.project.feature.feature.group' version='1.0.0.202005040728' singleton='false'>
+      <update id='org.module.eer.project.feature.feature.group' range='[0.0.0,1.0.0.202005040728)' severity='0'/>
+      <properties size='7'>
+        <property name='org.eclipse.equinox.p2.name' value='Feature'/>
+        <property name='org.eclipse.equinox.p2.description' value='[Enter Feature Description here.]'/>
+        <property name='org.eclipse.equinox.p2.description.url' value='http://www.example.com/description'/>
+        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
+        <property name='maven-groupId' value='org.module.eer.project'/>
+        <property name='maven-artifactId' value='org.module.eer.project.feature'/>
+        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      </properties>
+      <provides size='1'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.project.feature.feature.group' version='1.0.0.202005040728'/>
+      </provides>
+      <requires size='2'>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.mm' range='[0.1.0.202005040728,0.1.0.202005040728]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.project.feature.feature.jar' range='[1.0.0.202005040728,1.0.0.202005040728]'>
+          <filter>
+            (org.eclipse.update.install.features=true)
+          </filter>
+        </required>
+      </requires>
+      <touchpoint id='null' version='0.0.0'/>
+      <licenses size='1'>
+        <license uri='http://www.example.com/license' url='http://www.example.com/license'>
+          [Enter License Description here.]
+        </license>
+      </licenses>
+      <copyright uri='http://www.example.com/copyright' url='http://www.example.com/copyright'>
+        [Enter Copyright Description here.]
+      </copyright>
     </unit>
     <unit id='org.eclipse.equinox.app' version='1.4.300.v20190815-1535'>
       <update id='org.eclipse.equinox.app' range='[0.0.0,1.4.300.v20190815-1535)' severity='0'/>
@@ -860,42 +854,48 @@
       </provides>
       <touchpoint id='org.eclipse.equinox.p2.native' version='1.0.0'/>
     </unit>
-    <unit id='org.module.eer.project.feature.feature.jar' version='1.0.0.202004290812'>
-      <properties size='6'>
-        <property name='org.eclipse.equinox.p2.name' value='Feature'/>
-        <property name='org.eclipse.equinox.p2.description' value='[Enter Feature Description here.]'/>
-        <property name='org.eclipse.equinox.p2.description.url' value='http://www.example.com/description'/>
+    <unit id='org.module.eer.mm' version='0.1.0.202005040728'>
+      <update id='org.module.eer.mm' range='[0.0.0,0.1.0.202005040728)' severity='0'/>
+      <properties size='8'>
+        <property name='df_LT.pluginName' value='org.module.eer.mm'/>
+        <property name='df_LT.providerName' value='www.example.org'/>
+        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
         <property name='maven-groupId' value='org.module.eer.project'/>
-        <property name='maven-artifactId' value='org.module.eer.project.feature'/>
-        <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+        <property name='maven-artifactId' value='org.module.eer.mm'/>
+        <property name='maven-version' value='0.1.0-SNAPSHOT'/>
       </properties>
-      <provides size='3'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.project.feature.feature.jar' version='1.0.0.202004290812'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
-        <provided namespace='org.eclipse.update.feature' name='org.module.eer.project.feature' version='1.0.0.202004290812'/>
+      <provides size='13'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.mm' version='0.1.0.202005040728'/>
+        <provided namespace='osgi.bundle' name='org.module.eer.mm' version='0.1.0.202005040728'/>
+        <provided namespace='java.package' name='org.module.eer.mm.moduleeer' version='0.0.0'/>
+        <provided namespace='java.package' name='org.module.eer.mm.moduleeer.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.module.eer.mm.moduleeer.procedure' version='0.0.0'/>
+        <provided namespace='java.package' name='org.module.eer.mm.moduleeer.procedure.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.module.eer.mm.moduleeer.procedure.util' version='0.0.0'/>
+        <provided namespace='java.package' name='org.module.eer.mm.moduleeer.subsystem' version='0.0.0'/>
+        <provided namespace='java.package' name='org.module.eer.mm.moduleeer.subsystem.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.module.eer.mm.moduleeer.subsystem.util' version='0.0.0'/>
+        <provided namespace='java.package' name='org.module.eer.mm.moduleeer.util' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
       </provides>
-      <filter>
-        (org.eclipse.update.install.features=true)
-      </filter>
+      <requires size='2'>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+      </requires>
       <artifacts size='1'>
-        <artifact classifier='org.eclipse.update.feature' id='org.module.eer.project.feature' version='1.0.0.202004290812'/>
+        <artifact classifier='osgi.bundle' id='org.module.eer.mm' version='0.1.0.202005040728'/>
       </artifacts>
       <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
       <touchpointData size='1'>
         <instructions size='1'>
-          <instruction key='zipped'>
-            true
+          <instruction key='manifest'>
+            Bundle-SymbolicName: org.module.eer.mm;singleton:=true&#xA;Bundle-Version: 0.1.0.202005040728
           </instruction>
         </instructions>
       </touchpointData>
-      <licenses size='1'>
-        <license uri='http://www.example.com/license' url='http://www.example.com/license'>
-          [Enter License Description here.]
-        </license>
-      </licenses>
-      <copyright uri='http://www.example.com/copyright' url='http://www.example.com/copyright'>
-        [Enter Copyright Description here.]
-      </copyright>
     </unit>
     <unit id='org.eclipse.equinox.preferences' version='3.7.600.v20191017-2055'>
       <update id='org.eclipse.equinox.preferences' range='[0.0.0,3.7.600.v20191017-2055)' severity='0'/>

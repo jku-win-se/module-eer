@@ -12,7 +12,7 @@
       ecorePackage="moduleeer.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="moduleeer.ecore#//AttributeType">
       <genEnumLiterals ecoreEnumLiteral="moduleeer.ecore#//AttributeType/STRING"/>
-      <genEnumLiterals ecoreEnumLiteral="moduleeer.ecore#//AttributeType/NUMERIC"/>
+      <genEnumLiterals ecoreEnumLiteral="moduleeer.ecore#//AttributeType/INTEGER"/>
       <genEnumLiterals ecoreEnumLiteral="moduleeer.ecore#//AttributeType/BOOLEAN"/>
       <genEnumLiterals ecoreEnumLiteral="moduleeer.ecore#//AttributeType/DATE"/>
     </genEnums>
@@ -21,13 +21,22 @@
       <genEnumLiterals ecoreEnumLiteral="moduleeer.ecore#//CardinalityType/ONE"/>
       <genEnumLiterals ecoreEnumLiteral="moduleeer.ecore#//CardinalityType/MANY"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="moduleeer.ecore#//DisjointnessType">
+      <genEnumLiterals ecoreEnumLiteral="moduleeer.ecore#//DisjointnessType/OVERLAPPING"/>
+      <genEnumLiterals ecoreEnumLiteral="moduleeer.ecore#//DisjointnessType/DISJOINT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="moduleeer.ecore#//CompletenessType">
+      <genEnumLiterals ecoreEnumLiteral="moduleeer.ecore#//CompletenessType/PARTIAL"/>
+      <genEnumLiterals ecoreEnumLiteral="moduleeer.ecore#//CompletenessType/TOTAL"/>
+    </genEnums>
     <genClasses ecoreClass="moduleeer.ecore#//MEERModel">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference moduleeer.ecore#//MEERModel/contextDataModels"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference moduleeer.ecore#//MEERModel/subsystems"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference moduleeer.ecore#//MEERModel/modules"/>
     </genClasses>
     <genClasses image="false" ecoreClass="moduleeer.ecore#//Element">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference moduleeer.ecore#//Element/attributes"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference moduleeer.ecore#//Element/accessElement"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute moduleeer.ecore#//Element/isWeak"/>
     </genClasses>
     <genClasses ecoreClass="moduleeer.ecore#//Module">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference moduleeer.ecore#//Module/events"/>
@@ -37,28 +46,37 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute moduleeer.ecore#//NameElement/name"/>
     </genClasses>
     <genClasses ecoreClass="moduleeer.ecore#//EntityType">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference moduleeer.ecore#//EntityType/generalizes"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference moduleeer.ecore#//EntityType/srcRelationshiptype"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference moduleeer.ecore#//EntityType/trgRelationshiptype"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference moduleeer.ecore#//EntityType/generalizations"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference moduleeer.ecore#//EntityType/specializations"/>
     </genClasses>
     <genClasses ecoreClass="moduleeer.ecore#//RelationshipType">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference moduleeer.ecore#//RelationshipType/srcEntity"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference moduleeer.ecore#//RelationshipType/trgEntity"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute moduleeer.ecore#//RelationshipType/srcEntityCardinality"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute moduleeer.ecore#//RelationshipType/trgEntityCardinality"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference moduleeer.ecore#//RelationshipType/generalizes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference moduleeer.ecore#//RelationshipType/links"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference moduleeer.ecore#//RelationshipType/aggregations"/>
     </genClasses>
     <genClasses ecoreClass="moduleeer.ecore#//SingleAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute moduleeer.ecore#//SingleAttribute/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute moduleeer.ecore#//SingleAttribute/isKey"/>
     </genClasses>
     <genClasses ecoreClass="moduleeer.ecore#//ModularizableElement"/>
-    <genClasses ecoreClass="moduleeer.ecore#//ContextDataModel"/>
-    <genClasses ecoreClass="moduleeer.ecore#//SubjectArea">
-      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference moduleeer.ecore#//SubjectArea/contextDataModels"/>
-    </genClasses>
     <genClasses ecoreClass="moduleeer.ecore#//Attribute"/>
     <genClasses ecoreClass="moduleeer.ecore#//CompositeAttribute">
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference moduleeer.ecore#//CompositeAttribute/attributes"/>
+    </genClasses>
+    <genClasses ecoreClass="moduleeer.ecore#//Link">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute moduleeer.ecore#//Link/cardinality"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute moduleeer.ecore#//Link/completeness"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference moduleeer.ecore#//Link/element"/>
+    </genClasses>
+    <genClasses ecoreClass="moduleeer.ecore#//Aggregation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference moduleeer.ecore#//Aggregation/to"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute moduleeer.ecore#//Aggregation/cardinality"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute moduleeer.ecore#//Aggregation/completness"/>
+    </genClasses>
+    <genClasses ecoreClass="moduleeer.ecore#//Generalization">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference moduleeer.ecore#//Generalization/entity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute moduleeer.ecore#//Generalization/completeness"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute moduleeer.ecore#//Generalization/disjointness"/>
     </genClasses>
     <nestedGenPackages prefix="Subsystem" basePackage="org.module.eer.mm.moduleeer"
         disposableProviderFactory="true" ecorePackage="moduleeer.ecore#//subsystem">

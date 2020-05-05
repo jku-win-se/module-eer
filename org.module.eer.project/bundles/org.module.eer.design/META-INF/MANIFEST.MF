@@ -11,7 +11,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius,
  org.eclipse.sirius.common.acceleo.aql,
  org.module.eer.mm;bundle-version="0.1.0",
- org.module.eer.jenetics,
  org.module.eer.jenetics.library
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

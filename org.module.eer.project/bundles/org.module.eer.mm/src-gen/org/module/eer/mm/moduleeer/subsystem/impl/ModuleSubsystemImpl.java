@@ -3,12 +3,17 @@
 package org.module.eer.mm.moduleeer.subsystem.impl;
 
 import java.util.Collection;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+
 import org.module.eer.mm.moduleeer.impl.NameElementImpl;
+
 import org.module.eer.mm.moduleeer.procedure.Procedure;
+
 import org.module.eer.mm.moduleeer.subsystem.ModuleSubsystem;
 import org.module.eer.mm.moduleeer.subsystem.SubsystemPackage;
 

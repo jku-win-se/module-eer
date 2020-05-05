@@ -11,7 +11,7 @@ Export-Package: org.module.eer.mm.moduleeer.procedure.provider,org.mod
  ule.eer.mm.moduleeer.provider,org.module.eer.mm.moduleeer.subsystem.p
  rovider
 Bundle-Name: %pluginName
-Bundle-Version: 1.0.0.202004290812
+Bundle-Version: 1.0.0.202005040728
 Bundle-ClassPath: .
 Bundle-Localization: plugin
 Bundle-Activator: org.module.eer.mm.moduleeer.provider.ModuleeerEditPl

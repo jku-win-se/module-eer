@@ -11,16 +11,20 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
+import org.module.eer.mm.moduleeer.Aggregation;
 import org.module.eer.mm.moduleeer.AttributeType;
 import org.module.eer.mm.moduleeer.CardinalityType;
+import org.module.eer.mm.moduleeer.CompletenessType;
 import org.module.eer.mm.moduleeer.CompositeAttribute;
+import org.module.eer.mm.moduleeer.DisjointnessType;
 import org.module.eer.mm.moduleeer.EntityType;
+import org.module.eer.mm.moduleeer.Generalization;
+import org.module.eer.mm.moduleeer.Link;
 import org.module.eer.mm.moduleeer.MEERModel;
 import org.module.eer.mm.moduleeer.ModuleeerFactory;
 import org.module.eer.mm.moduleeer.ModuleeerPackage;
 import org.module.eer.mm.moduleeer.RelationshipType;
 import org.module.eer.mm.moduleeer.SingleAttribute;
-import org.module.eer.mm.moduleeer.SubjectArea;
 
 /**
  * <!-- begin-user-doc -->
@@ -76,10 +80,14 @@ public class ModuleeerFactoryImpl extends EFactoryImpl implements ModuleeerFacto
 			return createRelationshipType();
 		case ModuleeerPackage.SINGLE_ATTRIBUTE:
 			return createSingleAttribute();
-		case ModuleeerPackage.SUBJECT_AREA:
-			return createSubjectArea();
 		case ModuleeerPackage.COMPOSITE_ATTRIBUTE:
 			return createCompositeAttribute();
+		case ModuleeerPackage.LINK:
+			return createLink();
+		case ModuleeerPackage.AGGREGATION:
+			return createAggregation();
+		case ModuleeerPackage.GENERALIZATION:
+			return createGeneralization();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -97,6 +105,10 @@ public class ModuleeerFactoryImpl extends EFactoryImpl implements ModuleeerFacto
 			return createAttributeTypeFromString(eDataType, initialValue);
 		case ModuleeerPackage.CARDINALITY_TYPE:
 			return createCardinalityTypeFromString(eDataType, initialValue);
+		case ModuleeerPackage.DISJOINTNESS_TYPE:
+			return createDisjointnessTypeFromString(eDataType, initialValue);
+		case ModuleeerPackage.COMPLETENESS_TYPE:
+			return createCompletenessTypeFromString(eDataType, initialValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -114,6 +126,10 @@ public class ModuleeerFactoryImpl extends EFactoryImpl implements ModuleeerFacto
 			return convertAttributeTypeToString(eDataType, instanceValue);
 		case ModuleeerPackage.CARDINALITY_TYPE:
 			return convertCardinalityTypeToString(eDataType, instanceValue);
+		case ModuleeerPackage.DISJOINTNESS_TYPE:
+			return convertDisjointnessTypeToString(eDataType, instanceValue);
+		case ModuleeerPackage.COMPLETENESS_TYPE:
+			return convertCompletenessTypeToString(eDataType, instanceValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -180,9 +196,9 @@ public class ModuleeerFactoryImpl extends EFactoryImpl implements ModuleeerFacto
 	 * @generated
 	 */
 	@Override
-	public SubjectArea createSubjectArea() {
-		SubjectAreaImpl subjectArea = new SubjectAreaImpl();
-		return subjectArea;
+	public CompositeAttribute createCompositeAttribute() {
+		CompositeAttributeImpl compositeAttribute = new CompositeAttributeImpl();
+		return compositeAttribute;
 	}
 
 	/**
@@ -191,9 +207,31 @@ public class ModuleeerFactoryImpl extends EFactoryImpl implements ModuleeerFacto
 	 * @generated
 	 */
 	@Override
-	public CompositeAttribute createCompositeAttribute() {
-		CompositeAttributeImpl compositeAttribute = new CompositeAttributeImpl();
-		return compositeAttribute;
+	public Link createLink() {
+		LinkImpl link = new LinkImpl();
+		return link;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Aggregation createAggregation() {
+		AggregationImpl aggregation = new AggregationImpl();
+		return aggregation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Generalization createGeneralization() {
+		GeneralizationImpl generalization = new GeneralizationImpl();
+		return generalization;
 	}
 
 	/**
@@ -237,6 +275,50 @@ public class ModuleeerFactoryImpl extends EFactoryImpl implements ModuleeerFacto
 	 * @generated
 	 */
 	public String convertCardinalityTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DisjointnessType createDisjointnessTypeFromString(EDataType eDataType, String initialValue) {
+		DisjointnessType result = DisjointnessType.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDisjointnessTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CompletenessType createCompletenessTypeFromString(EDataType eDataType, String initialValue) {
+		CompletenessType result = CompletenessType.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertCompletenessTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

@@ -2,16 +2,21 @@
  */
 package org.module.eer.mm.moduleeer.impl;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.module.eer.mm.moduleeer.CardinalityType;
-import org.module.eer.mm.moduleeer.EntityType;
+import org.module.eer.mm.moduleeer.Aggregation;
+import org.module.eer.mm.moduleeer.Link;
 import org.module.eer.mm.moduleeer.ModuleeerPackage;
 import org.module.eer.mm.moduleeer.RelationshipType;
 
@@ -23,74 +28,43 @@ import org.module.eer.mm.moduleeer.RelationshipType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.module.eer.mm.moduleeer.impl.RelationshipTypeImpl#getSrcEntity <em>Src Entity</em>}</li>
- *   <li>{@link org.module.eer.mm.moduleeer.impl.RelationshipTypeImpl#getTrgEntity <em>Trg Entity</em>}</li>
- *   <li>{@link org.module.eer.mm.moduleeer.impl.RelationshipTypeImpl#getSrcEntityCardinality <em>Src Entity Cardinality</em>}</li>
- *   <li>{@link org.module.eer.mm.moduleeer.impl.RelationshipTypeImpl#getTrgEntityCardinality <em>Trg Entity Cardinality</em>}</li>
+ *   <li>{@link org.module.eer.mm.moduleeer.impl.RelationshipTypeImpl#getGeneralizes <em>Generalizes</em>}</li>
+ *   <li>{@link org.module.eer.mm.moduleeer.impl.RelationshipTypeImpl#getLinks <em>Links</em>}</li>
+ *   <li>{@link org.module.eer.mm.moduleeer.impl.RelationshipTypeImpl#getAggregations <em>Aggregations</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class RelationshipTypeImpl extends ElementImpl implements RelationshipType {
 	/**
-	 * The cached value of the '{@link #getSrcEntity() <em>Src Entity</em>}' reference.
+	 * The cached value of the '{@link #getGeneralizes() <em>Generalizes</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSrcEntity()
+	 * @see #getGeneralizes()
 	 * @generated
 	 * @ordered
 	 */
-	protected EntityType srcEntity;
+	protected EList<RelationshipType> generalizes;
 
 	/**
-	 * The cached value of the '{@link #getTrgEntity() <em>Trg Entity</em>}' reference.
+	 * The cached value of the '{@link #getLinks() <em>Links</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTrgEntity()
+	 * @see #getLinks()
 	 * @generated
 	 * @ordered
 	 */
-	protected EntityType trgEntity;
+	protected EList<Link> links;
 
 	/**
-	 * The default value of the '{@link #getSrcEntityCardinality() <em>Src Entity Cardinality</em>}' attribute.
+	 * The cached value of the '{@link #getAggregations() <em>Aggregations</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSrcEntityCardinality()
+	 * @see #getAggregations()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final CardinalityType SRC_ENTITY_CARDINALITY_EDEFAULT = CardinalityType.ZERO;
-
-	/**
-	 * The cached value of the '{@link #getSrcEntityCardinality() <em>Src Entity Cardinality</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSrcEntityCardinality()
-	 * @generated
-	 * @ordered
-	 */
-	protected CardinalityType srcEntityCardinality = SRC_ENTITY_CARDINALITY_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getTrgEntityCardinality() <em>Trg Entity Cardinality</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTrgEntityCardinality()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final CardinalityType TRG_ENTITY_CARDINALITY_EDEFAULT = CardinalityType.ZERO;
-
-	/**
-	 * The cached value of the '{@link #getTrgEntityCardinality() <em>Trg Entity Cardinality</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTrgEntityCardinality()
-	 * @generated
-	 * @ordered
-	 */
-	protected CardinalityType trgEntityCardinality = TRG_ENTITY_CARDINALITY_EDEFAULT;
+	protected EList<Aggregation> aggregations;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -117,17 +91,12 @@ public class RelationshipTypeImpl extends ElementImpl implements RelationshipTyp
 	 * @generated
 	 */
 	@Override
-	public EntityType getSrcEntity() {
-		if (srcEntity != null && srcEntity.eIsProxy()) {
-			InternalEObject oldSrcEntity = (InternalEObject) srcEntity;
-			srcEntity = (EntityType) eResolveProxy(oldSrcEntity);
-			if (srcEntity != oldSrcEntity) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ModuleeerPackage.RELATIONSHIP_TYPE__SRC_ENTITY, oldSrcEntity, srcEntity));
-			}
+	public EList<RelationshipType> getGeneralizes() {
+		if (generalizes == null) {
+			generalizes = new EObjectResolvingEList<RelationshipType>(RelationshipType.class, this,
+					ModuleeerPackage.RELATIONSHIP_TYPE__GENERALIZES);
 		}
-		return srcEntity;
+		return generalizes;
 	}
 
 	/**
@@ -135,27 +104,12 @@ public class RelationshipTypeImpl extends ElementImpl implements RelationshipTyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EntityType basicGetSrcEntity() {
-		return srcEntity;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetSrcEntity(EntityType newSrcEntity, NotificationChain msgs) {
-		EntityType oldSrcEntity = srcEntity;
-		srcEntity = newSrcEntity;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					ModuleeerPackage.RELATIONSHIP_TYPE__SRC_ENTITY, oldSrcEntity, newSrcEntity);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+	@Override
+	public EList<Link> getLinks() {
+		if (links == null) {
+			links = new EObjectContainmentEList<Link>(Link.class, this, ModuleeerPackage.RELATIONSHIP_TYPE__LINKS);
 		}
-		return msgs;
+		return links;
 	}
 
 	/**
@@ -164,165 +118,12 @@ public class RelationshipTypeImpl extends ElementImpl implements RelationshipTyp
 	 * @generated
 	 */
 	@Override
-	public void setSrcEntity(EntityType newSrcEntity) {
-		if (newSrcEntity != srcEntity) {
-			NotificationChain msgs = null;
-			if (srcEntity != null)
-				msgs = ((InternalEObject) srcEntity).eInverseRemove(this,
-						ModuleeerPackage.ENTITY_TYPE__SRC_RELATIONSHIPTYPE, EntityType.class, msgs);
-			if (newSrcEntity != null)
-				msgs = ((InternalEObject) newSrcEntity).eInverseAdd(this,
-						ModuleeerPackage.ENTITY_TYPE__SRC_RELATIONSHIPTYPE, EntityType.class, msgs);
-			msgs = basicSetSrcEntity(newSrcEntity, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModuleeerPackage.RELATIONSHIP_TYPE__SRC_ENTITY,
-					newSrcEntity, newSrcEntity));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EntityType getTrgEntity() {
-		if (trgEntity != null && trgEntity.eIsProxy()) {
-			InternalEObject oldTrgEntity = (InternalEObject) trgEntity;
-			trgEntity = (EntityType) eResolveProxy(oldTrgEntity);
-			if (trgEntity != oldTrgEntity) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ModuleeerPackage.RELATIONSHIP_TYPE__TRG_ENTITY, oldTrgEntity, trgEntity));
-			}
+	public EList<Aggregation> getAggregations() {
+		if (aggregations == null) {
+			aggregations = new EObjectContainmentEList<Aggregation>(Aggregation.class, this,
+					ModuleeerPackage.RELATIONSHIP_TYPE__AGGREGATIONS);
 		}
-		return trgEntity;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EntityType basicGetTrgEntity() {
-		return trgEntity;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetTrgEntity(EntityType newTrgEntity, NotificationChain msgs) {
-		EntityType oldTrgEntity = trgEntity;
-		trgEntity = newTrgEntity;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					ModuleeerPackage.RELATIONSHIP_TYPE__TRG_ENTITY, oldTrgEntity, newTrgEntity);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setTrgEntity(EntityType newTrgEntity) {
-		if (newTrgEntity != trgEntity) {
-			NotificationChain msgs = null;
-			if (trgEntity != null)
-				msgs = ((InternalEObject) trgEntity).eInverseRemove(this,
-						ModuleeerPackage.ENTITY_TYPE__TRG_RELATIONSHIPTYPE, EntityType.class, msgs);
-			if (newTrgEntity != null)
-				msgs = ((InternalEObject) newTrgEntity).eInverseAdd(this,
-						ModuleeerPackage.ENTITY_TYPE__TRG_RELATIONSHIPTYPE, EntityType.class, msgs);
-			msgs = basicSetTrgEntity(newTrgEntity, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModuleeerPackage.RELATIONSHIP_TYPE__TRG_ENTITY,
-					newTrgEntity, newTrgEntity));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public CardinalityType getSrcEntityCardinality() {
-		return srcEntityCardinality;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setSrcEntityCardinality(CardinalityType newSrcEntityCardinality) {
-		CardinalityType oldSrcEntityCardinality = srcEntityCardinality;
-		srcEntityCardinality = newSrcEntityCardinality == null ? SRC_ENTITY_CARDINALITY_EDEFAULT
-				: newSrcEntityCardinality;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ModuleeerPackage.RELATIONSHIP_TYPE__SRC_ENTITY_CARDINALITY, oldSrcEntityCardinality,
-					srcEntityCardinality));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public CardinalityType getTrgEntityCardinality() {
-		return trgEntityCardinality;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setTrgEntityCardinality(CardinalityType newTrgEntityCardinality) {
-		CardinalityType oldTrgEntityCardinality = trgEntityCardinality;
-		trgEntityCardinality = newTrgEntityCardinality == null ? TRG_ENTITY_CARDINALITY_EDEFAULT
-				: newTrgEntityCardinality;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ModuleeerPackage.RELATIONSHIP_TYPE__TRG_ENTITY_CARDINALITY, oldTrgEntityCardinality,
-					trgEntityCardinality));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case ModuleeerPackage.RELATIONSHIP_TYPE__SRC_ENTITY:
-			if (srcEntity != null)
-				msgs = ((InternalEObject) srcEntity).eInverseRemove(this,
-						ModuleeerPackage.ENTITY_TYPE__SRC_RELATIONSHIPTYPE, EntityType.class, msgs);
-			return basicSetSrcEntity((EntityType) otherEnd, msgs);
-		case ModuleeerPackage.RELATIONSHIP_TYPE__TRG_ENTITY:
-			if (trgEntity != null)
-				msgs = ((InternalEObject) trgEntity).eInverseRemove(this,
-						ModuleeerPackage.ENTITY_TYPE__TRG_RELATIONSHIPTYPE, EntityType.class, msgs);
-			return basicSetTrgEntity((EntityType) otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
+		return aggregations;
 	}
 
 	/**
@@ -333,10 +134,10 @@ public class RelationshipTypeImpl extends ElementImpl implements RelationshipTyp
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case ModuleeerPackage.RELATIONSHIP_TYPE__SRC_ENTITY:
-			return basicSetSrcEntity(null, msgs);
-		case ModuleeerPackage.RELATIONSHIP_TYPE__TRG_ENTITY:
-			return basicSetTrgEntity(null, msgs);
+		case ModuleeerPackage.RELATIONSHIP_TYPE__LINKS:
+			return ((InternalEList<?>) getLinks()).basicRemove(otherEnd, msgs);
+		case ModuleeerPackage.RELATIONSHIP_TYPE__AGGREGATIONS:
+			return ((InternalEList<?>) getAggregations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -349,18 +150,12 @@ public class RelationshipTypeImpl extends ElementImpl implements RelationshipTyp
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case ModuleeerPackage.RELATIONSHIP_TYPE__SRC_ENTITY:
-			if (resolve)
-				return getSrcEntity();
-			return basicGetSrcEntity();
-		case ModuleeerPackage.RELATIONSHIP_TYPE__TRG_ENTITY:
-			if (resolve)
-				return getTrgEntity();
-			return basicGetTrgEntity();
-		case ModuleeerPackage.RELATIONSHIP_TYPE__SRC_ENTITY_CARDINALITY:
-			return getSrcEntityCardinality();
-		case ModuleeerPackage.RELATIONSHIP_TYPE__TRG_ENTITY_CARDINALITY:
-			return getTrgEntityCardinality();
+		case ModuleeerPackage.RELATIONSHIP_TYPE__GENERALIZES:
+			return getGeneralizes();
+		case ModuleeerPackage.RELATIONSHIP_TYPE__LINKS:
+			return getLinks();
+		case ModuleeerPackage.RELATIONSHIP_TYPE__AGGREGATIONS:
+			return getAggregations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -370,20 +165,21 @@ public class RelationshipTypeImpl extends ElementImpl implements RelationshipTyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case ModuleeerPackage.RELATIONSHIP_TYPE__SRC_ENTITY:
-			setSrcEntity((EntityType) newValue);
+		case ModuleeerPackage.RELATIONSHIP_TYPE__GENERALIZES:
+			getGeneralizes().clear();
+			getGeneralizes().addAll((Collection<? extends RelationshipType>) newValue);
 			return;
-		case ModuleeerPackage.RELATIONSHIP_TYPE__TRG_ENTITY:
-			setTrgEntity((EntityType) newValue);
+		case ModuleeerPackage.RELATIONSHIP_TYPE__LINKS:
+			getLinks().clear();
+			getLinks().addAll((Collection<? extends Link>) newValue);
 			return;
-		case ModuleeerPackage.RELATIONSHIP_TYPE__SRC_ENTITY_CARDINALITY:
-			setSrcEntityCardinality((CardinalityType) newValue);
-			return;
-		case ModuleeerPackage.RELATIONSHIP_TYPE__TRG_ENTITY_CARDINALITY:
-			setTrgEntityCardinality((CardinalityType) newValue);
+		case ModuleeerPackage.RELATIONSHIP_TYPE__AGGREGATIONS:
+			getAggregations().clear();
+			getAggregations().addAll((Collection<? extends Aggregation>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -397,17 +193,14 @@ public class RelationshipTypeImpl extends ElementImpl implements RelationshipTyp
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case ModuleeerPackage.RELATIONSHIP_TYPE__SRC_ENTITY:
-			setSrcEntity((EntityType) null);
+		case ModuleeerPackage.RELATIONSHIP_TYPE__GENERALIZES:
+			getGeneralizes().clear();
 			return;
-		case ModuleeerPackage.RELATIONSHIP_TYPE__TRG_ENTITY:
-			setTrgEntity((EntityType) null);
+		case ModuleeerPackage.RELATIONSHIP_TYPE__LINKS:
+			getLinks().clear();
 			return;
-		case ModuleeerPackage.RELATIONSHIP_TYPE__SRC_ENTITY_CARDINALITY:
-			setSrcEntityCardinality(SRC_ENTITY_CARDINALITY_EDEFAULT);
-			return;
-		case ModuleeerPackage.RELATIONSHIP_TYPE__TRG_ENTITY_CARDINALITY:
-			setTrgEntityCardinality(TRG_ENTITY_CARDINALITY_EDEFAULT);
+		case ModuleeerPackage.RELATIONSHIP_TYPE__AGGREGATIONS:
+			getAggregations().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -421,35 +214,14 @@ public class RelationshipTypeImpl extends ElementImpl implements RelationshipTyp
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case ModuleeerPackage.RELATIONSHIP_TYPE__SRC_ENTITY:
-			return srcEntity != null;
-		case ModuleeerPackage.RELATIONSHIP_TYPE__TRG_ENTITY:
-			return trgEntity != null;
-		case ModuleeerPackage.RELATIONSHIP_TYPE__SRC_ENTITY_CARDINALITY:
-			return srcEntityCardinality != SRC_ENTITY_CARDINALITY_EDEFAULT;
-		case ModuleeerPackage.RELATIONSHIP_TYPE__TRG_ENTITY_CARDINALITY:
-			return trgEntityCardinality != TRG_ENTITY_CARDINALITY_EDEFAULT;
+		case ModuleeerPackage.RELATIONSHIP_TYPE__GENERALIZES:
+			return generalizes != null && !generalizes.isEmpty();
+		case ModuleeerPackage.RELATIONSHIP_TYPE__LINKS:
+			return links != null && !links.isEmpty();
+		case ModuleeerPackage.RELATIONSHIP_TYPE__AGGREGATIONS:
+			return aggregations != null && !aggregations.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy())
-			return super.toString();
-
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (srcEntityCardinality: ");
-		result.append(srcEntityCardinality);
-		result.append(", trgEntityCardinality: ");
-		result.append(trgEntityCardinality);
-		result.append(')');
-		return result.toString();
 	}
 
 } //RelationshipTypeImpl

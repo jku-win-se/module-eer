@@ -8,11 +8,13 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import org.module.eer.mm.moduleeer.ModuleeerFactory;
 import org.module.eer.mm.moduleeer.ModuleeerPackage;
 import org.module.eer.mm.moduleeer.RelationshipType;
 
@@ -44,74 +46,55 @@ public class RelationshipTypeItemProvider extends ElementItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addSrcEntityPropertyDescriptor(object);
-			addTrgEntityPropertyDescriptor(object);
-			addSrcEntityCardinalityPropertyDescriptor(object);
-			addTrgEntityCardinalityPropertyDescriptor(object);
+			addGeneralizesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Src Entity feature.
+	 * This adds a property descriptor for the Generalizes feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addSrcEntityPropertyDescriptor(Object object) {
+	protected void addGeneralizesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_RelationshipType_srcEntity_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_RelationshipType_srcEntity_feature",
+						getResourceLocator(), getString("_UI_RelationshipType_generalizes_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_RelationshipType_generalizes_feature",
 								"_UI_RelationshipType_type"),
-						ModuleeerPackage.Literals.RELATIONSHIP_TYPE__SRC_ENTITY, true, false, true, null, null, null));
+						ModuleeerPackage.Literals.RELATIONSHIP_TYPE__GENERALIZES, true, false, true, null, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Trg Entity feature.
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addTrgEntityPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_RelationshipType_trgEntity_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_RelationshipType_trgEntity_feature",
-								"_UI_RelationshipType_type"),
-						ModuleeerPackage.Literals.RELATIONSHIP_TYPE__TRG_ENTITY, true, false, true, null, null, null));
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(ModuleeerPackage.Literals.RELATIONSHIP_TYPE__LINKS);
+			childrenFeatures.add(ModuleeerPackage.Literals.RELATIONSHIP_TYPE__AGGREGATIONS);
+		}
+		return childrenFeatures;
 	}
 
 	/**
-	 * This adds a property descriptor for the Src Entity Cardinality feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addSrcEntityCardinalityPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_RelationshipType_srcEntityCardinality_feature"),
-						getString("_UI_PropertyDescriptor_description",
-								"_UI_RelationshipType_srcEntityCardinality_feature", "_UI_RelationshipType_type"),
-						ModuleeerPackage.Literals.RELATIONSHIP_TYPE__SRC_ENTITY_CARDINALITY, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-	}
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
 
-	/**
-	 * This adds a property descriptor for the Trg Entity Cardinality feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTrgEntityCardinalityPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_RelationshipType_trgEntityCardinality_feature"),
-						getString("_UI_PropertyDescriptor_description",
-								"_UI_RelationshipType_trgEntityCardinality_feature", "_UI_RelationshipType_type"),
-						ModuleeerPackage.Literals.RELATIONSHIP_TYPE__TRG_ENTITY_CARDINALITY, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -160,9 +143,9 @@ public class RelationshipTypeItemProvider extends ElementItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(RelationshipType.class)) {
-		case ModuleeerPackage.RELATIONSHIP_TYPE__SRC_ENTITY_CARDINALITY:
-		case ModuleeerPackage.RELATIONSHIP_TYPE__TRG_ENTITY_CARDINALITY:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+		case ModuleeerPackage.RELATIONSHIP_TYPE__LINKS:
+		case ModuleeerPackage.RELATIONSHIP_TYPE__AGGREGATIONS:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -178,6 +161,12 @@ public class RelationshipTypeItemProvider extends ElementItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(ModuleeerPackage.Literals.RELATIONSHIP_TYPE__LINKS,
+				ModuleeerFactory.eINSTANCE.createLink()));
+
+		newChildDescriptors.add(createChildParameter(ModuleeerPackage.Literals.RELATIONSHIP_TYPE__AGGREGATIONS,
+				ModuleeerFactory.eINSTANCE.createAggregation()));
 	}
 
 }

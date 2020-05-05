@@ -2,7 +2,7 @@
 <feature
       id="org.module.eer.project.feature"
       label="Feature"
-      version="1.0.0.202004290812">
+      version="1.0.0.202005040728">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -20,7 +20,7 @@
          id="org.module.eer.mm"
          download-size="94"
          install-size="329"
-         version="0.1.0.202004290812"
+         version="0.1.0.202005040728"
          unpack="false"/>
 
 </feature>

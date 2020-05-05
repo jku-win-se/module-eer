@@ -24,7 +24,7 @@ import org.module.eer.mm.moduleeer.procedure.ProcedureFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ModuleItemProvider extends ContextDataModelItemProvider {
+public class ModuleItemProvider extends ModularizableElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -148,6 +148,9 @@ public class ModuleItemProvider extends ContextDataModelItemProvider {
 
 		newChildDescriptors.add(createChildParameter(ModuleeerPackage.Literals.MODULE__EVENTS,
 				ProcedureFactory.eINSTANCE.createEvent()));
+
+		newChildDescriptors.add(createChildParameter(ModuleeerPackage.Literals.MODULE__MODULARIZABLE_ELEMENTS,
+				ModuleeerFactory.eINSTANCE.createModule()));
 
 		newChildDescriptors.add(createChildParameter(ModuleeerPackage.Literals.MODULE__MODULARIZABLE_ELEMENTS,
 				ModuleeerFactory.eINSTANCE.createEntityType()));

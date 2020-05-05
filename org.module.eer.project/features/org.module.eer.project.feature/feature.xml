@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.module.eer.project.feature"
-      label="Feature"
+      label="ModulEER-core"
       version="1.0.0.qualifier">
 
    <description url="http://www.example.com/description">
@@ -18,6 +18,41 @@
 
    <plugin
          id="org.module.eer.mm"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.module.eer.design"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.module.eer.jenetics.library"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.module.eer.jenetics.prngine"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.module.eer.mm.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.module.eer.mm.editor"
          download-size="0"
          install-size="0"
          version="0.0.0"

@@ -33,7 +33,7 @@ import org.module.eer.mm.moduleeer.procedure.Event;
  *
  * @generated
  */
-public class ModuleImpl extends ContextDataModelImpl implements org.module.eer.mm.moduleeer.Module {
+public class ModuleImpl extends ModularizableElementImpl implements org.module.eer.mm.moduleeer.Module {
 	/**
 	 * The cached value of the '{@link #getEvents() <em>Events</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

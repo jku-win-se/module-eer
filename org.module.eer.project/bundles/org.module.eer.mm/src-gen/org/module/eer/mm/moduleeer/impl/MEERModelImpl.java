@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.module.eer.mm.moduleeer.ContextDataModel;
 import org.module.eer.mm.moduleeer.MEERModel;
 import org.module.eer.mm.moduleeer.ModuleeerPackage;
 
@@ -28,23 +27,13 @@ import org.module.eer.mm.moduleeer.subsystem.ModuleSubsystem;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.module.eer.mm.moduleeer.impl.MEERModelImpl#getContextDataModels <em>Context Data Models</em>}</li>
  *   <li>{@link org.module.eer.mm.moduleeer.impl.MEERModelImpl#getSubsystems <em>Subsystems</em>}</li>
+ *   <li>{@link org.module.eer.mm.moduleeer.impl.MEERModelImpl#getModules <em>Modules</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class MEERModelImpl extends NameElementImpl implements MEERModel {
-	/**
-	 * The cached value of the '{@link #getContextDataModels() <em>Context Data Models</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContextDataModels()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ContextDataModel> contextDataModels;
-
 	/**
 	 * The cached value of the '{@link #getSubsystems() <em>Subsystems</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -54,6 +43,16 @@ public class MEERModelImpl extends NameElementImpl implements MEERModel {
 	 * @ordered
 	 */
 	protected EList<ModuleSubsystem> subsystems;
+
+	/**
+	 * The cached value of the '{@link #getModules() <em>Modules</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getModules()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<org.module.eer.mm.moduleeer.Module> modules;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -80,20 +79,6 @@ public class MEERModelImpl extends NameElementImpl implements MEERModel {
 	 * @generated
 	 */
 	@Override
-	public EList<ContextDataModel> getContextDataModels() {
-		if (contextDataModels == null) {
-			contextDataModels = new EObjectContainmentEList<ContextDataModel>(ContextDataModel.class, this,
-					ModuleeerPackage.MEER_MODEL__CONTEXT_DATA_MODELS);
-		}
-		return contextDataModels;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EList<ModuleSubsystem> getSubsystems() {
 		if (subsystems == null) {
 			subsystems = new EObjectContainmentEList<ModuleSubsystem>(ModuleSubsystem.class, this,
@@ -108,12 +93,26 @@ public class MEERModelImpl extends NameElementImpl implements MEERModel {
 	 * @generated
 	 */
 	@Override
+	public EList<org.module.eer.mm.moduleeer.Module> getModules() {
+		if (modules == null) {
+			modules = new EObjectContainmentEList<org.module.eer.mm.moduleeer.Module>(
+					org.module.eer.mm.moduleeer.Module.class, this, ModuleeerPackage.MEER_MODEL__MODULES);
+		}
+		return modules;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case ModuleeerPackage.MEER_MODEL__CONTEXT_DATA_MODELS:
-			return ((InternalEList<?>) getContextDataModels()).basicRemove(otherEnd, msgs);
 		case ModuleeerPackage.MEER_MODEL__SUBSYSTEMS:
 			return ((InternalEList<?>) getSubsystems()).basicRemove(otherEnd, msgs);
+		case ModuleeerPackage.MEER_MODEL__MODULES:
+			return ((InternalEList<?>) getModules()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -126,10 +125,10 @@ public class MEERModelImpl extends NameElementImpl implements MEERModel {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case ModuleeerPackage.MEER_MODEL__CONTEXT_DATA_MODELS:
-			return getContextDataModels();
 		case ModuleeerPackage.MEER_MODEL__SUBSYSTEMS:
 			return getSubsystems();
+		case ModuleeerPackage.MEER_MODEL__MODULES:
+			return getModules();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -143,13 +142,13 @@ public class MEERModelImpl extends NameElementImpl implements MEERModel {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case ModuleeerPackage.MEER_MODEL__CONTEXT_DATA_MODELS:
-			getContextDataModels().clear();
-			getContextDataModels().addAll((Collection<? extends ContextDataModel>) newValue);
-			return;
 		case ModuleeerPackage.MEER_MODEL__SUBSYSTEMS:
 			getSubsystems().clear();
 			getSubsystems().addAll((Collection<? extends ModuleSubsystem>) newValue);
+			return;
+		case ModuleeerPackage.MEER_MODEL__MODULES:
+			getModules().clear();
+			getModules().addAll((Collection<? extends org.module.eer.mm.moduleeer.Module>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -163,11 +162,11 @@ public class MEERModelImpl extends NameElementImpl implements MEERModel {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case ModuleeerPackage.MEER_MODEL__CONTEXT_DATA_MODELS:
-			getContextDataModels().clear();
-			return;
 		case ModuleeerPackage.MEER_MODEL__SUBSYSTEMS:
 			getSubsystems().clear();
+			return;
+		case ModuleeerPackage.MEER_MODEL__MODULES:
+			getModules().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -181,10 +180,10 @@ public class MEERModelImpl extends NameElementImpl implements MEERModel {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case ModuleeerPackage.MEER_MODEL__CONTEXT_DATA_MODELS:
-			return contextDataModels != null && !contextDataModels.isEmpty();
 		case ModuleeerPackage.MEER_MODEL__SUBSYSTEMS:
 			return subsystems != null && !subsystems.isEmpty();
+		case ModuleeerPackage.MEER_MODEL__MODULES:
+			return modules != null && !modules.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

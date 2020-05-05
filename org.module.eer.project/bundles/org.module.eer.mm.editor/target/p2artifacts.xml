@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?artifactRepository version='1.1.0'?>
 <artifacts size='1'>
-  <artifact classifier='osgi.bundle' id='org.module.eer.mm.editor' version='1.0.0.202004290812'>
+  <artifact classifier='osgi.bundle' id='org.module.eer.mm.editor' version='1.0.0.202005040728'>
     <properties size='5'>
       <property name='artifact.size' value='191332'/>
       <property name='download.size' value='191332'/>

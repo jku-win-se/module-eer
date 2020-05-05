@@ -23,7 +23,7 @@ import org.module.eer.mm.moduleeer.procedure.Event;
  * @model
  * @generated
  */
-public interface Module extends ContextDataModel {
+public interface Module extends ModularizableElement {
 	/**
 	 * Returns the value of the '<em><b>Events</b></em>' containment reference list.
 	 * The list contents are of type {@link org.module.eer.mm.moduleeer.procedure.Event}.

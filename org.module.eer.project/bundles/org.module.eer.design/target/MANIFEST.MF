@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Automatic-Module-Name: org.module.eer.design
 Bundle-SymbolicName: org.module.eer.design;singleton:=true
 Bundle-Name: %pluginName
-Bundle-Version: 1.0.0.202004290812
+Bundle-Version: 1.0.0.202005040728
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.co
  re.resources,org.eclipse.sirius,org.eclipse.sirius.common.acceleo.aql

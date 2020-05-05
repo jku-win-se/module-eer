@@ -5,6 +5,7 @@ package org.module.eer.mm.moduleeer.subsystem;
 import org.eclipse.emf.common.util.EList;
 
 import org.module.eer.mm.moduleeer.NameElement;
+
 import org.module.eer.mm.moduleeer.procedure.Procedure;
 
 /**

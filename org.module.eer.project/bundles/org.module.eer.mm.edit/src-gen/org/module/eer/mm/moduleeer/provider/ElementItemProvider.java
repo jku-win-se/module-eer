@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.module.eer.mm.moduleeer.Element;
@@ -47,6 +48,7 @@ public class ElementItemProvider extends ModularizableElementItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addAccessElementPropertyDescriptor(object);
+			addIsWeakPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -64,6 +66,22 @@ public class ElementItemProvider extends ModularizableElementItemProvider {
 						getString("_UI_PropertyDescriptor_description", "_UI_Element_accessElement_feature",
 								"_UI_Element_type"),
 						ModuleeerPackage.Literals.ELEMENT__ACCESS_ELEMENT, true, false, true, null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Is Weak feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIsWeakPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Element_isWeak_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Element_isWeak_feature",
+								"_UI_Element_type"),
+						ModuleeerPackage.Literals.ELEMENT__IS_WEAK, true, false, false,
+						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -131,6 +149,9 @@ public class ElementItemProvider extends ModularizableElementItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Element.class)) {
+		case ModuleeerPackage.ELEMENT__IS_WEAK:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
 		case ModuleeerPackage.ELEMENT__ATTRIBUTES:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;

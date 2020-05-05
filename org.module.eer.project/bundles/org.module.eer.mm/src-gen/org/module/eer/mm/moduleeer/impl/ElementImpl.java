@@ -4,12 +4,15 @@ package org.module.eer.mm.moduleeer.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
@@ -32,6 +35,7 @@ import org.module.eer.mm.moduleeer.procedure.ProcedurePackage;
  * <ul>
  *   <li>{@link org.module.eer.mm.moduleeer.impl.ElementImpl#getAttributes <em>Attributes</em>}</li>
  *   <li>{@link org.module.eer.mm.moduleeer.impl.ElementImpl#getAccessElement <em>Access Element</em>}</li>
+ *   <li>{@link org.module.eer.mm.moduleeer.impl.ElementImpl#isIsWeak <em>Is Weak</em>}</li>
  * </ul>
  *
  * @generated
@@ -56,6 +60,26 @@ public abstract class ElementImpl extends ModularizableElementImpl implements El
 	 * @ordered
 	 */
 	protected EList<AccessElement> accessElement;
+
+	/**
+	 * The default value of the '{@link #isIsWeak() <em>Is Weak</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsWeak()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_WEAK_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIsWeak() <em>Is Weak</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsWeak()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isWeak = IS_WEAK_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -109,6 +133,30 @@ public abstract class ElementImpl extends ModularizableElementImpl implements El
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public boolean isIsWeak() {
+		return isWeak;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setIsWeak(boolean newIsWeak) {
+		boolean oldIsWeak = isWeak;
+		isWeak = newIsWeak;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModuleeerPackage.ELEMENT__IS_WEAK, oldIsWeak,
+					isWeak));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -147,6 +195,8 @@ public abstract class ElementImpl extends ModularizableElementImpl implements El
 			return getAttributes();
 		case ModuleeerPackage.ELEMENT__ACCESS_ELEMENT:
 			return getAccessElement();
+		case ModuleeerPackage.ELEMENT__IS_WEAK:
+			return isIsWeak();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -168,6 +218,9 @@ public abstract class ElementImpl extends ModularizableElementImpl implements El
 			getAccessElement().clear();
 			getAccessElement().addAll((Collection<? extends AccessElement>) newValue);
 			return;
+		case ModuleeerPackage.ELEMENT__IS_WEAK:
+			setIsWeak((Boolean) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -186,6 +239,9 @@ public abstract class ElementImpl extends ModularizableElementImpl implements El
 		case ModuleeerPackage.ELEMENT__ACCESS_ELEMENT:
 			getAccessElement().clear();
 			return;
+		case ModuleeerPackage.ELEMENT__IS_WEAK:
+			setIsWeak(IS_WEAK_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -202,8 +258,27 @@ public abstract class ElementImpl extends ModularizableElementImpl implements El
 			return attributes != null && !attributes.isEmpty();
 		case ModuleeerPackage.ELEMENT__ACCESS_ELEMENT:
 			return accessElement != null && !accessElement.isEmpty();
+		case ModuleeerPackage.ELEMENT__IS_WEAK:
+			return isWeak != IS_WEAK_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (isWeak: ");
+		result.append(isWeak);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ElementImpl

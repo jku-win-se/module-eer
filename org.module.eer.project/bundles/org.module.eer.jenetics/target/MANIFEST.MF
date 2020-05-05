@@ -6,7 +6,7 @@ Export-Package: org.module.eer.jenetics.action,org.module.eer.jenetics
  fig.principles,org.module.eer.jenetics.config.utils,org.module.eer.je
  netics.split
 Bundle-Name: Jenetics
-Bundle-Version: 1.0.0.202004290812
+Bundle-Version: 1.0.0.202005040728
 Require-Bundle: org.module.eer.jenetics.library;bundle-version="1.0.0"
  ,org.module.eer.mm;bundle-version="0.1.0",org.eclipse.sirius.ui;bundl
  e-version="6.3.0",org.eclipse.core.resources;bundle-version="3.13.600

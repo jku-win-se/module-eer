@@ -8,30 +8,28 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.module.eer.mm.moduleeer.ModuleeerFactory;
+import org.module.eer.mm.moduleeer.Link;
 import org.module.eer.mm.moduleeer.ModuleeerPackage;
-import org.module.eer.mm.moduleeer.SubjectArea;
 
 /**
- * This is the item provider adapter for a {@link org.module.eer.mm.moduleeer.SubjectArea} object.
+ * This is the item provider adapter for a {@link org.module.eer.mm.moduleeer.Link} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class SubjectAreaItemProvider extends ContextDataModelItemProvider {
+public class LinkItemProvider extends NameElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SubjectAreaItemProvider(AdapterFactory adapterFactory) {
+	public LinkItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -46,66 +44,68 @@ public class SubjectAreaItemProvider extends ContextDataModelItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addContextDataModelsPropertyDescriptor(object);
+			addCardinalityPropertyDescriptor(object);
+			addCompletenessPropertyDescriptor(object);
+			addElementPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Context Data Models feature.
+	 * This adds a property descriptor for the Cardinality feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addContextDataModelsPropertyDescriptor(Object object) {
+	protected void addCardinalityPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_SubjectArea_contextDataModels_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_SubjectArea_contextDataModels_feature",
-								"_UI_SubjectArea_type"),
-						ModuleeerPackage.Literals.SUBJECT_AREA__CONTEXT_DATA_MODELS, true, false, true, null, null,
-						null));
+						getResourceLocator(), getString("_UI_Link_cardinality_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Link_cardinality_feature",
+								"_UI_Link_type"),
+						ModuleeerPackage.Literals.LINK__CARDINALITY, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * This adds a property descriptor for the Completeness feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(ModuleeerPackage.Literals.SUBJECT_AREA__CONTEXT_DATA_MODELS);
-		}
-		return childrenFeatures;
+	protected void addCompletenessPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Link_completeness_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Link_completeness_feature",
+								"_UI_Link_type"),
+						ModuleeerPackage.Literals.LINK__COMPLETENESS, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
+	 * This adds a property descriptor for the Element feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
+	protected void addElementPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Link_element_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Link_element_feature", "_UI_Link_type"),
+						ModuleeerPackage.Literals.LINK__ELEMENT, true, false, true, null, null, null));
 	}
 
 	/**
-	 * This returns SubjectArea.gif.
+	 * This returns Link.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/SubjectArea"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Link"));
 	}
 
 	/**
@@ -126,9 +126,9 @@ public class SubjectAreaItemProvider extends ContextDataModelItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((SubjectArea) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_SubjectArea_type")
-				: getString("_UI_SubjectArea_type") + " " + label;
+		String label = ((Link) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_Link_type")
+				: getString("_UI_Link_type") + " " + label;
 	}
 
 	/**
@@ -142,9 +142,10 @@ public class SubjectAreaItemProvider extends ContextDataModelItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(SubjectArea.class)) {
-		case ModuleeerPackage.SUBJECT_AREA__CONTEXT_DATA_MODELS:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+		switch (notification.getFeatureID(Link.class)) {
+		case ModuleeerPackage.LINK__CARDINALITY:
+		case ModuleeerPackage.LINK__COMPLETENESS:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -160,12 +161,6 @@ public class SubjectAreaItemProvider extends ContextDataModelItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add(createChildParameter(ModuleeerPackage.Literals.SUBJECT_AREA__CONTEXT_DATA_MODELS,
-				ModuleeerFactory.eINSTANCE.createModule()));
-
-		newChildDescriptors.add(createChildParameter(ModuleeerPackage.Literals.SUBJECT_AREA__CONTEXT_DATA_MODELS,
-				ModuleeerFactory.eINSTANCE.createSubjectArea()));
 	}
 
 }

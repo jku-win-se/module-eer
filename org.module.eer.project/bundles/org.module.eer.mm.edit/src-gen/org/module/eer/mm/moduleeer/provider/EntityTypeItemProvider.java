@@ -8,10 +8,14 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.module.eer.mm.moduleeer.EntityType;
+import org.module.eer.mm.moduleeer.ModuleeerFactory;
 import org.module.eer.mm.moduleeer.ModuleeerPackage;
 
 /**
@@ -42,58 +46,54 @@ public class EntityTypeItemProvider extends ElementItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addGeneralizesPropertyDescriptor(object);
-			addSrcRelationshiptypePropertyDescriptor(object);
-			addTrgRelationshiptypePropertyDescriptor(object);
+			addSpecializationsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Generalizes feature.
+	 * This adds a property descriptor for the Specializations feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addGeneralizesPropertyDescriptor(Object object) {
+	protected void addSpecializationsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_EntityType_generalizes_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_EntityType_generalizes_feature",
+						getResourceLocator(), getString("_UI_EntityType_specializations_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_EntityType_specializations_feature",
 								"_UI_EntityType_type"),
-						ModuleeerPackage.Literals.ENTITY_TYPE__GENERALIZES, true, false, true, null, null, null));
+						ModuleeerPackage.Literals.ENTITY_TYPE__SPECIALIZATIONS, true, false, true, null, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Src Relationshiptype feature.
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addSrcRelationshiptypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_EntityType_srcRelationshiptype_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_EntityType_srcRelationshiptype_feature",
-								"_UI_EntityType_type"),
-						ModuleeerPackage.Literals.ENTITY_TYPE__SRC_RELATIONSHIPTYPE, true, false, true, null, null,
-						null));
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(ModuleeerPackage.Literals.ENTITY_TYPE__GENERALIZATIONS);
+		}
+		return childrenFeatures;
 	}
 
 	/**
-	 * This adds a property descriptor for the Trg Relationshiptype feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addTrgRelationshiptypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_EntityType_trgRelationshiptype_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_EntityType_trgRelationshiptype_feature",
-								"_UI_EntityType_type"),
-						ModuleeerPackage.Literals.ENTITY_TYPE__TRG_RELATIONSHIPTYPE, true, false, true, null, null,
-						null));
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -140,6 +140,12 @@ public class EntityTypeItemProvider extends ElementItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(EntityType.class)) {
+		case ModuleeerPackage.ENTITY_TYPE__GENERALIZATIONS:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
+		}
 		super.notifyChanged(notification);
 	}
 
@@ -153,6 +159,9 @@ public class EntityTypeItemProvider extends ElementItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(ModuleeerPackage.Literals.ENTITY_TYPE__GENERALIZATIONS,
+				ModuleeerFactory.eINSTANCE.createGeneralization()));
 	}
 
 }

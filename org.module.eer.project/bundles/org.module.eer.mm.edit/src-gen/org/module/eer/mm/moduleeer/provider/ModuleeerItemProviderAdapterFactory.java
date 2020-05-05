@@ -188,29 +188,6 @@ public class ModuleeerItemProviderAdapterFactory extends ModuleeerAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.module.eer.mm.moduleeer.SubjectArea} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SubjectAreaItemProvider subjectAreaItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.module.eer.mm.moduleeer.SubjectArea}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSubjectAreaAdapter() {
-		if (subjectAreaItemProvider == null) {
-			subjectAreaItemProvider = new SubjectAreaItemProvider(this);
-		}
-
-		return subjectAreaItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.module.eer.mm.moduleeer.CompositeAttribute} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -231,6 +208,75 @@ public class ModuleeerItemProviderAdapterFactory extends ModuleeerAdapterFactory
 		}
 
 		return compositeAttributeItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.module.eer.mm.moduleeer.Link} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LinkItemProvider linkItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.module.eer.mm.moduleeer.Link}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLinkAdapter() {
+		if (linkItemProvider == null) {
+			linkItemProvider = new LinkItemProvider(this);
+		}
+
+		return linkItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.module.eer.mm.moduleeer.Aggregation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AggregationItemProvider aggregationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.module.eer.mm.moduleeer.Aggregation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAggregationAdapter() {
+		if (aggregationItemProvider == null) {
+			aggregationItemProvider = new AggregationItemProvider(this);
+		}
+
+		return aggregationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.module.eer.mm.moduleeer.Generalization} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GeneralizationItemProvider generalizationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.module.eer.mm.moduleeer.Generalization}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createGeneralizationAdapter() {
+		if (generalizationItemProvider == null) {
+			generalizationItemProvider = new GeneralizationItemProvider(this);
+		}
+
+		return generalizationItemProvider;
 	}
 
 	/**
@@ -348,10 +394,14 @@ public class ModuleeerItemProviderAdapterFactory extends ModuleeerAdapterFactory
 			relationshipTypeItemProvider.dispose();
 		if (singleAttributeItemProvider != null)
 			singleAttributeItemProvider.dispose();
-		if (subjectAreaItemProvider != null)
-			subjectAreaItemProvider.dispose();
 		if (compositeAttributeItemProvider != null)
 			compositeAttributeItemProvider.dispose();
+		if (linkItemProvider != null)
+			linkItemProvider.dispose();
+		if (aggregationItemProvider != null)
+			aggregationItemProvider.dispose();
+		if (generalizationItemProvider != null)
+			generalizationItemProvider.dispose();
 	}
 
 }

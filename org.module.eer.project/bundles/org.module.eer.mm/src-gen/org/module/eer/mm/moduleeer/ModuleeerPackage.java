@@ -114,22 +114,22 @@ public interface ModuleeerPackage extends EPackage {
 	int MEER_MODEL__NAME = NAME_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Context Data Models</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEER_MODEL__CONTEXT_DATA_MODELS = NAME_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Subsystems</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MEER_MODEL__SUBSYSTEMS = NAME_ELEMENT_FEATURE_COUNT + 1;
+	int MEER_MODEL__SUBSYSTEMS = NAME_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEER_MODEL__MODULES = NAME_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>MEER Model</em>' class.
@@ -224,13 +224,22 @@ public interface ModuleeerPackage extends EPackage {
 	int ELEMENT__ACCESS_ELEMENT = MODULARIZABLE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Is Weak</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT__IS_WEAK = MODULARIZABLE_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_FEATURE_COUNT = MODULARIZABLE_ELEMENT_FEATURE_COUNT + 2;
+	int ELEMENT_FEATURE_COUNT = MODULARIZABLE_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Element</em>' class.
@@ -240,43 +249,6 @@ public interface ModuleeerPackage extends EPackage {
 	 * @ordered
 	 */
 	int ELEMENT_OPERATION_COUNT = MODULARIZABLE_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.module.eer.mm.moduleeer.impl.ContextDataModelImpl <em>Context Data Model</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.module.eer.mm.moduleeer.impl.ContextDataModelImpl
-	 * @see org.module.eer.mm.moduleeer.impl.ModuleeerPackageImpl#getContextDataModel()
-	 * @generated
-	 */
-	int CONTEXT_DATA_MODEL = 8;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTEXT_DATA_MODEL__NAME = NAME_ELEMENT__NAME;
-
-	/**
-	 * The number of structural features of the '<em>Context Data Model</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTEXT_DATA_MODEL_FEATURE_COUNT = NAME_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Context Data Model</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTEXT_DATA_MODEL_OPERATION_COUNT = NAME_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.module.eer.mm.moduleeer.impl.ModuleImpl <em>Module</em>}' class.
@@ -295,7 +267,7 @@ public interface ModuleeerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__NAME = CONTEXT_DATA_MODEL__NAME;
+	int MODULE__NAME = MODULARIZABLE_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Events</b></em>' containment reference list.
@@ -304,7 +276,7 @@ public interface ModuleeerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__EVENTS = CONTEXT_DATA_MODEL_FEATURE_COUNT + 0;
+	int MODULE__EVENTS = MODULARIZABLE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Modularizable Elements</b></em>' containment reference list.
@@ -313,7 +285,7 @@ public interface ModuleeerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__MODULARIZABLE_ELEMENTS = CONTEXT_DATA_MODEL_FEATURE_COUNT + 1;
+	int MODULE__MODULARIZABLE_ELEMENTS = MODULARIZABLE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Module</em>' class.
@@ -322,7 +294,7 @@ public interface ModuleeerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_FEATURE_COUNT = CONTEXT_DATA_MODEL_FEATURE_COUNT + 2;
+	int MODULE_FEATURE_COUNT = MODULARIZABLE_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Module</em>' class.
@@ -331,7 +303,7 @@ public interface ModuleeerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_OPERATION_COUNT = CONTEXT_DATA_MODEL_OPERATION_COUNT + 0;
+	int MODULE_OPERATION_COUNT = MODULARIZABLE_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.module.eer.mm.moduleeer.impl.EntityTypeImpl <em>Entity Type</em>}' class.
@@ -371,31 +343,31 @@ public interface ModuleeerPackage extends EPackage {
 	int ENTITY_TYPE__ACCESS_ELEMENT = ELEMENT__ACCESS_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Generalizes</b></em>' reference list.
+	 * The feature id for the '<em><b>Is Weak</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_TYPE__GENERALIZES = ELEMENT_FEATURE_COUNT + 0;
+	int ENTITY_TYPE__IS_WEAK = ELEMENT__IS_WEAK;
 
 	/**
-	 * The feature id for the '<em><b>Src Relationshiptype</b></em>' reference list.
+	 * The feature id for the '<em><b>Generalizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_TYPE__SRC_RELATIONSHIPTYPE = ELEMENT_FEATURE_COUNT + 1;
+	int ENTITY_TYPE__GENERALIZATIONS = ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Trg Relationshiptype</b></em>' reference list.
+	 * The feature id for the '<em><b>Specializations</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_TYPE__TRG_RELATIONSHIPTYPE = ELEMENT_FEATURE_COUNT + 2;
+	int ENTITY_TYPE__SPECIALIZATIONS = ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Entity Type</em>' class.
@@ -404,7 +376,7 @@ public interface ModuleeerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_TYPE_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 3;
+	int ENTITY_TYPE_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Entity Type</em>' class.
@@ -453,40 +425,40 @@ public interface ModuleeerPackage extends EPackage {
 	int RELATIONSHIP_TYPE__ACCESS_ELEMENT = ELEMENT__ACCESS_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Src Entity</b></em>' reference.
+	 * The feature id for the '<em><b>Is Weak</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RELATIONSHIP_TYPE__SRC_ENTITY = ELEMENT_FEATURE_COUNT + 0;
+	int RELATIONSHIP_TYPE__IS_WEAK = ELEMENT__IS_WEAK;
 
 	/**
-	 * The feature id for the '<em><b>Trg Entity</b></em>' reference.
+	 * The feature id for the '<em><b>Generalizes</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RELATIONSHIP_TYPE__TRG_ENTITY = ELEMENT_FEATURE_COUNT + 1;
+	int RELATIONSHIP_TYPE__GENERALIZES = ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Src Entity Cardinality</b></em>' attribute.
+	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RELATIONSHIP_TYPE__SRC_ENTITY_CARDINALITY = ELEMENT_FEATURE_COUNT + 2;
+	int RELATIONSHIP_TYPE__LINKS = ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Trg Entity Cardinality</b></em>' attribute.
+	 * The feature id for the '<em><b>Aggregations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RELATIONSHIP_TYPE__TRG_ENTITY_CARDINALITY = ELEMENT_FEATURE_COUNT + 3;
+	int RELATIONSHIP_TYPE__AGGREGATIONS = ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Relationship Type</em>' class.
@@ -495,7 +467,7 @@ public interface ModuleeerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RELATIONSHIP_TYPE_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 4;
+	int RELATIONSHIP_TYPE_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Relationship Type</em>' class.
@@ -514,7 +486,7 @@ public interface ModuleeerPackage extends EPackage {
 	 * @see org.module.eer.mm.moduleeer.impl.ModuleeerPackageImpl#getAttribute()
 	 * @generated
 	 */
-	int ATTRIBUTE = 10;
+	int ATTRIBUTE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -599,52 +571,6 @@ public interface ModuleeerPackage extends EPackage {
 	int SINGLE_ATTRIBUTE_OPERATION_COUNT = ATTRIBUTE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.module.eer.mm.moduleeer.impl.SubjectAreaImpl <em>Subject Area</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.module.eer.mm.moduleeer.impl.SubjectAreaImpl
-	 * @see org.module.eer.mm.moduleeer.impl.ModuleeerPackageImpl#getSubjectArea()
-	 * @generated
-	 */
-	int SUBJECT_AREA = 9;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUBJECT_AREA__NAME = CONTEXT_DATA_MODEL__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Context Data Models</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUBJECT_AREA__CONTEXT_DATA_MODELS = CONTEXT_DATA_MODEL_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Subject Area</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUBJECT_AREA_FEATURE_COUNT = CONTEXT_DATA_MODEL_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Subject Area</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUBJECT_AREA_OPERATION_COUNT = CONTEXT_DATA_MODEL_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.module.eer.mm.moduleeer.impl.CompositeAttributeImpl <em>Composite Attribute</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -652,7 +578,7 @@ public interface ModuleeerPackage extends EPackage {
 	 * @see org.module.eer.mm.moduleeer.impl.ModuleeerPackageImpl#getCompositeAttribute()
 	 * @generated
 	 */
-	int COMPOSITE_ATTRIBUTE = 11;
+	int COMPOSITE_ATTRIBUTE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -691,6 +617,198 @@ public interface ModuleeerPackage extends EPackage {
 	int COMPOSITE_ATTRIBUTE_OPERATION_COUNT = ATTRIBUTE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.module.eer.mm.moduleeer.impl.LinkImpl <em>Link</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.module.eer.mm.moduleeer.impl.LinkImpl
+	 * @see org.module.eer.mm.moduleeer.impl.ModuleeerPackageImpl#getLink()
+	 * @generated
+	 */
+	int LINK = 10;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK__NAME = NAME_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Cardinality</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK__CARDINALITY = NAME_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Completeness</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK__COMPLETENESS = NAME_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK__ELEMENT = NAME_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Link</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK_FEATURE_COUNT = NAME_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Link</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK_OPERATION_COUNT = NAME_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.module.eer.mm.moduleeer.impl.AggregationImpl <em>Aggregation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.module.eer.mm.moduleeer.impl.AggregationImpl
+	 * @see org.module.eer.mm.moduleeer.impl.ModuleeerPackageImpl#getAggregation()
+	 * @generated
+	 */
+	int AGGREGATION = 11;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGGREGATION__NAME = NAME_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>To</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGGREGATION__TO = NAME_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Cardinality</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGGREGATION__CARDINALITY = NAME_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Completness</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGGREGATION__COMPLETNESS = NAME_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Aggregation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGGREGATION_FEATURE_COUNT = NAME_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Aggregation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGGREGATION_OPERATION_COUNT = NAME_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.module.eer.mm.moduleeer.impl.GeneralizationImpl <em>Generalization</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.module.eer.mm.moduleeer.impl.GeneralizationImpl
+	 * @see org.module.eer.mm.moduleeer.impl.ModuleeerPackageImpl#getGeneralization()
+	 * @generated
+	 */
+	int GENERALIZATION = 12;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION__NAME = NAME_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Entity</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION__ENTITY = NAME_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Completeness</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION__COMPLETENESS = NAME_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Disjointness</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION__DISJOINTNESS = NAME_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Generalization</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION_FEATURE_COUNT = NAME_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Generalization</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION_OPERATION_COUNT = NAME_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.module.eer.mm.moduleeer.AttributeType <em>Attribute Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -698,7 +816,7 @@ public interface ModuleeerPackage extends EPackage {
 	 * @see org.module.eer.mm.moduleeer.impl.ModuleeerPackageImpl#getAttributeType()
 	 * @generated
 	 */
-	int ATTRIBUTE_TYPE = 12;
+	int ATTRIBUTE_TYPE = 13;
 
 	/**
 	 * The meta object id for the '{@link org.module.eer.mm.moduleeer.CardinalityType <em>Cardinality Type</em>}' enum.
@@ -708,7 +826,27 @@ public interface ModuleeerPackage extends EPackage {
 	 * @see org.module.eer.mm.moduleeer.impl.ModuleeerPackageImpl#getCardinalityType()
 	 * @generated
 	 */
-	int CARDINALITY_TYPE = 13;
+	int CARDINALITY_TYPE = 14;
+
+	/**
+	 * The meta object id for the '{@link org.module.eer.mm.moduleeer.DisjointnessType <em>Disjointness Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.module.eer.mm.moduleeer.DisjointnessType
+	 * @see org.module.eer.mm.moduleeer.impl.ModuleeerPackageImpl#getDisjointnessType()
+	 * @generated
+	 */
+	int DISJOINTNESS_TYPE = 15;
+
+	/**
+	 * The meta object id for the '{@link org.module.eer.mm.moduleeer.CompletenessType <em>Completeness Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.module.eer.mm.moduleeer.CompletenessType
+	 * @see org.module.eer.mm.moduleeer.impl.ModuleeerPackageImpl#getCompletenessType()
+	 * @generated
+	 */
+	int COMPLETENESS_TYPE = 16;
 
 	/**
 	 * Returns the meta object for class '{@link org.module.eer.mm.moduleeer.MEERModel <em>MEER Model</em>}'.
@@ -721,17 +859,6 @@ public interface ModuleeerPackage extends EPackage {
 	EClass getMEERModel();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.module.eer.mm.moduleeer.MEERModel#getContextDataModels <em>Context Data Models</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Context Data Models</em>'.
-	 * @see org.module.eer.mm.moduleeer.MEERModel#getContextDataModels()
-	 * @see #getMEERModel()
-	 * @generated
-	 */
-	EReference getMEERModel_ContextDataModels();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link org.module.eer.mm.moduleeer.MEERModel#getSubsystems <em>Subsystems</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -741,6 +868,17 @@ public interface ModuleeerPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getMEERModel_Subsystems();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.module.eer.mm.moduleeer.MEERModel#getModules <em>Modules</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Modules</em>'.
+	 * @see org.module.eer.mm.moduleeer.MEERModel#getModules()
+	 * @see #getMEERModel()
+	 * @generated
+	 */
+	EReference getMEERModel_Modules();
 
 	/**
 	 * Returns the meta object for class '{@link org.module.eer.mm.moduleeer.Element <em>Element</em>}'.
@@ -773,6 +911,17 @@ public interface ModuleeerPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getElement_AccessElement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.module.eer.mm.moduleeer.Element#isIsWeak <em>Is Weak</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Weak</em>'.
+	 * @see org.module.eer.mm.moduleeer.Element#isIsWeak()
+	 * @see #getElement()
+	 * @generated
+	 */
+	EAttribute getElement_IsWeak();
 
 	/**
 	 * Returns the meta object for class '{@link org.module.eer.mm.moduleeer.Module <em>Module</em>}'.
@@ -838,37 +987,26 @@ public interface ModuleeerPackage extends EPackage {
 	EClass getEntityType();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.module.eer.mm.moduleeer.EntityType#getGeneralizes <em>Generalizes</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.module.eer.mm.moduleeer.EntityType#getGeneralizations <em>Generalizations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Generalizes</em>'.
-	 * @see org.module.eer.mm.moduleeer.EntityType#getGeneralizes()
+	 * @return the meta object for the containment reference list '<em>Generalizations</em>'.
+	 * @see org.module.eer.mm.moduleeer.EntityType#getGeneralizations()
 	 * @see #getEntityType()
 	 * @generated
 	 */
-	EReference getEntityType_Generalizes();
+	EReference getEntityType_Generalizations();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.module.eer.mm.moduleeer.EntityType#getSrcRelationshiptype <em>Src Relationshiptype</em>}'.
+	 * Returns the meta object for the reference list '{@link org.module.eer.mm.moduleeer.EntityType#getSpecializations <em>Specializations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Src Relationshiptype</em>'.
-	 * @see org.module.eer.mm.moduleeer.EntityType#getSrcRelationshiptype()
+	 * @return the meta object for the reference list '<em>Specializations</em>'.
+	 * @see org.module.eer.mm.moduleeer.EntityType#getSpecializations()
 	 * @see #getEntityType()
 	 * @generated
 	 */
-	EReference getEntityType_SrcRelationshiptype();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.module.eer.mm.moduleeer.EntityType#getTrgRelationshiptype <em>Trg Relationshiptype</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Trg Relationshiptype</em>'.
-	 * @see org.module.eer.mm.moduleeer.EntityType#getTrgRelationshiptype()
-	 * @see #getEntityType()
-	 * @generated
-	 */
-	EReference getEntityType_TrgRelationshiptype();
+	EReference getEntityType_Specializations();
 
 	/**
 	 * Returns the meta object for class '{@link org.module.eer.mm.moduleeer.RelationshipType <em>Relationship Type</em>}'.
@@ -881,48 +1019,37 @@ public interface ModuleeerPackage extends EPackage {
 	EClass getRelationshipType();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.module.eer.mm.moduleeer.RelationshipType#getSrcEntity <em>Src Entity</em>}'.
+	 * Returns the meta object for the reference list '{@link org.module.eer.mm.moduleeer.RelationshipType#getGeneralizes <em>Generalizes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Src Entity</em>'.
-	 * @see org.module.eer.mm.moduleeer.RelationshipType#getSrcEntity()
+	 * @return the meta object for the reference list '<em>Generalizes</em>'.
+	 * @see org.module.eer.mm.moduleeer.RelationshipType#getGeneralizes()
 	 * @see #getRelationshipType()
 	 * @generated
 	 */
-	EReference getRelationshipType_SrcEntity();
+	EReference getRelationshipType_Generalizes();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.module.eer.mm.moduleeer.RelationshipType#getTrgEntity <em>Trg Entity</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.module.eer.mm.moduleeer.RelationshipType#getLinks <em>Links</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Trg Entity</em>'.
-	 * @see org.module.eer.mm.moduleeer.RelationshipType#getTrgEntity()
+	 * @return the meta object for the containment reference list '<em>Links</em>'.
+	 * @see org.module.eer.mm.moduleeer.RelationshipType#getLinks()
 	 * @see #getRelationshipType()
 	 * @generated
 	 */
-	EReference getRelationshipType_TrgEntity();
+	EReference getRelationshipType_Links();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.module.eer.mm.moduleeer.RelationshipType#getSrcEntityCardinality <em>Src Entity Cardinality</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.module.eer.mm.moduleeer.RelationshipType#getAggregations <em>Aggregations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Src Entity Cardinality</em>'.
-	 * @see org.module.eer.mm.moduleeer.RelationshipType#getSrcEntityCardinality()
+	 * @return the meta object for the containment reference list '<em>Aggregations</em>'.
+	 * @see org.module.eer.mm.moduleeer.RelationshipType#getAggregations()
 	 * @see #getRelationshipType()
 	 * @generated
 	 */
-	EAttribute getRelationshipType_SrcEntityCardinality();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.module.eer.mm.moduleeer.RelationshipType#getTrgEntityCardinality <em>Trg Entity Cardinality</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Trg Entity Cardinality</em>'.
-	 * @see org.module.eer.mm.moduleeer.RelationshipType#getTrgEntityCardinality()
-	 * @see #getRelationshipType()
-	 * @generated
-	 */
-	EAttribute getRelationshipType_TrgEntityCardinality();
+	EReference getRelationshipType_Aggregations();
 
 	/**
 	 * Returns the meta object for class '{@link org.module.eer.mm.moduleeer.SingleAttribute <em>Single Attribute</em>}'.
@@ -967,37 +1094,6 @@ public interface ModuleeerPackage extends EPackage {
 	EClass getModularizableElement();
 
 	/**
-	 * Returns the meta object for class '{@link org.module.eer.mm.moduleeer.ContextDataModel <em>Context Data Model</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Context Data Model</em>'.
-	 * @see org.module.eer.mm.moduleeer.ContextDataModel
-	 * @generated
-	 */
-	EClass getContextDataModel();
-
-	/**
-	 * Returns the meta object for class '{@link org.module.eer.mm.moduleeer.SubjectArea <em>Subject Area</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Subject Area</em>'.
-	 * @see org.module.eer.mm.moduleeer.SubjectArea
-	 * @generated
-	 */
-	EClass getSubjectArea();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.module.eer.mm.moduleeer.SubjectArea#getContextDataModels <em>Context Data Models</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Context Data Models</em>'.
-	 * @see org.module.eer.mm.moduleeer.SubjectArea#getContextDataModels()
-	 * @see #getSubjectArea()
-	 * @generated
-	 */
-	EReference getSubjectArea_ContextDataModels();
-
-	/**
 	 * Returns the meta object for class '{@link org.module.eer.mm.moduleeer.Attribute <em>Attribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1029,6 +1125,135 @@ public interface ModuleeerPackage extends EPackage {
 	EReference getCompositeAttribute_Attributes();
 
 	/**
+	 * Returns the meta object for class '{@link org.module.eer.mm.moduleeer.Link <em>Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Link</em>'.
+	 * @see org.module.eer.mm.moduleeer.Link
+	 * @generated
+	 */
+	EClass getLink();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.module.eer.mm.moduleeer.Link#getCardinality <em>Cardinality</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cardinality</em>'.
+	 * @see org.module.eer.mm.moduleeer.Link#getCardinality()
+	 * @see #getLink()
+	 * @generated
+	 */
+	EAttribute getLink_Cardinality();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.module.eer.mm.moduleeer.Link#getCompleteness <em>Completeness</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Completeness</em>'.
+	 * @see org.module.eer.mm.moduleeer.Link#getCompleteness()
+	 * @see #getLink()
+	 * @generated
+	 */
+	EAttribute getLink_Completeness();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.module.eer.mm.moduleeer.Link#getElement <em>Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Element</em>'.
+	 * @see org.module.eer.mm.moduleeer.Link#getElement()
+	 * @see #getLink()
+	 * @generated
+	 */
+	EReference getLink_Element();
+
+	/**
+	 * Returns the meta object for class '{@link org.module.eer.mm.moduleeer.Aggregation <em>Aggregation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Aggregation</em>'.
+	 * @see org.module.eer.mm.moduleeer.Aggregation
+	 * @generated
+	 */
+	EClass getAggregation();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.module.eer.mm.moduleeer.Aggregation#getTo <em>To</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>To</em>'.
+	 * @see org.module.eer.mm.moduleeer.Aggregation#getTo()
+	 * @see #getAggregation()
+	 * @generated
+	 */
+	EReference getAggregation_To();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.module.eer.mm.moduleeer.Aggregation#getCardinality <em>Cardinality</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cardinality</em>'.
+	 * @see org.module.eer.mm.moduleeer.Aggregation#getCardinality()
+	 * @see #getAggregation()
+	 * @generated
+	 */
+	EAttribute getAggregation_Cardinality();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.module.eer.mm.moduleeer.Aggregation#getCompletness <em>Completness</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Completness</em>'.
+	 * @see org.module.eer.mm.moduleeer.Aggregation#getCompletness()
+	 * @see #getAggregation()
+	 * @generated
+	 */
+	EAttribute getAggregation_Completness();
+
+	/**
+	 * Returns the meta object for class '{@link org.module.eer.mm.moduleeer.Generalization <em>Generalization</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Generalization</em>'.
+	 * @see org.module.eer.mm.moduleeer.Generalization
+	 * @generated
+	 */
+	EClass getGeneralization();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.module.eer.mm.moduleeer.Generalization#getEntity <em>Entity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Entity</em>'.
+	 * @see org.module.eer.mm.moduleeer.Generalization#getEntity()
+	 * @see #getGeneralization()
+	 * @generated
+	 */
+	EReference getGeneralization_Entity();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.module.eer.mm.moduleeer.Generalization#getCompleteness <em>Completeness</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Completeness</em>'.
+	 * @see org.module.eer.mm.moduleeer.Generalization#getCompleteness()
+	 * @see #getGeneralization()
+	 * @generated
+	 */
+	EAttribute getGeneralization_Completeness();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.module.eer.mm.moduleeer.Generalization#getDisjointness <em>Disjointness</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Disjointness</em>'.
+	 * @see org.module.eer.mm.moduleeer.Generalization#getDisjointness()
+	 * @see #getGeneralization()
+	 * @generated
+	 */
+	EAttribute getGeneralization_Disjointness();
+
+	/**
 	 * Returns the meta object for enum '{@link org.module.eer.mm.moduleeer.AttributeType <em>Attribute Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1047,6 +1272,26 @@ public interface ModuleeerPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getCardinalityType();
+
+	/**
+	 * Returns the meta object for enum '{@link org.module.eer.mm.moduleeer.DisjointnessType <em>Disjointness Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Disjointness Type</em>'.
+	 * @see org.module.eer.mm.moduleeer.DisjointnessType
+	 * @generated
+	 */
+	EEnum getDisjointnessType();
+
+	/**
+	 * Returns the meta object for enum '{@link org.module.eer.mm.moduleeer.CompletenessType <em>Completeness Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Completeness Type</em>'.
+	 * @see org.module.eer.mm.moduleeer.CompletenessType
+	 * @generated
+	 */
+	EEnum getCompletenessType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1082,20 +1327,20 @@ public interface ModuleeerPackage extends EPackage {
 		EClass MEER_MODEL = eINSTANCE.getMEERModel();
 
 		/**
-		 * The meta object literal for the '<em><b>Context Data Models</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference MEER_MODEL__CONTEXT_DATA_MODELS = eINSTANCE.getMEERModel_ContextDataModels();
-
-		/**
 		 * The meta object literal for the '<em><b>Subsystems</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference MEER_MODEL__SUBSYSTEMS = eINSTANCE.getMEERModel_Subsystems();
+
+		/**
+		 * The meta object literal for the '<em><b>Modules</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MEER_MODEL__MODULES = eINSTANCE.getMEERModel_Modules();
 
 		/**
 		 * The meta object literal for the '{@link org.module.eer.mm.moduleeer.impl.ElementImpl <em>Element</em>}' class.
@@ -1122,6 +1367,14 @@ public interface ModuleeerPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ELEMENT__ACCESS_ELEMENT = eINSTANCE.getElement_AccessElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Weak</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ELEMENT__IS_WEAK = eINSTANCE.getElement_IsWeak();
 
 		/**
 		 * The meta object literal for the '{@link org.module.eer.mm.moduleeer.impl.ModuleImpl <em>Module</em>}' class.
@@ -1178,28 +1431,20 @@ public interface ModuleeerPackage extends EPackage {
 		EClass ENTITY_TYPE = eINSTANCE.getEntityType();
 
 		/**
-		 * The meta object literal for the '<em><b>Generalizes</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Generalizations</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ENTITY_TYPE__GENERALIZES = eINSTANCE.getEntityType_Generalizes();
+		EReference ENTITY_TYPE__GENERALIZATIONS = eINSTANCE.getEntityType_Generalizations();
 
 		/**
-		 * The meta object literal for the '<em><b>Src Relationshiptype</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Specializations</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ENTITY_TYPE__SRC_RELATIONSHIPTYPE = eINSTANCE.getEntityType_SrcRelationshiptype();
-
-		/**
-		 * The meta object literal for the '<em><b>Trg Relationshiptype</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ENTITY_TYPE__TRG_RELATIONSHIPTYPE = eINSTANCE.getEntityType_TrgRelationshiptype();
+		EReference ENTITY_TYPE__SPECIALIZATIONS = eINSTANCE.getEntityType_Specializations();
 
 		/**
 		 * The meta object literal for the '{@link org.module.eer.mm.moduleeer.impl.RelationshipTypeImpl <em>Relationship Type</em>}' class.
@@ -1212,36 +1457,28 @@ public interface ModuleeerPackage extends EPackage {
 		EClass RELATIONSHIP_TYPE = eINSTANCE.getRelationshipType();
 
 		/**
-		 * The meta object literal for the '<em><b>Src Entity</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Generalizes</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RELATIONSHIP_TYPE__SRC_ENTITY = eINSTANCE.getRelationshipType_SrcEntity();
+		EReference RELATIONSHIP_TYPE__GENERALIZES = eINSTANCE.getRelationshipType_Generalizes();
 
 		/**
-		 * The meta object literal for the '<em><b>Trg Entity</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Links</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RELATIONSHIP_TYPE__TRG_ENTITY = eINSTANCE.getRelationshipType_TrgEntity();
+		EReference RELATIONSHIP_TYPE__LINKS = eINSTANCE.getRelationshipType_Links();
 
 		/**
-		 * The meta object literal for the '<em><b>Src Entity Cardinality</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Aggregations</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute RELATIONSHIP_TYPE__SRC_ENTITY_CARDINALITY = eINSTANCE.getRelationshipType_SrcEntityCardinality();
-
-		/**
-		 * The meta object literal for the '<em><b>Trg Entity Cardinality</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RELATIONSHIP_TYPE__TRG_ENTITY_CARDINALITY = eINSTANCE.getRelationshipType_TrgEntityCardinality();
+		EReference RELATIONSHIP_TYPE__AGGREGATIONS = eINSTANCE.getRelationshipType_Aggregations();
 
 		/**
 		 * The meta object literal for the '{@link org.module.eer.mm.moduleeer.impl.SingleAttributeImpl <em>Single Attribute</em>}' class.
@@ -1280,34 +1517,6 @@ public interface ModuleeerPackage extends EPackage {
 		EClass MODULARIZABLE_ELEMENT = eINSTANCE.getModularizableElement();
 
 		/**
-		 * The meta object literal for the '{@link org.module.eer.mm.moduleeer.impl.ContextDataModelImpl <em>Context Data Model</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.module.eer.mm.moduleeer.impl.ContextDataModelImpl
-		 * @see org.module.eer.mm.moduleeer.impl.ModuleeerPackageImpl#getContextDataModel()
-		 * @generated
-		 */
-		EClass CONTEXT_DATA_MODEL = eINSTANCE.getContextDataModel();
-
-		/**
-		 * The meta object literal for the '{@link org.module.eer.mm.moduleeer.impl.SubjectAreaImpl <em>Subject Area</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.module.eer.mm.moduleeer.impl.SubjectAreaImpl
-		 * @see org.module.eer.mm.moduleeer.impl.ModuleeerPackageImpl#getSubjectArea()
-		 * @generated
-		 */
-		EClass SUBJECT_AREA = eINSTANCE.getSubjectArea();
-
-		/**
-		 * The meta object literal for the '<em><b>Context Data Models</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SUBJECT_AREA__CONTEXT_DATA_MODELS = eINSTANCE.getSubjectArea_ContextDataModels();
-
-		/**
 		 * The meta object literal for the '{@link org.module.eer.mm.moduleeer.impl.AttributeImpl <em>Attribute</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1336,6 +1545,108 @@ public interface ModuleeerPackage extends EPackage {
 		EReference COMPOSITE_ATTRIBUTE__ATTRIBUTES = eINSTANCE.getCompositeAttribute_Attributes();
 
 		/**
+		 * The meta object literal for the '{@link org.module.eer.mm.moduleeer.impl.LinkImpl <em>Link</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.module.eer.mm.moduleeer.impl.LinkImpl
+		 * @see org.module.eer.mm.moduleeer.impl.ModuleeerPackageImpl#getLink()
+		 * @generated
+		 */
+		EClass LINK = eINSTANCE.getLink();
+
+		/**
+		 * The meta object literal for the '<em><b>Cardinality</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LINK__CARDINALITY = eINSTANCE.getLink_Cardinality();
+
+		/**
+		 * The meta object literal for the '<em><b>Completeness</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LINK__COMPLETENESS = eINSTANCE.getLink_Completeness();
+
+		/**
+		 * The meta object literal for the '<em><b>Element</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LINK__ELEMENT = eINSTANCE.getLink_Element();
+
+		/**
+		 * The meta object literal for the '{@link org.module.eer.mm.moduleeer.impl.AggregationImpl <em>Aggregation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.module.eer.mm.moduleeer.impl.AggregationImpl
+		 * @see org.module.eer.mm.moduleeer.impl.ModuleeerPackageImpl#getAggregation()
+		 * @generated
+		 */
+		EClass AGGREGATION = eINSTANCE.getAggregation();
+
+		/**
+		 * The meta object literal for the '<em><b>To</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference AGGREGATION__TO = eINSTANCE.getAggregation_To();
+
+		/**
+		 * The meta object literal for the '<em><b>Cardinality</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute AGGREGATION__CARDINALITY = eINSTANCE.getAggregation_Cardinality();
+
+		/**
+		 * The meta object literal for the '<em><b>Completness</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute AGGREGATION__COMPLETNESS = eINSTANCE.getAggregation_Completness();
+
+		/**
+		 * The meta object literal for the '{@link org.module.eer.mm.moduleeer.impl.GeneralizationImpl <em>Generalization</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.module.eer.mm.moduleeer.impl.GeneralizationImpl
+		 * @see org.module.eer.mm.moduleeer.impl.ModuleeerPackageImpl#getGeneralization()
+		 * @generated
+		 */
+		EClass GENERALIZATION = eINSTANCE.getGeneralization();
+
+		/**
+		 * The meta object literal for the '<em><b>Entity</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GENERALIZATION__ENTITY = eINSTANCE.getGeneralization_Entity();
+
+		/**
+		 * The meta object literal for the '<em><b>Completeness</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GENERALIZATION__COMPLETENESS = eINSTANCE.getGeneralization_Completeness();
+
+		/**
+		 * The meta object literal for the '<em><b>Disjointness</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GENERALIZATION__DISJOINTNESS = eINSTANCE.getGeneralization_Disjointness();
+
+		/**
 		 * The meta object literal for the '{@link org.module.eer.mm.moduleeer.AttributeType <em>Attribute Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1354,6 +1665,26 @@ public interface ModuleeerPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum CARDINALITY_TYPE = eINSTANCE.getCardinalityType();
+
+		/**
+		 * The meta object literal for the '{@link org.module.eer.mm.moduleeer.DisjointnessType <em>Disjointness Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.module.eer.mm.moduleeer.DisjointnessType
+		 * @see org.module.eer.mm.moduleeer.impl.ModuleeerPackageImpl#getDisjointnessType()
+		 * @generated
+		 */
+		EEnum DISJOINTNESS_TYPE = eINSTANCE.getDisjointnessType();
+
+		/**
+		 * The meta object literal for the '{@link org.module.eer.mm.moduleeer.CompletenessType <em>Completeness Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.module.eer.mm.moduleeer.CompletenessType
+		 * @see org.module.eer.mm.moduleeer.impl.ModuleeerPackageImpl#getCompletenessType()
+		 * @generated
+		 */
+		EEnum COMPLETENESS_TYPE = eINSTANCE.getCompletenessType();
 
 	}
 

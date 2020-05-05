@@ -13,9 +13,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.module.eer.mm.moduleeer.EntityType#getGeneralizes <em>Generalizes</em>}</li>
- *   <li>{@link org.module.eer.mm.moduleeer.EntityType#getSrcRelationshiptype <em>Src Relationshiptype</em>}</li>
- *   <li>{@link org.module.eer.mm.moduleeer.EntityType#getTrgRelationshiptype <em>Trg Relationshiptype</em>}</li>
+ *   <li>{@link org.module.eer.mm.moduleeer.EntityType#getGeneralizations <em>Generalizations</em>}</li>
+ *   <li>{@link org.module.eer.mm.moduleeer.EntityType#getSpecializations <em>Specializations</em>}</li>
  * </ul>
  *
  * @see org.module.eer.mm.moduleeer.ModuleeerPackage#getEntityType()
@@ -24,43 +23,29 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface EntityType extends Element {
 	/**
-	 * Returns the value of the '<em><b>Generalizes</b></em>' reference list.
-	 * The list contents are of type {@link org.module.eer.mm.moduleeer.EntityType}.
+	 * Returns the value of the '<em><b>Generalizations</b></em>' containment reference list.
+	 * The list contents are of type {@link org.module.eer.mm.moduleeer.Generalization}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Generalizes</em>' reference list.
-	 * @see org.module.eer.mm.moduleeer.ModuleeerPackage#getEntityType_Generalizes()
-	 * @model
+	 * @return the value of the '<em>Generalizations</em>' containment reference list.
+	 * @see org.module.eer.mm.moduleeer.ModuleeerPackage#getEntityType_Generalizations()
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList<EntityType> getGeneralizes();
+	EList<Generalization> getGeneralizations();
 
 	/**
-	 * Returns the value of the '<em><b>Src Relationshiptype</b></em>' reference list.
-	 * The list contents are of type {@link org.module.eer.mm.moduleeer.RelationshipType}.
-	 * It is bidirectional and its opposite is '{@link org.module.eer.mm.moduleeer.RelationshipType#getSrcEntity <em>Src Entity</em>}'.
+	 * Returns the value of the '<em><b>Specializations</b></em>' reference list.
+	 * The list contents are of type {@link org.module.eer.mm.moduleeer.Generalization}.
+	 * It is bidirectional and its opposite is '{@link org.module.eer.mm.moduleeer.Generalization#getEntity <em>Entity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Src Relationshiptype</em>' reference list.
-	 * @see org.module.eer.mm.moduleeer.ModuleeerPackage#getEntityType_SrcRelationshiptype()
-	 * @see org.module.eer.mm.moduleeer.RelationshipType#getSrcEntity
-	 * @model opposite="srcEntity"
+	 * @return the value of the '<em>Specializations</em>' reference list.
+	 * @see org.module.eer.mm.moduleeer.ModuleeerPackage#getEntityType_Specializations()
+	 * @see org.module.eer.mm.moduleeer.Generalization#getEntity
+	 * @model opposite="entity"
 	 * @generated
 	 */
-	EList<RelationshipType> getSrcRelationshiptype();
-
-	/**
-	 * Returns the value of the '<em><b>Trg Relationshiptype</b></em>' reference list.
-	 * The list contents are of type {@link org.module.eer.mm.moduleeer.RelationshipType}.
-	 * It is bidirectional and its opposite is '{@link org.module.eer.mm.moduleeer.RelationshipType#getTrgEntity <em>Trg Entity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Trg Relationshiptype</em>' reference list.
-	 * @see org.module.eer.mm.moduleeer.ModuleeerPackage#getEntityType_TrgRelationshiptype()
-	 * @see org.module.eer.mm.moduleeer.RelationshipType#getTrgEntity
-	 * @model opposite="trgEntity"
-	 * @generated
-	 */
-	EList<RelationshipType> getTrgRelationshiptype();
+	EList<Generalization> getSpecializations();
 
 } // EntityType

@@ -9,18 +9,19 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.module.eer.mm.moduleeer.Aggregation;
 import org.module.eer.mm.moduleeer.Attribute;
 import org.module.eer.mm.moduleeer.CompositeAttribute;
-import org.module.eer.mm.moduleeer.ContextDataModel;
 import org.module.eer.mm.moduleeer.Element;
 import org.module.eer.mm.moduleeer.EntityType;
+import org.module.eer.mm.moduleeer.Generalization;
+import org.module.eer.mm.moduleeer.Link;
 import org.module.eer.mm.moduleeer.MEERModel;
 import org.module.eer.mm.moduleeer.ModularizableElement;
 import org.module.eer.mm.moduleeer.ModuleeerPackage;
 import org.module.eer.mm.moduleeer.NameElement;
 import org.module.eer.mm.moduleeer.RelationshipType;
 import org.module.eer.mm.moduleeer.SingleAttribute;
-import org.module.eer.mm.moduleeer.SubjectArea;
 
 /**
  * <!-- begin-user-doc -->
@@ -118,16 +119,6 @@ public class ModuleeerAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseContextDataModel(ContextDataModel object) {
-			return createContextDataModelAdapter();
-		}
-
-		@Override
-		public Adapter caseSubjectArea(SubjectArea object) {
-			return createSubjectAreaAdapter();
-		}
-
-		@Override
 		public Adapter caseAttribute(Attribute object) {
 			return createAttributeAdapter();
 		}
@@ -135,6 +126,21 @@ public class ModuleeerAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseCompositeAttribute(CompositeAttribute object) {
 			return createCompositeAttributeAdapter();
+		}
+
+		@Override
+		public Adapter caseLink(Link object) {
+			return createLinkAdapter();
+		}
+
+		@Override
+		public Adapter caseAggregation(Aggregation object) {
+			return createAggregationAdapter();
+		}
+
+		@Override
+		public Adapter caseGeneralization(Generalization object) {
+			return createGeneralizationAdapter();
 		}
 
 		@Override
@@ -269,34 +275,6 @@ public class ModuleeerAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.module.eer.mm.moduleeer.ContextDataModel <em>Context Data Model</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.module.eer.mm.moduleeer.ContextDataModel
-	 * @generated
-	 */
-	public Adapter createContextDataModelAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.module.eer.mm.moduleeer.SubjectArea <em>Subject Area</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.module.eer.mm.moduleeer.SubjectArea
-	 * @generated
-	 */
-	public Adapter createSubjectAreaAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.module.eer.mm.moduleeer.Attribute <em>Attribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -321,6 +299,48 @@ public class ModuleeerAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCompositeAttributeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.module.eer.mm.moduleeer.Link <em>Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.module.eer.mm.moduleeer.Link
+	 * @generated
+	 */
+	public Adapter createLinkAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.module.eer.mm.moduleeer.Aggregation <em>Aggregation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.module.eer.mm.moduleeer.Aggregation
+	 * @generated
+	 */
+	public Adapter createAggregationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.module.eer.mm.moduleeer.Generalization <em>Generalization</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.module.eer.mm.moduleeer.Generalization
+	 * @generated
+	 */
+	public Adapter createGeneralizationAdapter() {
 		return null;
 	}
 

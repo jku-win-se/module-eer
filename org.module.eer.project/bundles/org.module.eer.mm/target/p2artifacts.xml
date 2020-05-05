@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?artifactRepository version='1.1.0'?>
 <artifacts size='1'>
-  <artifact classifier='osgi.bundle' id='org.module.eer.mm' version='0.1.0.202004290812'>
+  <artifact classifier='osgi.bundle' id='org.module.eer.mm' version='0.1.0.202005040728'>
     <properties size='5'>
-      <property name='artifact.size' value='96292'/>
-      <property name='download.size' value='96292'/>
+      <property name='artifact.size' value='96309'/>
+      <property name='download.size' value='96309'/>
       <property name='maven-groupId' value='org.module.eer.project'/>
       <property name='maven-artifactId' value='org.module.eer.mm'/>
       <property name='maven-version' value='0.1.0-SNAPSHOT'/>

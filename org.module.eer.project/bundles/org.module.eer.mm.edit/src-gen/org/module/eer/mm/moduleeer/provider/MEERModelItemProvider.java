@@ -63,8 +63,8 @@ public class MEERModelItemProvider extends NameElementItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ModuleeerPackage.Literals.MEER_MODEL__CONTEXT_DATA_MODELS);
 			childrenFeatures.add(ModuleeerPackage.Literals.MEER_MODEL__SUBSYSTEMS);
+			childrenFeatures.add(ModuleeerPackage.Literals.MEER_MODEL__MODULES);
 		}
 		return childrenFeatures;
 	}
@@ -128,8 +128,8 @@ public class MEERModelItemProvider extends NameElementItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(MEERModel.class)) {
-		case ModuleeerPackage.MEER_MODEL__CONTEXT_DATA_MODELS:
 		case ModuleeerPackage.MEER_MODEL__SUBSYSTEMS:
+		case ModuleeerPackage.MEER_MODEL__MODULES:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -147,14 +147,11 @@ public class MEERModelItemProvider extends NameElementItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(ModuleeerPackage.Literals.MEER_MODEL__CONTEXT_DATA_MODELS,
-				ModuleeerFactory.eINSTANCE.createModule()));
-
-		newChildDescriptors.add(createChildParameter(ModuleeerPackage.Literals.MEER_MODEL__CONTEXT_DATA_MODELS,
-				ModuleeerFactory.eINSTANCE.createSubjectArea()));
-
 		newChildDescriptors.add(createChildParameter(ModuleeerPackage.Literals.MEER_MODEL__SUBSYSTEMS,
 				SubsystemFactory.eINSTANCE.createModuleSubsystem()));
+
+		newChildDescriptors.add(createChildParameter(ModuleeerPackage.Literals.MEER_MODEL__MODULES,
+				ModuleeerFactory.eINSTANCE.createModule()));
 	}
 
 }

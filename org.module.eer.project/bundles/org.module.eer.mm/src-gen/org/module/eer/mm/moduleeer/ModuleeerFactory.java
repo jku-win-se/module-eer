@@ -67,15 +67,6 @@ public interface ModuleeerFactory extends EFactory {
 	SingleAttribute createSingleAttribute();
 
 	/**
-	 * Returns a new object of class '<em>Subject Area</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Subject Area</em>'.
-	 * @generated
-	 */
-	SubjectArea createSubjectArea();
-
-	/**
 	 * Returns a new object of class '<em>Composite Attribute</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -83,6 +74,33 @@ public interface ModuleeerFactory extends EFactory {
 	 * @generated
 	 */
 	CompositeAttribute createCompositeAttribute();
+
+	/**
+	 * Returns a new object of class '<em>Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Link</em>'.
+	 * @generated
+	 */
+	Link createLink();
+
+	/**
+	 * Returns a new object of class '<em>Aggregation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Aggregation</em>'.
+	 * @generated
+	 */
+	Aggregation createAggregation();
+
+	/**
+	 * Returns a new object of class '<em>Generalization</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Generalization</em>'.
+	 * @generated
+	 */
+	Generalization createGeneralization();
 
 	/**
 	 * Returns the package supported by this factory.

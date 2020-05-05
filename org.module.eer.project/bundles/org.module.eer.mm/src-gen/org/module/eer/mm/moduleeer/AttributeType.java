@@ -29,14 +29,14 @@ public enum AttributeType implements Enumerator {
 	STRING(0, "STRING", "STRING"),
 
 	/**
-	 * The '<em><b>NUMERIC</b></em>' literal object.
+	 * The '<em><b>INTEGER</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #NUMERIC_VALUE
+	 * @see #INTEGER_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	NUMERIC(1, "NUMERIC", "NUMERIC"),
+	INTEGER(1, "INTEGER", "INTEGER"),
 
 	/**
 	 * The '<em><b>BOOLEAN</b></em>' literal object.
@@ -70,15 +70,15 @@ public enum AttributeType implements Enumerator {
 	public static final int STRING_VALUE = 0;
 
 	/**
-	 * The '<em><b>NUMERIC</b></em>' literal value.
+	 * The '<em><b>INTEGER</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #NUMERIC
+	 * @see #INTEGER
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int NUMERIC_VALUE = 1;
+	public static final int INTEGER_VALUE = 1;
 
 	/**
 	 * The '<em><b>BOOLEAN</b></em>' literal value.
@@ -108,7 +108,7 @@ public enum AttributeType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final AttributeType[] VALUES_ARRAY = new AttributeType[] { STRING, NUMERIC, BOOLEAN, DATE, };
+	private static final AttributeType[] VALUES_ARRAY = new AttributeType[] { STRING, INTEGER, BOOLEAN, DATE, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Attribute Type</b></em>' enumerators.
@@ -166,8 +166,8 @@ public enum AttributeType implements Enumerator {
 		switch (value) {
 		case STRING_VALUE:
 			return STRING;
-		case NUMERIC_VALUE:
-			return NUMERIC;
+		case INTEGER_VALUE:
+			return INTEGER;
 		case BOOLEAN_VALUE:
 			return BOOLEAN;
 		case DATE_VALUE:
