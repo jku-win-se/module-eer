@@ -15,7 +15,7 @@
         <module>org.module.eer.mm</module>  
         <module>org.module.eer.mm.edit</module>  
         <module>org.module.eer.mm.editor</module>  
-        <module>org.module.eer.jenetics</module>  
+        <!-- <module>org.module.eer.jenetics</module>  -->  
         <module>org.module.eer.jenetics.library</module> 
         <module>org.module.eer.jenetics.prngine</module> 
         <module>org.module.eer.design</module>  
