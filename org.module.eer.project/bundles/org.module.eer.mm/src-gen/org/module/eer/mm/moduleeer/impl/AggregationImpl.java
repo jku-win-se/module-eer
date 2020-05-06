@@ -49,7 +49,7 @@ public class AggregationImpl extends NameElementImpl implements Aggregation {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final CardinalityType CARDINALITY_EDEFAULT = CardinalityType.ZERO;
+	protected static final CardinalityType CARDINALITY_EDEFAULT = CardinalityType.ONE_TO_ONE;
 
 	/**
 	 * The cached value of the '{@link #getCardinality() <em>Cardinality</em>}' attribute.

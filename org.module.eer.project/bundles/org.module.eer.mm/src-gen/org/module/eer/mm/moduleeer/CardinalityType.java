@@ -19,67 +19,85 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum CardinalityType implements Enumerator {
 	/**
-	 * The '<em><b>ZERO</b></em>' literal object.
+	 * The '<em><b>ONE TO ONE</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #ZERO_VALUE
+	 * @see #ONE_TO_ONE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	ZERO(0, "ZERO", "ZERO"),
+	ONE_TO_ONE(0, "ONE_TO_ONE", "ONE_TO_ONE"),
+	/**
+	* The '<em><b>ONE TO MANY</b></em>' literal object.
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @see #ONE_TO_MANY_VALUE
+	* @generated
+	* @ordered
+	*/
+	ONE_TO_MANY(1, "ONE_TO_MANY", "ONE_TO_MANY"),
+	/**
+	* The '<em><b>MANY TO ONE</b></em>' literal object.
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @see #MANY_TO_ONE_VALUE
+	* @generated
+	* @ordered
+	*/
+	MANY_TO_ONE(2, "MANY_TO_ONE", "MANY_TO_ONE"),
+	/**
+	* The '<em><b>MANY TO MANY</b></em>' literal object.
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @see #MANY_TO_MANY_VALUE
+	* @generated
+	* @ordered
+	*/
+	MANY_TO_MANY(3, "MANY_TO_MANY", "MANY_TO_MANY");
 
 	/**
-	 * The '<em><b>ONE</b></em>' literal object.
+	 * The '<em><b>ONE TO ONE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #ONE_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	ONE(1, "ONE", "ONE"),
-
-	/**
-	 * The '<em><b>MANY</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #MANY_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	MANY(2, "MANY", "MANY");
-
-	/**
-	 * The '<em><b>ZERO</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #ZERO
+	 * @see #ONE_TO_ONE
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ZERO_VALUE = 0;
+	public static final int ONE_TO_ONE_VALUE = 0;
 
 	/**
-	 * The '<em><b>ONE</b></em>' literal value.
+	 * The '<em><b>ONE TO MANY</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #ONE
+	 * @see #ONE_TO_MANY
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ONE_VALUE = 1;
+	public static final int ONE_TO_MANY_VALUE = 1;
 
 	/**
-	 * The '<em><b>MANY</b></em>' literal value.
+	 * The '<em><b>MANY TO ONE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #MANY
+	 * @see #MANY_TO_ONE
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int MANY_VALUE = 2;
+	public static final int MANY_TO_ONE_VALUE = 2;
+
+	/**
+	 * The '<em><b>MANY TO MANY</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #MANY_TO_MANY
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MANY_TO_MANY_VALUE = 3;
 
 	/**
 	 * An array of all the '<em><b>Cardinality Type</b></em>' enumerators.
@@ -87,7 +105,8 @@ public enum CardinalityType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final CardinalityType[] VALUES_ARRAY = new CardinalityType[] { ZERO, ONE, MANY, };
+	private static final CardinalityType[] VALUES_ARRAY = new CardinalityType[] { ONE_TO_ONE, ONE_TO_MANY, MANY_TO_ONE,
+			MANY_TO_MANY, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Cardinality Type</b></em>' enumerators.
@@ -143,12 +162,14 @@ public enum CardinalityType implements Enumerator {
 	 */
 	public static CardinalityType get(int value) {
 		switch (value) {
-		case ZERO_VALUE:
-			return ZERO;
-		case ONE_VALUE:
-			return ONE;
-		case MANY_VALUE:
-			return MANY;
+		case ONE_TO_ONE_VALUE:
+			return ONE_TO_ONE;
+		case ONE_TO_MANY_VALUE:
+			return ONE_TO_MANY;
+		case MANY_TO_ONE_VALUE:
+			return MANY_TO_ONE;
+		case MANY_TO_MANY_VALUE:
+			return MANY_TO_MANY;
 		}
 		return null;
 	}

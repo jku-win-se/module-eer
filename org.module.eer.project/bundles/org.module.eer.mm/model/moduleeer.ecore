@@ -48,9 +48,10 @@
     <eLiterals name="DATE" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="CardinalityType">
-    <eLiterals name="ZERO"/>
-    <eLiterals name="ONE" value="1"/>
-    <eLiterals name="MANY" value="2"/>
+    <eLiterals name="ONE_TO_ONE"/>
+    <eLiterals name="ONE_TO_MANY" value="1"/>
+    <eLiterals name="MANY_TO_ONE" value="2"/>
+    <eLiterals name="MANY_TO_MANY" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModularizableElement" abstract="true"
       eSuperTypes="#//NameElement"/>

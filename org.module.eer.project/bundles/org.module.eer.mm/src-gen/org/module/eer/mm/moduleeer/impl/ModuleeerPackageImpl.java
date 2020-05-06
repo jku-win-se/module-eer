@@ -918,9 +918,10 @@ public class ModuleeerPackageImpl extends EPackageImpl implements ModuleeerPacka
 		addEEnumLiteral(attributeTypeEEnum, AttributeType.DATE);
 
 		initEEnum(cardinalityTypeEEnum, CardinalityType.class, "CardinalityType");
-		addEEnumLiteral(cardinalityTypeEEnum, CardinalityType.ZERO);
-		addEEnumLiteral(cardinalityTypeEEnum, CardinalityType.ONE);
-		addEEnumLiteral(cardinalityTypeEEnum, CardinalityType.MANY);
+		addEEnumLiteral(cardinalityTypeEEnum, CardinalityType.ONE_TO_ONE);
+		addEEnumLiteral(cardinalityTypeEEnum, CardinalityType.ONE_TO_MANY);
+		addEEnumLiteral(cardinalityTypeEEnum, CardinalityType.MANY_TO_ONE);
+		addEEnumLiteral(cardinalityTypeEEnum, CardinalityType.MANY_TO_MANY);
 
 		initEEnum(disjointnessTypeEEnum, DisjointnessType.class, "DisjointnessType");
 		addEEnumLiteral(disjointnessTypeEEnum, DisjointnessType.OVERLAPPING);

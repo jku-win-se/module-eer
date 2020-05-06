@@ -17,9 +17,10 @@
       <genEnumLiterals ecoreEnumLiteral="moduleeer.ecore#//AttributeType/DATE"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="moduleeer.ecore#//CardinalityType">
-      <genEnumLiterals ecoreEnumLiteral="moduleeer.ecore#//CardinalityType/ZERO"/>
-      <genEnumLiterals ecoreEnumLiteral="moduleeer.ecore#//CardinalityType/ONE"/>
-      <genEnumLiterals ecoreEnumLiteral="moduleeer.ecore#//CardinalityType/MANY"/>
+      <genEnumLiterals ecoreEnumLiteral="moduleeer.ecore#//CardinalityType/ONE_TO_ONE"/>
+      <genEnumLiterals ecoreEnumLiteral="moduleeer.ecore#//CardinalityType/ONE_TO_MANY"/>
+      <genEnumLiterals ecoreEnumLiteral="moduleeer.ecore#//CardinalityType/MANY_TO_ONE"/>
+      <genEnumLiterals ecoreEnumLiteral="moduleeer.ecore#//CardinalityType/MANY_TO_MANY"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="moduleeer.ecore#//DisjointnessType">
       <genEnumLiterals ecoreEnumLiteral="moduleeer.ecore#//DisjointnessType/OVERLAPPING"/>
