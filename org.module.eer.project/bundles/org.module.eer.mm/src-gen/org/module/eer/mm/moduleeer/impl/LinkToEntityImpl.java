@@ -9,40 +9,40 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.module.eer.mm.moduleeer.Aggregation;
+import org.module.eer.mm.moduleeer.EntityType;
+import org.module.eer.mm.moduleeer.LinkToEntity;
 import org.module.eer.mm.moduleeer.ModuleeerPackage;
-import org.module.eer.mm.moduleeer.RelationshipType;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Aggregation</b></em>'.
+ * An implementation of the model object '<em><b>Link To Entity</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.module.eer.mm.moduleeer.impl.AggregationImpl#getTo <em>To</em>}</li>
+ *   <li>{@link org.module.eer.mm.moduleeer.impl.LinkToEntityImpl#getEntity <em>Entity</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class AggregationImpl extends LinkImpl implements Aggregation {
+public class LinkToEntityImpl extends LinkImpl implements LinkToEntity {
 	/**
-	 * The cached value of the '{@link #getTo() <em>To</em>}' reference.
+	 * The cached value of the '{@link #getEntity() <em>Entity</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTo()
+	 * @see #getEntity()
 	 * @generated
 	 * @ordered
 	 */
-	protected RelationshipType to;
+	protected EntityType entity;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected AggregationImpl() {
+	protected LinkToEntityImpl() {
 		super();
 	}
 
@@ -53,7 +53,7 @@ public class AggregationImpl extends LinkImpl implements Aggregation {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ModuleeerPackage.Literals.AGGREGATION;
+		return ModuleeerPackage.Literals.LINK_TO_ENTITY;
 	}
 
 	/**
@@ -62,17 +62,17 @@ public class AggregationImpl extends LinkImpl implements Aggregation {
 	 * @generated
 	 */
 	@Override
-	public RelationshipType getTo() {
-		if (to != null && to.eIsProxy()) {
-			InternalEObject oldTo = (InternalEObject) to;
-			to = (RelationshipType) eResolveProxy(oldTo);
-			if (to != oldTo) {
+	public EntityType getEntity() {
+		if (entity != null && entity.eIsProxy()) {
+			InternalEObject oldEntity = (InternalEObject) entity;
+			entity = (EntityType) eResolveProxy(oldEntity);
+			if (entity != oldEntity) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModuleeerPackage.AGGREGATION__TO, oldTo,
-							to));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModuleeerPackage.LINK_TO_ENTITY__ENTITY,
+							oldEntity, entity));
 			}
 		}
-		return to;
+		return entity;
 	}
 
 	/**
@@ -80,8 +80,8 @@ public class AggregationImpl extends LinkImpl implements Aggregation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RelationshipType basicGetTo() {
-		return to;
+	public EntityType basicGetEntity() {
+		return entity;
 	}
 
 	/**
@@ -90,11 +90,12 @@ public class AggregationImpl extends LinkImpl implements Aggregation {
 	 * @generated
 	 */
 	@Override
-	public void setTo(RelationshipType newTo) {
-		RelationshipType oldTo = to;
-		to = newTo;
+	public void setEntity(EntityType newEntity) {
+		EntityType oldEntity = entity;
+		entity = newEntity;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModuleeerPackage.AGGREGATION__TO, oldTo, to));
+			eNotify(new ENotificationImpl(this, Notification.SET, ModuleeerPackage.LINK_TO_ENTITY__ENTITY, oldEntity,
+					entity));
 	}
 
 	/**
@@ -105,10 +106,10 @@ public class AggregationImpl extends LinkImpl implements Aggregation {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case ModuleeerPackage.AGGREGATION__TO:
+		case ModuleeerPackage.LINK_TO_ENTITY__ENTITY:
 			if (resolve)
-				return getTo();
-			return basicGetTo();
+				return getEntity();
+			return basicGetEntity();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -121,8 +122,8 @@ public class AggregationImpl extends LinkImpl implements Aggregation {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case ModuleeerPackage.AGGREGATION__TO:
-			setTo((RelationshipType) newValue);
+		case ModuleeerPackage.LINK_TO_ENTITY__ENTITY:
+			setEntity((EntityType) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -136,8 +137,8 @@ public class AggregationImpl extends LinkImpl implements Aggregation {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case ModuleeerPackage.AGGREGATION__TO:
-			setTo((RelationshipType) null);
+		case ModuleeerPackage.LINK_TO_ENTITY__ENTITY:
+			setEntity((EntityType) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -151,10 +152,10 @@ public class AggregationImpl extends LinkImpl implements Aggregation {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case ModuleeerPackage.AGGREGATION__TO:
-			return to != null;
+		case ModuleeerPackage.LINK_TO_ENTITY__ENTITY:
+			return entity != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //AggregationImpl
+} //LinkToEntityImpl

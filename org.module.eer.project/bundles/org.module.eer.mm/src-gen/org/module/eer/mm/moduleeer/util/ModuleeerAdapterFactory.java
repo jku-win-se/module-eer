@@ -16,6 +16,7 @@ import org.module.eer.mm.moduleeer.Element;
 import org.module.eer.mm.moduleeer.EntityType;
 import org.module.eer.mm.moduleeer.Generalization;
 import org.module.eer.mm.moduleeer.Link;
+import org.module.eer.mm.moduleeer.LinkToEntity;
 import org.module.eer.mm.moduleeer.MEERModel;
 import org.module.eer.mm.moduleeer.ModularizableElement;
 import org.module.eer.mm.moduleeer.ModuleeerPackage;
@@ -134,13 +135,18 @@ public class ModuleeerAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseGeneralization(Generalization object) {
+			return createGeneralizationAdapter();
+		}
+
+		@Override
 		public Adapter caseAggregation(Aggregation object) {
 			return createAggregationAdapter();
 		}
 
 		@Override
-		public Adapter caseGeneralization(Generalization object) {
-			return createGeneralizationAdapter();
+		public Adapter caseLinkToEntity(LinkToEntity object) {
+			return createLinkToEntityAdapter();
 		}
 
 		@Override
@@ -327,6 +333,20 @@ public class ModuleeerAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAggregationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.module.eer.mm.moduleeer.LinkToEntity <em>Link To Entity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.module.eer.mm.moduleeer.LinkToEntity
+	 * @generated
+	 */
+	public Adapter createLinkToEntityAdapter() {
 		return null;
 	}
 

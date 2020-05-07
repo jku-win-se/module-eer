@@ -43,7 +43,7 @@ public interface MEERModel extends NameElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Modules</em>' containment reference list.
 	 * @see org.module.eer.mm.moduleeer.ModuleeerPackage#getMEERModel_Modules()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	EList<org.module.eer.mm.moduleeer.Module> getModules();

@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.module.eer.mm.moduleeer.Aggregation;
-import org.module.eer.mm.moduleeer.Link;
+import org.module.eer.mm.moduleeer.LinkToEntity;
 import org.module.eer.mm.moduleeer.ModuleeerPackage;
 import org.module.eer.mm.moduleeer.RelationshipType;
 
@@ -29,8 +29,9 @@ import org.module.eer.mm.moduleeer.RelationshipType;
  * </p>
  * <ul>
  *   <li>{@link org.module.eer.mm.moduleeer.impl.RelationshipTypeImpl#getGeneralizes <em>Generalizes</em>}</li>
- *   <li>{@link org.module.eer.mm.moduleeer.impl.RelationshipTypeImpl#getLinks <em>Links</em>}</li>
+ *   <li>{@link org.module.eer.mm.moduleeer.impl.RelationshipTypeImpl#getLinksToEntities <em>Links To Entities</em>}</li>
  *   <li>{@link org.module.eer.mm.moduleeer.impl.RelationshipTypeImpl#getAggregations <em>Aggregations</em>}</li>
+ *   <li>{@link org.module.eer.mm.moduleeer.impl.RelationshipTypeImpl#getAssociations <em>Associations</em>}</li>
  * </ul>
  *
  * @generated
@@ -47,14 +48,14 @@ public class RelationshipTypeImpl extends ElementImpl implements RelationshipTyp
 	protected EList<RelationshipType> generalizes;
 
 	/**
-	 * The cached value of the '{@link #getLinks() <em>Links</em>}' containment reference list.
+	 * The cached value of the '{@link #getLinksToEntities() <em>Links To Entities</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLinks()
+	 * @see #getLinksToEntities()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Link> links;
+	protected EList<LinkToEntity> linksToEntities;
 
 	/**
 	 * The cached value of the '{@link #getAggregations() <em>Aggregations</em>}' containment reference list.
@@ -65,6 +66,16 @@ public class RelationshipTypeImpl extends ElementImpl implements RelationshipTyp
 	 * @ordered
 	 */
 	protected EList<Aggregation> aggregations;
+
+	/**
+	 * The cached value of the '{@link #getAssociations() <em>Associations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAssociations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<LinkToEntity> associations;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -105,11 +116,12 @@ public class RelationshipTypeImpl extends ElementImpl implements RelationshipTyp
 	 * @generated
 	 */
 	@Override
-	public EList<Link> getLinks() {
-		if (links == null) {
-			links = new EObjectContainmentEList<Link>(Link.class, this, ModuleeerPackage.RELATIONSHIP_TYPE__LINKS);
+	public EList<LinkToEntity> getLinksToEntities() {
+		if (linksToEntities == null) {
+			linksToEntities = new EObjectContainmentEList<LinkToEntity>(LinkToEntity.class, this,
+					ModuleeerPackage.RELATIONSHIP_TYPE__LINKS_TO_ENTITIES);
 		}
-		return links;
+		return linksToEntities;
 	}
 
 	/**
@@ -132,12 +144,28 @@ public class RelationshipTypeImpl extends ElementImpl implements RelationshipTyp
 	 * @generated
 	 */
 	@Override
+	public EList<LinkToEntity> getAssociations() {
+		if (associations == null) {
+			associations = new EObjectContainmentEList<LinkToEntity>(LinkToEntity.class, this,
+					ModuleeerPackage.RELATIONSHIP_TYPE__ASSOCIATIONS);
+		}
+		return associations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case ModuleeerPackage.RELATIONSHIP_TYPE__LINKS:
-			return ((InternalEList<?>) getLinks()).basicRemove(otherEnd, msgs);
+		case ModuleeerPackage.RELATIONSHIP_TYPE__LINKS_TO_ENTITIES:
+			return ((InternalEList<?>) getLinksToEntities()).basicRemove(otherEnd, msgs);
 		case ModuleeerPackage.RELATIONSHIP_TYPE__AGGREGATIONS:
 			return ((InternalEList<?>) getAggregations()).basicRemove(otherEnd, msgs);
+		case ModuleeerPackage.RELATIONSHIP_TYPE__ASSOCIATIONS:
+			return ((InternalEList<?>) getAssociations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -152,10 +180,12 @@ public class RelationshipTypeImpl extends ElementImpl implements RelationshipTyp
 		switch (featureID) {
 		case ModuleeerPackage.RELATIONSHIP_TYPE__GENERALIZES:
 			return getGeneralizes();
-		case ModuleeerPackage.RELATIONSHIP_TYPE__LINKS:
-			return getLinks();
+		case ModuleeerPackage.RELATIONSHIP_TYPE__LINKS_TO_ENTITIES:
+			return getLinksToEntities();
 		case ModuleeerPackage.RELATIONSHIP_TYPE__AGGREGATIONS:
 			return getAggregations();
+		case ModuleeerPackage.RELATIONSHIP_TYPE__ASSOCIATIONS:
+			return getAssociations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -173,13 +203,17 @@ public class RelationshipTypeImpl extends ElementImpl implements RelationshipTyp
 			getGeneralizes().clear();
 			getGeneralizes().addAll((Collection<? extends RelationshipType>) newValue);
 			return;
-		case ModuleeerPackage.RELATIONSHIP_TYPE__LINKS:
-			getLinks().clear();
-			getLinks().addAll((Collection<? extends Link>) newValue);
+		case ModuleeerPackage.RELATIONSHIP_TYPE__LINKS_TO_ENTITIES:
+			getLinksToEntities().clear();
+			getLinksToEntities().addAll((Collection<? extends LinkToEntity>) newValue);
 			return;
 		case ModuleeerPackage.RELATIONSHIP_TYPE__AGGREGATIONS:
 			getAggregations().clear();
 			getAggregations().addAll((Collection<? extends Aggregation>) newValue);
+			return;
+		case ModuleeerPackage.RELATIONSHIP_TYPE__ASSOCIATIONS:
+			getAssociations().clear();
+			getAssociations().addAll((Collection<? extends LinkToEntity>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -196,11 +230,14 @@ public class RelationshipTypeImpl extends ElementImpl implements RelationshipTyp
 		case ModuleeerPackage.RELATIONSHIP_TYPE__GENERALIZES:
 			getGeneralizes().clear();
 			return;
-		case ModuleeerPackage.RELATIONSHIP_TYPE__LINKS:
-			getLinks().clear();
+		case ModuleeerPackage.RELATIONSHIP_TYPE__LINKS_TO_ENTITIES:
+			getLinksToEntities().clear();
 			return;
 		case ModuleeerPackage.RELATIONSHIP_TYPE__AGGREGATIONS:
 			getAggregations().clear();
+			return;
+		case ModuleeerPackage.RELATIONSHIP_TYPE__ASSOCIATIONS:
+			getAssociations().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -216,10 +253,12 @@ public class RelationshipTypeImpl extends ElementImpl implements RelationshipTyp
 		switch (featureID) {
 		case ModuleeerPackage.RELATIONSHIP_TYPE__GENERALIZES:
 			return generalizes != null && !generalizes.isEmpty();
-		case ModuleeerPackage.RELATIONSHIP_TYPE__LINKS:
-			return links != null && !links.isEmpty();
+		case ModuleeerPackage.RELATIONSHIP_TYPE__LINKS_TO_ENTITIES:
+			return linksToEntities != null && !linksToEntities.isEmpty();
 		case ModuleeerPackage.RELATIONSHIP_TYPE__AGGREGATIONS:
 			return aggregations != null && !aggregations.isEmpty();
+		case ModuleeerPackage.RELATIONSHIP_TYPE__ASSOCIATIONS:
+			return associations != null && !associations.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

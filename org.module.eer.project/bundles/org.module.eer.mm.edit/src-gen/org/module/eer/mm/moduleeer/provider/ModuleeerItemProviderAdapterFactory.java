@@ -211,29 +211,6 @@ public class ModuleeerItemProviderAdapterFactory extends ModuleeerAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.module.eer.mm.moduleeer.Link} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected LinkItemProvider linkItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.module.eer.mm.moduleeer.Link}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createLinkAdapter() {
-		if (linkItemProvider == null) {
-			linkItemProvider = new LinkItemProvider(this);
-		}
-
-		return linkItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.module.eer.mm.moduleeer.Aggregation} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -254,6 +231,29 @@ public class ModuleeerItemProviderAdapterFactory extends ModuleeerAdapterFactory
 		}
 
 		return aggregationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.module.eer.mm.moduleeer.LinkToEntity} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LinkToEntityItemProvider linkToEntityItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.module.eer.mm.moduleeer.LinkToEntity}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLinkToEntityAdapter() {
+		if (linkToEntityItemProvider == null) {
+			linkToEntityItemProvider = new LinkToEntityItemProvider(this);
+		}
+
+		return linkToEntityItemProvider;
 	}
 
 	/**
@@ -396,12 +396,12 @@ public class ModuleeerItemProviderAdapterFactory extends ModuleeerAdapterFactory
 			singleAttributeItemProvider.dispose();
 		if (compositeAttributeItemProvider != null)
 			compositeAttributeItemProvider.dispose();
-		if (linkItemProvider != null)
-			linkItemProvider.dispose();
-		if (aggregationItemProvider != null)
-			aggregationItemProvider.dispose();
 		if (generalizationItemProvider != null)
 			generalizationItemProvider.dispose();
+		if (aggregationItemProvider != null)
+			aggregationItemProvider.dispose();
+		if (linkToEntityItemProvider != null)
+			linkToEntityItemProvider.dispose();
 	}
 
 }

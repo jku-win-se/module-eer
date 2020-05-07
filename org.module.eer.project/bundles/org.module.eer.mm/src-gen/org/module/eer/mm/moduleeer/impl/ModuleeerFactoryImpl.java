@@ -19,7 +19,7 @@ import org.module.eer.mm.moduleeer.CompositeAttribute;
 import org.module.eer.mm.moduleeer.DisjointnessType;
 import org.module.eer.mm.moduleeer.EntityType;
 import org.module.eer.mm.moduleeer.Generalization;
-import org.module.eer.mm.moduleeer.Link;
+import org.module.eer.mm.moduleeer.LinkToEntity;
 import org.module.eer.mm.moduleeer.MEERModel;
 import org.module.eer.mm.moduleeer.ModuleeerFactory;
 import org.module.eer.mm.moduleeer.ModuleeerPackage;
@@ -82,12 +82,12 @@ public class ModuleeerFactoryImpl extends EFactoryImpl implements ModuleeerFacto
 			return createSingleAttribute();
 		case ModuleeerPackage.COMPOSITE_ATTRIBUTE:
 			return createCompositeAttribute();
-		case ModuleeerPackage.LINK:
-			return createLink();
-		case ModuleeerPackage.AGGREGATION:
-			return createAggregation();
 		case ModuleeerPackage.GENERALIZATION:
 			return createGeneralization();
+		case ModuleeerPackage.AGGREGATION:
+			return createAggregation();
+		case ModuleeerPackage.LINK_TO_ENTITY:
+			return createLinkToEntity();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -207,9 +207,9 @@ public class ModuleeerFactoryImpl extends EFactoryImpl implements ModuleeerFacto
 	 * @generated
 	 */
 	@Override
-	public Link createLink() {
-		LinkImpl link = new LinkImpl();
-		return link;
+	public Aggregation createAggregation() {
+		AggregationImpl aggregation = new AggregationImpl();
+		return aggregation;
 	}
 
 	/**
@@ -218,9 +218,9 @@ public class ModuleeerFactoryImpl extends EFactoryImpl implements ModuleeerFacto
 	 * @generated
 	 */
 	@Override
-	public Aggregation createAggregation() {
-		AggregationImpl aggregation = new AggregationImpl();
-		return aggregation;
+	public LinkToEntity createLinkToEntity() {
+		LinkToEntityImpl linkToEntity = new LinkToEntityImpl();
+		return linkToEntity;
 	}
 
 	/**

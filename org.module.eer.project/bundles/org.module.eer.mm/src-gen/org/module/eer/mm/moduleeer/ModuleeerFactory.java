@@ -76,15 +76,6 @@ public interface ModuleeerFactory extends EFactory {
 	CompositeAttribute createCompositeAttribute();
 
 	/**
-	 * Returns a new object of class '<em>Link</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Link</em>'.
-	 * @generated
-	 */
-	Link createLink();
-
-	/**
 	 * Returns a new object of class '<em>Aggregation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -92,6 +83,15 @@ public interface ModuleeerFactory extends EFactory {
 	 * @generated
 	 */
 	Aggregation createAggregation();
+
+	/**
+	 * Returns a new object of class '<em>Link To Entity</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Link To Entity</em>'.
+	 * @generated
+	 */
+	LinkToEntity createLinkToEntity();
 
 	/**
 	 * Returns a new object of class '<em>Generalization</em>'.

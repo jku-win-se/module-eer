@@ -4,8 +4,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="MEERModel" eSuperTypes="#//NameElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="subsystems" upperBound="-1"
         eType="#//subsystem/ModuleSubsystem" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="modules" upperBound="-1"
-        eType="#//Module" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modules" lowerBound="1"
+        upperBound="-1" eType="#//Module" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Element" abstract="true" eSuperTypes="#//ModularizableElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
@@ -32,10 +32,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="RelationshipType" eSuperTypes="#//Element">
     <eStructuralFeatures xsi:type="ecore:EReference" name="generalizes" upperBound="-1"
         eType="#//RelationshipType"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="links" lowerBound="2" upperBound="2"
-        eType="#//Link" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="linksToEntities" lowerBound="2"
+        upperBound="2" eType="#//LinkToEntity" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="aggregations" upperBound="-1"
         eType="#//Aggregation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="associations" upperBound="-1"
+        eType="#//LinkToEntity" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SingleAttribute" eSuperTypes="#//Attribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//AttributeType"/>
@@ -48,10 +50,10 @@
     <eLiterals name="DATE" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="CardinalityType">
-    <eLiterals name="ONE_TO_ONE"/>
-    <eLiterals name="ONE_TO_MANY" value="1"/>
-    <eLiterals name="MANY_TO_ONE" value="2"/>
-    <eLiterals name="MANY_TO_MANY" value="3"/>
+    <eLiterals name="ZERO_TO_ONE"/>
+    <eLiterals name="ZERO_TO_MANY" value="1"/>
+    <eLiterals name="ONE_TO_ONE" value="2"/>
+    <eLiterals name="ONE_TO_MANY" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModularizableElement" abstract="true"
       eSuperTypes="#//NameElement"/>
@@ -60,10 +62,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
         eType="#//Attribute" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Link" eSuperTypes="#//NameElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Link" abstract="true" eSuperTypes="#//NameElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cardinality" eType="#//CardinalityType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="completeness" eType="#//CompletenessType"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="element" eType="#//Element"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="DisjointnessType">
     <eLiterals name="OVERLAPPING"/>
@@ -73,16 +74,18 @@
     <eLiterals name="PARTIAL"/>
     <eLiterals name="TOTAL" value="1"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Aggregation" eSuperTypes="#//NameElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="to" lowerBound="1" eType="#//RelationshipType"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cardinality" eType="#//CardinalityType"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="completness" eType="#//CompletenessType"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Generalization" eSuperTypes="#//NameElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="entity" eType="#//EntityType"
         eOpposite="#//EntityType/specializations"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="completeness" eType="#//CompletenessType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="disjointness" eType="#//DisjointnessType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Aggregation" eSuperTypes="#//Link">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="to" lowerBound="1" eType="#//RelationshipType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LinkToEntity" eSuperTypes="#//Link">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entity" lowerBound="1"
+        eType="#//EntityType"/>
   </eClassifiers>
   <eSubpackages name="subsystem" nsURI="http://moduleeer/subsystem/1.0" nsPrefix="subsystem">
     <eClassifiers xsi:type="ecore:EClass" name="ModuleSubsystem" eSuperTypes="#//NameElement">

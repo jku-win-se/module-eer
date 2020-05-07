@@ -5,13 +5,10 @@ package org.module.eer.mm.moduleeer.impl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.module.eer.mm.moduleeer.CardinalityType;
 import org.module.eer.mm.moduleeer.CompletenessType;
-import org.module.eer.mm.moduleeer.Element;
 import org.module.eer.mm.moduleeer.Link;
 import org.module.eer.mm.moduleeer.ModuleeerPackage;
 
@@ -25,12 +22,11 @@ import org.module.eer.mm.moduleeer.ModuleeerPackage;
  * <ul>
  *   <li>{@link org.module.eer.mm.moduleeer.impl.LinkImpl#getCardinality <em>Cardinality</em>}</li>
  *   <li>{@link org.module.eer.mm.moduleeer.impl.LinkImpl#getCompleteness <em>Completeness</em>}</li>
- *   <li>{@link org.module.eer.mm.moduleeer.impl.LinkImpl#getElement <em>Element</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class LinkImpl extends NameElementImpl implements Link {
+public abstract class LinkImpl extends NameElementImpl implements Link {
 	/**
 	 * The default value of the '{@link #getCardinality() <em>Cardinality</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -39,7 +35,7 @@ public class LinkImpl extends NameElementImpl implements Link {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final CardinalityType CARDINALITY_EDEFAULT = CardinalityType.ONE_TO_ONE;
+	protected static final CardinalityType CARDINALITY_EDEFAULT = CardinalityType.ZERO_TO_ONE;
 
 	/**
 	 * The cached value of the '{@link #getCardinality() <em>Cardinality</em>}' attribute.
@@ -70,16 +66,6 @@ public class LinkImpl extends NameElementImpl implements Link {
 	 * @ordered
 	 */
 	protected CompletenessType completeness = COMPLETENESS_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getElement() <em>Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getElement()
-	 * @generated
-	 * @ordered
-	 */
-	protected Element element;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -154,57 +140,12 @@ public class LinkImpl extends NameElementImpl implements Link {
 	 * @generated
 	 */
 	@Override
-	public Element getElement() {
-		if (element != null && element.eIsProxy()) {
-			InternalEObject oldElement = (InternalEObject) element;
-			element = (Element) eResolveProxy(oldElement);
-			if (element != oldElement) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModuleeerPackage.LINK__ELEMENT,
-							oldElement, element));
-			}
-		}
-		return element;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Element basicGetElement() {
-		return element;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setElement(Element newElement) {
-		Element oldElement = element;
-		element = newElement;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModuleeerPackage.LINK__ELEMENT, oldElement, element));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case ModuleeerPackage.LINK__CARDINALITY:
 			return getCardinality();
 		case ModuleeerPackage.LINK__COMPLETENESS:
 			return getCompleteness();
-		case ModuleeerPackage.LINK__ELEMENT:
-			if (resolve)
-				return getElement();
-			return basicGetElement();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -222,9 +163,6 @@ public class LinkImpl extends NameElementImpl implements Link {
 			return;
 		case ModuleeerPackage.LINK__COMPLETENESS:
 			setCompleteness((CompletenessType) newValue);
-			return;
-		case ModuleeerPackage.LINK__ELEMENT:
-			setElement((Element) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -244,9 +182,6 @@ public class LinkImpl extends NameElementImpl implements Link {
 		case ModuleeerPackage.LINK__COMPLETENESS:
 			setCompleteness(COMPLETENESS_EDEFAULT);
 			return;
-		case ModuleeerPackage.LINK__ELEMENT:
-			setElement((Element) null);
-			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -263,8 +198,6 @@ public class LinkImpl extends NameElementImpl implements Link {
 			return cardinality != CARDINALITY_EDEFAULT;
 		case ModuleeerPackage.LINK__COMPLETENESS:
 			return completeness != COMPLETENESS_EDEFAULT;
-		case ModuleeerPackage.LINK__ELEMENT:
-			return element != null;
 		}
 		return super.eIsSet(featureID);
 	}

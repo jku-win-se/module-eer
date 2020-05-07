@@ -14,6 +14,7 @@ import org.module.eer.mm.moduleeer.Element;
 import org.module.eer.mm.moduleeer.EntityType;
 import org.module.eer.mm.moduleeer.Generalization;
 import org.module.eer.mm.moduleeer.Link;
+import org.module.eer.mm.moduleeer.LinkToEntity;
 import org.module.eer.mm.moduleeer.MEERModel;
 import org.module.eer.mm.moduleeer.ModularizableElement;
 import org.module.eer.mm.moduleeer.ModuleeerPackage;
@@ -191,20 +192,33 @@ public class ModuleeerSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case ModuleeerPackage.GENERALIZATION: {
+			Generalization generalization = (Generalization) theEObject;
+			T result = caseGeneralization(generalization);
+			if (result == null)
+				result = caseNameElement(generalization);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case ModuleeerPackage.AGGREGATION: {
 			Aggregation aggregation = (Aggregation) theEObject;
 			T result = caseAggregation(aggregation);
+			if (result == null)
+				result = caseLink(aggregation);
 			if (result == null)
 				result = caseNameElement(aggregation);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case ModuleeerPackage.GENERALIZATION: {
-			Generalization generalization = (Generalization) theEObject;
-			T result = caseGeneralization(generalization);
+		case ModuleeerPackage.LINK_TO_ENTITY: {
+			LinkToEntity linkToEntity = (LinkToEntity) theEObject;
+			T result = caseLinkToEntity(linkToEntity);
 			if (result == null)
-				result = caseNameElement(generalization);
+				result = caseLink(linkToEntity);
+			if (result == null)
+				result = caseNameElement(linkToEntity);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -391,6 +405,21 @@ public class ModuleeerSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAggregation(Aggregation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Link To Entity</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Link To Entity</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLinkToEntity(LinkToEntity object) {
 		return null;
 	}
 

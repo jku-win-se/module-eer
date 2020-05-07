@@ -10,23 +10,24 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.module.eer.mm.moduleeer.Aggregation;
+
+import org.module.eer.mm.moduleeer.LinkToEntity;
 import org.module.eer.mm.moduleeer.ModuleeerPackage;
 
 /**
- * This is the item provider adapter for a {@link org.module.eer.mm.moduleeer.Aggregation} object.
+ * This is the item provider adapter for a {@link org.module.eer.mm.moduleeer.LinkToEntity} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class AggregationItemProvider extends LinkItemProvider {
+public class LinkToEntityItemProvider extends LinkItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AggregationItemProvider(AdapterFactory adapterFactory) {
+	public LinkToEntityItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -41,35 +42,35 @@ public class AggregationItemProvider extends LinkItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addToPropertyDescriptor(object);
+			addEntityPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the To feature.
+	 * This adds a property descriptor for the Entity feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addToPropertyDescriptor(Object object) {
+	protected void addEntityPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Aggregation_to_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Aggregation_to_feature",
-								"_UI_Aggregation_type"),
-						ModuleeerPackage.Literals.AGGREGATION__TO, true, false, true, null, null, null));
+						getResourceLocator(), getString("_UI_LinkToEntity_entity_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_LinkToEntity_entity_feature",
+								"_UI_LinkToEntity_type"),
+						ModuleeerPackage.Literals.LINK_TO_ENTITY__ENTITY, true, false, true, null, null, null));
 	}
 
 	/**
-	 * This returns Aggregation.gif.
+	 * This returns LinkToEntity.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Aggregation"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/LinkToEntity"));
 	}
 
 	/**
@@ -90,9 +91,9 @@ public class AggregationItemProvider extends LinkItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Aggregation) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_Aggregation_type")
-				: getString("_UI_Aggregation_type") + " " + label;
+		String label = ((LinkToEntity) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_LinkToEntity_type")
+				: getString("_UI_LinkToEntity_type") + " " + label;
 	}
 
 	/**

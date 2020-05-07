@@ -13,11 +13,10 @@ package org.module.eer.mm.moduleeer;
  * <ul>
  *   <li>{@link org.module.eer.mm.moduleeer.Link#getCardinality <em>Cardinality</em>}</li>
  *   <li>{@link org.module.eer.mm.moduleeer.Link#getCompleteness <em>Completeness</em>}</li>
- *   <li>{@link org.module.eer.mm.moduleeer.Link#getElement <em>Element</em>}</li>
  * </ul>
  *
  * @see org.module.eer.mm.moduleeer.ModuleeerPackage#getLink()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface Link extends NameElement {
@@ -70,27 +69,5 @@ public interface Link extends NameElement {
 	 * @generated
 	 */
 	void setCompleteness(CompletenessType value);
-
-	/**
-	 * Returns the value of the '<em><b>Element</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Element</em>' reference.
-	 * @see #setElement(Element)
-	 * @see org.module.eer.mm.moduleeer.ModuleeerPackage#getLink_Element()
-	 * @model
-	 * @generated
-	 */
-	Element getElement();
-
-	/**
-	 * Sets the value of the '{@link org.module.eer.mm.moduleeer.Link#getElement <em>Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Element</em>' reference.
-	 * @see #getElement()
-	 * @generated
-	 */
-	void setElement(Element value);
 
 } // Link

@@ -78,8 +78,9 @@ public class RelationshipTypeItemProvider extends ElementItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ModuleeerPackage.Literals.RELATIONSHIP_TYPE__LINKS);
+			childrenFeatures.add(ModuleeerPackage.Literals.RELATIONSHIP_TYPE__LINKS_TO_ENTITIES);
 			childrenFeatures.add(ModuleeerPackage.Literals.RELATIONSHIP_TYPE__AGGREGATIONS);
+			childrenFeatures.add(ModuleeerPackage.Literals.RELATIONSHIP_TYPE__ASSOCIATIONS);
 		}
 		return childrenFeatures;
 	}
@@ -143,8 +144,9 @@ public class RelationshipTypeItemProvider extends ElementItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(RelationshipType.class)) {
-		case ModuleeerPackage.RELATIONSHIP_TYPE__LINKS:
+		case ModuleeerPackage.RELATIONSHIP_TYPE__LINKS_TO_ENTITIES:
 		case ModuleeerPackage.RELATIONSHIP_TYPE__AGGREGATIONS:
+		case ModuleeerPackage.RELATIONSHIP_TYPE__ASSOCIATIONS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -162,11 +164,35 @@ public class RelationshipTypeItemProvider extends ElementItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(ModuleeerPackage.Literals.RELATIONSHIP_TYPE__LINKS,
-				ModuleeerFactory.eINSTANCE.createLink()));
+		newChildDescriptors.add(createChildParameter(ModuleeerPackage.Literals.RELATIONSHIP_TYPE__LINKS_TO_ENTITIES,
+				ModuleeerFactory.eINSTANCE.createLinkToEntity()));
 
 		newChildDescriptors.add(createChildParameter(ModuleeerPackage.Literals.RELATIONSHIP_TYPE__AGGREGATIONS,
 				ModuleeerFactory.eINSTANCE.createAggregation()));
+
+		newChildDescriptors.add(createChildParameter(ModuleeerPackage.Literals.RELATIONSHIP_TYPE__ASSOCIATIONS,
+				ModuleeerFactory.eINSTANCE.createLinkToEntity()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify = childFeature == ModuleeerPackage.Literals.RELATIONSHIP_TYPE__LINKS_TO_ENTITIES
+				|| childFeature == ModuleeerPackage.Literals.RELATIONSHIP_TYPE__ASSOCIATIONS;
+
+		if (qualify) {
+			return getString("_UI_CreateChild_text2",
+					new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

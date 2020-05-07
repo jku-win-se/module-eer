@@ -21,6 +21,7 @@ import org.module.eer.mm.moduleeer.Element;
 import org.module.eer.mm.moduleeer.EntityType;
 import org.module.eer.mm.moduleeer.Generalization;
 import org.module.eer.mm.moduleeer.Link;
+import org.module.eer.mm.moduleeer.LinkToEntity;
 import org.module.eer.mm.moduleeer.MEERModel;
 import org.module.eer.mm.moduleeer.ModularizableElement;
 import org.module.eer.mm.moduleeer.ModuleeerFactory;
@@ -127,6 +128,13 @@ public class ModuleeerPackageImpl extends EPackageImpl implements ModuleeerPacka
 	 * @generated
 	 */
 	private EClass aggregationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass linkToEntityEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -417,7 +425,7 @@ public class ModuleeerPackageImpl extends EPackageImpl implements ModuleeerPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getRelationshipType_Links() {
+	public EReference getRelationshipType_LinksToEntities() {
 		return (EReference) relationshipTypeEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -429,6 +437,16 @@ public class ModuleeerPackageImpl extends EPackageImpl implements ModuleeerPacka
 	@Override
 	public EReference getRelationshipType_Aggregations() {
 		return (EReference) relationshipTypeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getRelationshipType_Associations() {
+		return (EReference) relationshipTypeEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -537,16 +555,6 @@ public class ModuleeerPackageImpl extends EPackageImpl implements ModuleeerPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getLink_Element() {
-		return (EReference) linkEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getAggregation() {
 		return aggregationEClass;
 	}
@@ -567,8 +575,8 @@ public class ModuleeerPackageImpl extends EPackageImpl implements ModuleeerPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getAggregation_Cardinality() {
-		return (EAttribute) aggregationEClass.getEStructuralFeatures().get(1);
+	public EClass getLinkToEntity() {
+		return linkToEntityEClass;
 	}
 
 	/**
@@ -577,8 +585,8 @@ public class ModuleeerPackageImpl extends EPackageImpl implements ModuleeerPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getAggregation_Completness() {
-		return (EAttribute) aggregationEClass.getEStructuralFeatures().get(2);
+	public EReference getLinkToEntity_Entity() {
+		return (EReference) linkToEntityEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -713,8 +721,9 @@ public class ModuleeerPackageImpl extends EPackageImpl implements ModuleeerPacka
 
 		relationshipTypeEClass = createEClass(RELATIONSHIP_TYPE);
 		createEReference(relationshipTypeEClass, RELATIONSHIP_TYPE__GENERALIZES);
-		createEReference(relationshipTypeEClass, RELATIONSHIP_TYPE__LINKS);
+		createEReference(relationshipTypeEClass, RELATIONSHIP_TYPE__LINKS_TO_ENTITIES);
 		createEReference(relationshipTypeEClass, RELATIONSHIP_TYPE__AGGREGATIONS);
+		createEReference(relationshipTypeEClass, RELATIONSHIP_TYPE__ASSOCIATIONS);
 
 		singleAttributeEClass = createEClass(SINGLE_ATTRIBUTE);
 		createEAttribute(singleAttributeEClass, SINGLE_ATTRIBUTE__TYPE);
@@ -730,17 +739,17 @@ public class ModuleeerPackageImpl extends EPackageImpl implements ModuleeerPacka
 		linkEClass = createEClass(LINK);
 		createEAttribute(linkEClass, LINK__CARDINALITY);
 		createEAttribute(linkEClass, LINK__COMPLETENESS);
-		createEReference(linkEClass, LINK__ELEMENT);
-
-		aggregationEClass = createEClass(AGGREGATION);
-		createEReference(aggregationEClass, AGGREGATION__TO);
-		createEAttribute(aggregationEClass, AGGREGATION__CARDINALITY);
-		createEAttribute(aggregationEClass, AGGREGATION__COMPLETNESS);
 
 		generalizationEClass = createEClass(GENERALIZATION);
 		createEReference(generalizationEClass, GENERALIZATION__ENTITY);
 		createEAttribute(generalizationEClass, GENERALIZATION__COMPLETENESS);
 		createEAttribute(generalizationEClass, GENERALIZATION__DISJOINTNESS);
+
+		aggregationEClass = createEClass(AGGREGATION);
+		createEReference(aggregationEClass, AGGREGATION__TO);
+
+		linkToEntityEClass = createEClass(LINK_TO_ENTITY);
+		createEReference(linkToEntityEClass, LINK_TO_ENTITY__ENTITY);
 
 		// Create enums
 		attributeTypeEEnum = createEEnum(ATTRIBUTE_TYPE);
@@ -798,8 +807,9 @@ public class ModuleeerPackageImpl extends EPackageImpl implements ModuleeerPacka
 		attributeEClass.getESuperTypes().add(this.getNameElement());
 		compositeAttributeEClass.getESuperTypes().add(this.getAttribute());
 		linkEClass.getESuperTypes().add(this.getNameElement());
-		aggregationEClass.getESuperTypes().add(this.getNameElement());
 		generalizationEClass.getESuperTypes().add(this.getNameElement());
+		aggregationEClass.getESuperTypes().add(this.getLink());
+		linkToEntityEClass.getESuperTypes().add(this.getLink());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(meerModelEClass, MEERModel.class, "MEERModel", !IS_ABSTRACT, !IS_INTERFACE,
@@ -807,7 +817,7 @@ public class ModuleeerPackageImpl extends EPackageImpl implements ModuleeerPacka
 		initEReference(getMEERModel_Subsystems(), theSubsystemPackage.getModuleSubsystem(), null, "subsystems", null, 0,
 				-1, MEERModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMEERModel_Modules(), this.getModule(), null, "modules", null, 0, -1, MEERModel.class,
+		initEReference(getMEERModel_Modules(), this.getModule(), null, "modules", null, 1, -1, MEERModel.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -850,10 +860,13 @@ public class ModuleeerPackageImpl extends EPackageImpl implements ModuleeerPacka
 		initEReference(getRelationshipType_Generalizes(), this.getRelationshipType(), null, "generalizes", null, 0, -1,
 				RelationshipType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRelationshipType_Links(), this.getLink(), null, "links", null, 2, 2, RelationshipType.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRelationshipType_LinksToEntities(), this.getLinkToEntity(), null, "linksToEntities", null, 2,
+				2, RelationshipType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRelationshipType_Aggregations(), this.getAggregation(), null, "aggregations", null, 0, -1,
+				RelationshipType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRelationshipType_Associations(), this.getLinkToEntity(), null, "associations", null, 0, -1,
 				RelationshipType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -877,26 +890,11 @@ public class ModuleeerPackageImpl extends EPackageImpl implements ModuleeerPacka
 				CompositeAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(linkEClass, Link.class, "Link", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(linkEClass, Link.class, "Link", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLink_Cardinality(), this.getCardinalityType(), "cardinality", null, 0, 1, Link.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLink_Completeness(), this.getCompletenessType(), "completeness", null, 0, 1, Link.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLink_Element(), this.getElement(), null, "element", null, 0, 1, Link.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-
-		initEClass(aggregationEClass, Aggregation.class, "Aggregation", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAggregation_To(), this.getRelationshipType(), null, "to", null, 1, 1, Aggregation.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAggregation_Cardinality(), this.getCardinalityType(), "cardinality", null, 0, 1,
-				Aggregation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAggregation_Completness(), this.getCompletenessType(), "completness", null, 0, 1,
-				Aggregation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(generalizationEClass, Generalization.class, "Generalization", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -910,6 +908,18 @@ public class ModuleeerPackageImpl extends EPackageImpl implements ModuleeerPacka
 				Generalization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
+		initEClass(aggregationEClass, Aggregation.class, "Aggregation", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAggregation_To(), this.getRelationshipType(), null, "to", null, 1, 1, Aggregation.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(linkToEntityEClass, LinkToEntity.class, "LinkToEntity", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLinkToEntity_Entity(), this.getEntityType(), null, "entity", null, 1, 1, LinkToEntity.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(attributeTypeEEnum, AttributeType.class, "AttributeType");
 		addEEnumLiteral(attributeTypeEEnum, AttributeType.STRING);
@@ -918,10 +928,10 @@ public class ModuleeerPackageImpl extends EPackageImpl implements ModuleeerPacka
 		addEEnumLiteral(attributeTypeEEnum, AttributeType.DATE);
 
 		initEEnum(cardinalityTypeEEnum, CardinalityType.class, "CardinalityType");
+		addEEnumLiteral(cardinalityTypeEEnum, CardinalityType.ZERO_TO_ONE);
+		addEEnumLiteral(cardinalityTypeEEnum, CardinalityType.ZERO_TO_MANY);
 		addEEnumLiteral(cardinalityTypeEEnum, CardinalityType.ONE_TO_ONE);
 		addEEnumLiteral(cardinalityTypeEEnum, CardinalityType.ONE_TO_MANY);
-		addEEnumLiteral(cardinalityTypeEEnum, CardinalityType.MANY_TO_ONE);
-		addEEnumLiteral(cardinalityTypeEEnum, CardinalityType.MANY_TO_MANY);
 
 		initEEnum(disjointnessTypeEEnum, DisjointnessType.class, "DisjointnessType");
 		addEEnumLiteral(disjointnessTypeEEnum, DisjointnessType.OVERLAPPING);
