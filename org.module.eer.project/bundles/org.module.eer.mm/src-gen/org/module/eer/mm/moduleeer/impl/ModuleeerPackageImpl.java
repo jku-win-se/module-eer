@@ -405,6 +405,16 @@ public class ModuleeerPackageImpl extends EPackageImpl implements ModuleeerPacka
 	 * @generated
 	 */
 	@Override
+	public EReference getEntityType_Links() {
+		return (EReference) entityTypeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getRelationshipType() {
 		return relationshipTypeEClass;
 	}
@@ -718,6 +728,7 @@ public class ModuleeerPackageImpl extends EPackageImpl implements ModuleeerPacka
 		entityTypeEClass = createEClass(ENTITY_TYPE);
 		createEReference(entityTypeEClass, ENTITY_TYPE__GENERALIZATIONS);
 		createEReference(entityTypeEClass, ENTITY_TYPE__SPECIALIZATIONS);
+		createEReference(entityTypeEClass, ENTITY_TYPE__LINKS);
 
 		relationshipTypeEClass = createEClass(RELATIONSHIP_TYPE);
 		createEReference(relationshipTypeEClass, RELATIONSHIP_TYPE__GENERALIZES);
@@ -854,6 +865,9 @@ public class ModuleeerPackageImpl extends EPackageImpl implements ModuleeerPacka
 		initEReference(getEntityType_Specializations(), this.getGeneralization(), this.getGeneralization_Entity(),
 				"specializations", null, 0, -1, EntityType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
 				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEntityType_Links(), this.getLinkToEntity(), this.getLinkToEntity_Entity(), "links", null, 0,
+				-1, EntityType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(relationshipTypeEClass, RelationshipType.class, "RelationshipType", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -916,9 +930,9 @@ public class ModuleeerPackageImpl extends EPackageImpl implements ModuleeerPacka
 
 		initEClass(linkToEntityEClass, LinkToEntity.class, "LinkToEntity", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLinkToEntity_Entity(), this.getEntityType(), null, "entity", null, 1, 1, LinkToEntity.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLinkToEntity_Entity(), this.getEntityType(), this.getEntityType_Links(), "entity", null, 1, 1,
+				LinkToEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(attributeTypeEEnum, AttributeType.class, "AttributeType");

@@ -370,13 +370,22 @@ public interface ModuleeerPackage extends EPackage {
 	int ENTITY_TYPE__SPECIALIZATIONS = ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Links</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_TYPE__LINKS = ELEMENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Entity Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_TYPE_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 2;
+	int ENTITY_TYPE_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Entity Type</em>' class.
@@ -1073,6 +1082,17 @@ public interface ModuleeerPackage extends EPackage {
 	EReference getEntityType_Specializations();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.module.eer.mm.moduleeer.EntityType#getLinks <em>Links</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Links</em>'.
+	 * @see org.module.eer.mm.moduleeer.EntityType#getLinks()
+	 * @see #getEntityType()
+	 * @generated
+	 */
+	EReference getEntityType_Links();
+
+	/**
 	 * Returns the meta object for class '{@link org.module.eer.mm.moduleeer.RelationshipType <em>Relationship Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1508,6 +1528,14 @@ public interface ModuleeerPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ENTITY_TYPE__SPECIALIZATIONS = eINSTANCE.getEntityType_Specializations();
+
+		/**
+		 * The meta object literal for the '<em><b>Links</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENTITY_TYPE__LINKS = eINSTANCE.getEntityType_Links();
 
 		/**
 		 * The meta object literal for the '{@link org.module.eer.mm.moduleeer.impl.RelationshipTypeImpl <em>Relationship Type</em>}' class.

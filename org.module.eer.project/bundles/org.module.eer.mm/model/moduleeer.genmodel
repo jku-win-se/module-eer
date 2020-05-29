@@ -49,6 +49,7 @@
     <genClasses ecoreClass="moduleeer.ecore#//EntityType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference moduleeer.ecore#//EntityType/generalizations"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference moduleeer.ecore#//EntityType/specializations"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference moduleeer.ecore#//EntityType/links"/>
     </genClasses>
     <genClasses ecoreClass="moduleeer.ecore#//RelationshipType">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference moduleeer.ecore#//RelationshipType/generalizes"/>

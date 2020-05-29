@@ -77,8 +77,7 @@
             <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.1"/>
           </style>
         </containerMappings>
-        <containerMappings name="RelationshipAttributes" semanticCandidatesExpression="aql:self.modularizableElements->select(modEle | modEle.oclIsTypeOf(moduleeer::RelationshipType) and modEle.attributes->size() > 0)" domainClass="moduleeer::RelationshipType" childrenPresentation="List">
-          <subNodeMappings xsi:type="description_1:NodeMappingImport" name="ImportSingleAttributeNode" importedMapping="//@ownedViewpoints[name='ModulEERViewpoint']/@ownedRepresentations[name='ModuleRepresentation']/@defaultLayer/@containerMappings[name='EntityTypeContainer']/@subNodeMappings[name='SingleAttributeNode']"/>
+        <containerMappings name="RelationshipAttributes" semanticCandidatesExpression="aql:self.modularizableElements->select(modEle | modEle.oclIsTypeOf(moduleeer::RelationshipType) and modEle.attributes->size() > 0)" domainClass="moduleeer::RelationshipType" reusedNodeMappings="//@ownedViewpoints[name='ModulEERViewpoint']/@ownedRepresentations[name='ModuleRepresentation']/@defaultLayer/@containerMappings[name='EntityTypeContainer']/@subNodeMappings[name='SingleAttributeNode']" childrenPresentation="List">
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="" hideLabelByDefault="true">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -149,8 +148,8 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:PopupMenu" name="ModuleEER">
-            <menuItemDescription xsi:type="tool_1:OperationAction" name="Split the Module" precondition="aql:self.oclIsKindOf(moduleEER::Module)">
+          <ownedTools xsi:type="tool_1:PopupMenu" name="MenuModulEER">
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Split the Module" precondition="aql:self.oclIsKindOf(moduleeer::Module)">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="SplitModule" id="module.eer.design.split.module">

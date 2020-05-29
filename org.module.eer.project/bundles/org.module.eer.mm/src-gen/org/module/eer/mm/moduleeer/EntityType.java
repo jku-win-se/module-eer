@@ -15,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.module.eer.mm.moduleeer.EntityType#getGeneralizations <em>Generalizations</em>}</li>
  *   <li>{@link org.module.eer.mm.moduleeer.EntityType#getSpecializations <em>Specializations</em>}</li>
+ *   <li>{@link org.module.eer.mm.moduleeer.EntityType#getLinks <em>Links</em>}</li>
  * </ul>
  *
  * @see org.module.eer.mm.moduleeer.ModuleeerPackage#getEntityType()
@@ -47,5 +48,19 @@ public interface EntityType extends Element {
 	 * @generated
 	 */
 	EList<Generalization> getSpecializations();
+
+	/**
+	 * Returns the value of the '<em><b>Links</b></em>' reference list.
+	 * The list contents are of type {@link org.module.eer.mm.moduleeer.LinkToEntity}.
+	 * It is bidirectional and its opposite is '{@link org.module.eer.mm.moduleeer.LinkToEntity#getEntity <em>Entity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Links</em>' reference list.
+	 * @see org.module.eer.mm.moduleeer.ModuleeerPackage#getEntityType_Links()
+	 * @see org.module.eer.mm.moduleeer.LinkToEntity#getEntity
+	 * @model opposite="entity"
+	 * @generated
+	 */
+	EList<LinkToEntity> getLinks();
 
 } // EntityType

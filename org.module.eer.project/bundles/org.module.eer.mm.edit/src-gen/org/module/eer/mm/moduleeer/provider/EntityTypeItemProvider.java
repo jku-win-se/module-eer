@@ -47,6 +47,7 @@ public class EntityTypeItemProvider extends ElementItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addSpecializationsPropertyDescriptor(object);
+			addLinksPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -64,6 +65,21 @@ public class EntityTypeItemProvider extends ElementItemProvider {
 						getString("_UI_PropertyDescriptor_description", "_UI_EntityType_specializations_feature",
 								"_UI_EntityType_type"),
 						ModuleeerPackage.Literals.ENTITY_TYPE__SPECIALIZATIONS, true, false, true, null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Links feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLinksPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_EntityType_links_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_EntityType_links_feature",
+								"_UI_EntityType_type"),
+						ModuleeerPackage.Literals.ENTITY_TYPE__LINKS, true, false, true, null, null, null));
 	}
 
 	/**

@@ -18,7 +18,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="events" upperBound="-1"
         eType="#//procedure/Event" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="modularizableElements"
-        upperBound="-1" eType="#//ModularizableElement" containment="true"/>
+        lowerBound="1" upperBound="-1" eType="#//ModularizableElement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NameElement" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -28,6 +28,8 @@
         eType="#//Generalization" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="specializations" upperBound="-1"
         eType="#//Generalization" eOpposite="#//Generalization/entity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="links" upperBound="-1"
+        eType="#//LinkToEntity" eOpposite="#//LinkToEntity/entity"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RelationshipType" eSuperTypes="#//Element">
     <eStructuralFeatures xsi:type="ecore:EReference" name="generalizes" upperBound="-1"
@@ -85,7 +87,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LinkToEntity" eSuperTypes="#//Link">
     <eStructuralFeatures xsi:type="ecore:EReference" name="entity" lowerBound="1"
-        eType="#//EntityType"/>
+        eType="#//EntityType" eOpposite="#//EntityType/links"/>
   </eClassifiers>
   <eSubpackages name="subsystem" nsURI="http://moduleeer/subsystem/1.0" nsPrefix="subsystem">
     <eClassifiers xsi:type="ecore:EClass" name="ModuleSubsystem" eSuperTypes="#//NameElement">

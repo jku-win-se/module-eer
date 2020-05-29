@@ -28,22 +28,22 @@ public enum CardinalityType implements Enumerator {
 	 */
 	ZERO_TO_ONE(0, "ZERO_TO_ONE", "ZERO_TO_ONE"),
 	/**
-	* The '<em><b>ZERO TO MANY</b></em>' literal object.
-	* <!-- begin-user-doc -->
+	 * The '<em><b>ZERO TO MANY</b></em>' literal object.
+	 * <!-- begin-user-doc -->
 	* <!-- end-user-doc -->
-	* @see #ZERO_TO_MANY_VALUE
-	* @generated
-	* @ordered
-	*/
+	 * @see #ZERO_TO_MANY_VALUE
+	 * @generated
+	 * @ordered
+	 */
 	ZERO_TO_MANY(1, "ZERO_TO_MANY", "ZERO_TO_MANY"),
 	/**
-	* The '<em><b>ONE TO ONE</b></em>' literal object.
-	* <!-- begin-user-doc -->
+	 * The '<em><b>ONE TO ONE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
 	* <!-- end-user-doc -->
-	* @see #ONE_TO_ONE_VALUE
-	* @generated
-	* @ordered
-	*/
+	 * @see #ONE_TO_ONE_VALUE
+	 * @generated
+	 * @ordered
+	 */
 	ONE_TO_ONE(2, "ONE_TO_ONE", "ONE_TO_ONE"),
 	/**
 	 * The '<em><b>ONE TO MANY</b></em>' literal object.

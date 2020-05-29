@@ -21,12 +21,14 @@ package org.module.eer.mm.moduleeer;
 public interface LinkToEntity extends Link {
 	/**
 	 * Returns the value of the '<em><b>Entity</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.module.eer.mm.moduleeer.EntityType#getLinks <em>Links</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Entity</em>' reference.
 	 * @see #setEntity(EntityType)
 	 * @see org.module.eer.mm.moduleeer.ModuleeerPackage#getLinkToEntity_Entity()
-	 * @model required="true"
+	 * @see org.module.eer.mm.moduleeer.EntityType#getLinks
+	 * @model opposite="links" required="true"
 	 * @generated
 	 */
 	EntityType getEntity();
