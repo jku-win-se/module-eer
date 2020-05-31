@@ -17,6 +17,6 @@
         <module>org.module.eer.mm.editor</module>  
         <module>org.jenetics.library</module> 
         <module>org.module.eer.design</module>  
-        <module>org.module.eer.project.rcp</module>                   
+        <module>org.module.eer.project.rcp</module>                           
     </modules>
 </project>

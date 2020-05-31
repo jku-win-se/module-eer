@@ -26,8 +26,8 @@
     <groupId>org.eclipse.tycho</groupId>
     <artifactId>tycho-maven-plugin</artifactId>
     <version>${tycho.version}</version>
-    <extensions>true</extensions>
-   </plugin>
+    <extensions>true</extensions>    
+    </plugin>
    <!--Enable the replacement of the SNAPSHOT version in the final product configuration-->
    <plugin>
    		<groupId>org.eclipse.tycho</groupId>
@@ -47,6 +47,15 @@
     <artifactId>target-platform-configuration</artifactId>
     <version>${tycho.version}</version>
     <configuration>
+		<dependency-resolution>
+				<extraRequirements>
+					<requirement>
+						<type>eclipse-plugin</type>
+						<id>javax.annotation</id>
+						<versionRange>0.0.0</versionRange>
+					</requirement>
+				</extraRequirements>
+		</dependency-resolution>   
 	    <target> 
 	        <artifact>
 	            <groupId>org.module.eer.project</groupId>
