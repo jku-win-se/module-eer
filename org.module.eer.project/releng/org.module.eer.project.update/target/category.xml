@@ -3,5 +3,5 @@
    <feature id="org.module.eer.project.feature">
       <category name="ModuleEER"/>
    </feature>
-   <category-def name="ModuleEER" label="Module EER"/>
+   <category-def name="ModuleEER" label="Module-EER"/>
 </site>

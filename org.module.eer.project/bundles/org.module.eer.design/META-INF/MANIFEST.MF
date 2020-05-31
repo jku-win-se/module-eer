@@ -10,10 +10,10 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.resources,
  org.eclipse.sirius,
  org.eclipse.sirius.common.acceleo.aql,
- org.module.eer.mm;bundle-version="0.1.0"
+ org.module.eer.mm;bundle-version="0.1.0",
+ org.module.eer.jenetics
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: %providerName
 Automatic-Module-Name: org.module.eer.design
-Import-Package: org.module.eer.jenetics.action,
- org.module.eer.jenetics.split.impl
+Import-Package: org.module.eer.jenetics.split.impl

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.module.eer.project.feature"
-      label="Feature"
-      version="1.0.0.202005040728">
+      label="ModulEER-core"
+      version="1.0.0.202005311619">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -18,9 +18,44 @@
 
    <plugin
          id="org.module.eer.mm"
-         download-size="94"
-         install-size="329"
-         version="0.1.0.202005040728"
+         download-size="107"
+         install-size="396"
+         version="0.1.0.202005311619"
+         unpack="false"/>
+
+   <plugin
+         id="org.module.eer.design"
+         download-size="9"
+         install-size="39"
+         version="1.0.0.202005311619"
+         unpack="false"/>
+
+   <plugin
+         id="org.module.eer.mm.edit"
+         download-size="54"
+         install-size="110"
+         version="1.0.0.202005311619"
+         unpack="false"/>
+
+   <plugin
+         id="org.module.eer.mm.editor"
+         download-size="184"
+         install-size="371"
+         version="1.0.0.202005311619"
+         unpack="false"/>
+
+   <plugin
+         id="org.module.eer.jenetics"
+         download-size="27"
+         install-size="54"
+         version="1.0.0.202005311619"
+         unpack="false"/>
+
+   <plugin
+         id="org.jenetics.library"
+         download-size="1193"
+         install-size="3372"
+         version="6.0.0"
          unpack="false"/>
 
 </feature>
