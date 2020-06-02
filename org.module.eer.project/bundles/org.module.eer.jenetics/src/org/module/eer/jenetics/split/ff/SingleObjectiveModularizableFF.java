@@ -26,7 +26,8 @@ public class SingleObjectiveModularizableFF implements Function<Genotype, Double
 		double balance = 1 - new CoefficientOfVariabilityFF().apply(genotype);
 		double normalizeModules = normalizesModules(new NumberOfClustersFF().apply(genotype));
 		double missinEntities = new MissingEntitiesFF(this.modularizableElements).apply(genotype);
-		return craIndexNormalize * 0.3 + balance * 0.2 + normalizeModules * 0.4 - missinEntities * 0.1;
+		double missingRelationships = new MissingRelationshipsFF(this.modularizableElements).apply(genotype);
+		return craIndexNormalize * 0.25 + normalizeModules * 0.45 - missinEntities * 0.15 - missingRelationships * 0.15;
 	}
 	
 	private double normalizesModules(Double currentClusters) {
