@@ -31,7 +31,7 @@ public class SplitModuleAction implements IExternalJavaAction {
 			String projectName = getProjectBySession(session);
 			//Split Module
 			EList<MEERModel> listOfModuleEER = new BasicEList<MEERModel>();
-			for (int i = 0; i < 30; i++) {
+			for (int i = 0; i < 1; i++) {
 				MEERModel splittedModule = new HierarchicalModuleEERJenetics().splitModules(module);
 				listOfModuleEER.add(splittedModule);
 			}						

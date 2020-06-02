@@ -79,7 +79,7 @@ public class ModularizableDependenciesConstraint implements Constraint{
 	public Phenotype repair(Phenotype individual, long generation) {
 		MSeq<EnumGene<Integer>> repairPc = MSeq.of((PermutationChromosome<Integer>) individual.genotype().get(0));
 		BitChromosome bitChromosome = ((BitChromosome) individual.genotype().get(1));
-		String stringBitChromosome = bitChromosome.toCanonicalString();		
+		String stringBitChromosome = bitChromosome.toCanonicalString();
 		for (BasicConstraint basicConstraint : listOfConstraints) {
 			int chromosomePosition = getPositionInPChromosome(repairPc, basicConstraint.getElementId());
 			boolean search = false;

@@ -37,8 +37,8 @@ public class HierarchicalModuleEERJenetics implements ISplitModulEER {
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		final Engine engine = Engine
 				.builder(new MixedModularizableFF(splittingModule.getModularizableElements(),optimalNumberOfModules), encoding(sizeOfModularizableElements))
-				.constraint(new ModularizableDependenciesConstraint(ModularizableElementUtils.
-						dependenciesOfAllModularizableElements(splittingModule.getModularizableElements())))
+				//.constraint(new ModularizableDependenciesConstraint(ModularizableElementUtils.
+				//		dependenciesOfAllModularizableElements(splittingModule.getModularizableElements())))
 				.alterers(
 						//The `PartiallyMatchedCrossover` is used on chromosome with index 0.
 						PartialAlterer.of(new PartiallyMatchedCrossover(0.8), 0),
@@ -55,7 +55,8 @@ public class HierarchicalModuleEERJenetics implements ISplitModulEER {
 		
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		final ISeq<Phenotype> best = (ISeq<Phenotype>) engine.stream()
-				.limit(100) //500				
+				.limit(700) 
+				.peek(new StatisticsModulEER())
 				.collect(MOEA.toParetoSet(IntRange.of(75, 100)));
 		System.out.println(best);		
 		return convertPhenotypeToModulEER(best.get(0),splittingModule);		

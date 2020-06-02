@@ -20,11 +20,11 @@ import io.jenetics.Genotype;
 import io.jenetics.PermutationChromosome;
 
 @SuppressWarnings("rawtypes")
-public class CohesionFF implements Function<Genotype, Double>{
+public class CouplingFF implements Function<Genotype, Double>{
 		
 	private EList<ModularizableElement> modularizableElements;
 	
-	public CohesionFF(EList<ModularizableElement> modularizableElements) {
+	public CouplingFF(EList<ModularizableElement> modularizableElements) {
 		this.modularizableElements = modularizableElements;
 	}
 		
@@ -39,7 +39,7 @@ public class CohesionFF implements Function<Genotype, Double>{
 			ModularizableElement element = this.modularizableElements.get(enumGene.alleleIndex());
 			craIndex(element, i, pc, bc, cohesive);
 		}		
-		return (double) cohesive.getCohesion();
+		return (double) cohesive.getCoupling();
 	}
 
 	private void craIndex(ModularizableElement element, int position, PermutationChromosome<Integer> pc, BitChromosome bc,
