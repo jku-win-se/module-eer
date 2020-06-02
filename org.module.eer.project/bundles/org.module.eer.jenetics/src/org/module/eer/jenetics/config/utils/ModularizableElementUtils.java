@@ -9,6 +9,7 @@ import java.util.ListIterator;
 
 import org.eclipse.emf.common.util.EList;
 import org.module.eer.jenetics.split.constraint.BasicConstraint;
+import org.module.eer.mm.moduleeer.EntityType;
 import org.module.eer.mm.moduleeer.ModularizableElement;
 import org.module.eer.mm.moduleeer.RelationshipType;
 import org.module.eer.mm.moduleeer.procedure.AccessElement;
@@ -135,4 +136,22 @@ public class ModularizableElementUtils {
 		listOfConstraints.add(new BasicConstraint(elementIndex, Collections.unmodifiableList(dependenciesList), false));				
 	}
 	
+	//TODO All modularizable elements belongs to the same module
+	//TODO Need a new implementation that compares eContainer of the elements
+	public static int maxNumberofReferences(EList<ModularizableElement> listOfModElements) {
+		int maxOfReferences = 0;
+		for (ModularizableElement element : listOfModElements) {
+			if (element instanceof EntityType) 
+				maxOfReferences += ((EntityType) element).getGeneralizations().size();
+			else if (element instanceof RelationshipType) {
+				maxOfReferences += ((RelationshipType) element).getLinksToEntities().size();
+				maxOfReferences += ((RelationshipType) element).getAssociations().size();
+				maxOfReferences += ((RelationshipType) element).getAggregations().size();
+				maxOfReferences += ((RelationshipType) element).getGeneralizes().size();
+			} else if (element instanceof Procedure) {
+				maxOfReferences += ((Procedure) element).getAccessElements().size();
+			}				
+		}
+		return maxOfReferences;
+	}	
 }

@@ -1,4 +1,4 @@
-package org.module.eer.jenetics.split.impl;
+package org.module.eer.jenetics.split.ff;
 
 import io.jenetics.Genotype;
 import io.jenetics.Optimize;
@@ -8,12 +8,6 @@ import io.jenetics.ext.moea.VecFactory;
 import java.util.function.Function;
 
 import org.eclipse.emf.common.util.EList;
-import org.module.eer.jenetics.split.ff.AverageClassesPerModule;
-import org.module.eer.jenetics.split.ff.BalancedFF;
-import org.module.eer.jenetics.split.ff.ModuleFF;
-import org.module.eer.jenetics.split.ff.NumberOfClustersFF;
-import org.module.eer.jenetics.split.ff.CohesionFF;
-import org.module.eer.jenetics.split.ff.CouplingFF;
 import org.module.eer.mm.moduleeer.ModularizableElement;
 
 @SuppressWarnings("rawtypes")

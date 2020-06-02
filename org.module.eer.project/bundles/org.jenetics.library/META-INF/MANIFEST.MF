@@ -8,4 +8,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: io.jenetics,
  io.jenetics.engine,
  io.jenetics.ext.moea,
+ io.jenetics.internal.util,
  io.jenetics.util

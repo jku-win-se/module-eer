@@ -12,6 +12,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.module.eer.jenetics.action.CreateProjectMEERModule;
 import org.module.eer.jenetics.split.impl.HierarchicalModuleEERJenetics;
+import org.module.eer.jenetics.split.impl.SOHierarchicalModuleEERJenetics;
 import org.module.eer.mm.moduleeer.MEERModel;
 import org.module.eer.mm.moduleeer.Module;
 
@@ -31,8 +32,8 @@ public class SplitModuleAction implements IExternalJavaAction {
 			String projectName = getProjectBySession(session);
 			//Split Module
 			EList<MEERModel> listOfModuleEER = new BasicEList<MEERModel>();
-			for (int i = 0; i < 1; i++) {
-				MEERModel splittedModule = new HierarchicalModuleEERJenetics().splitModules(module);
+			for (int i = 0; i < 30; i++) {
+				MEERModel splittedModule = new SOHierarchicalModuleEERJenetics().splitModules(module);
 				listOfModuleEER.add(splittedModule);
 			}						
 			//Create Modelling Project with new MEERModel Split Diagram

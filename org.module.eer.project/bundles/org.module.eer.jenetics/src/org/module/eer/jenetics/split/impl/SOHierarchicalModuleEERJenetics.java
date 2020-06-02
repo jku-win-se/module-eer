@@ -8,6 +8,7 @@ import org.module.eer.jenetics.split.ISplitModulEER;
 import org.module.eer.jenetics.split.constraint.ModularizableDependenciesConstraint;
 import org.module.eer.jenetics.split.ff.MixedModularizableFF;
 import org.module.eer.jenetics.split.ff.ModuleFF;
+import org.module.eer.jenetics.split.ff.SingleObjectiveModularizableFF;
 import org.module.eer.mm.moduleeer.MEERModel;
 import org.module.eer.mm.moduleeer.ModularizableElement;
 import org.module.eer.mm.moduleeer.Module;
@@ -15,6 +16,7 @@ import org.module.eer.mm.moduleeer.impl.ModuleeerFactoryImpl;
 
 import io.jenetics.BitChromosome;
 import io.jenetics.Chromosome;
+import io.jenetics.EliteSelector;
 import io.jenetics.Genotype;
 import io.jenetics.MultiPointCrossover;
 import io.jenetics.Mutator;
@@ -24,44 +26,45 @@ import io.jenetics.PermutationChromosome;
 import io.jenetics.Phenotype;
 import io.jenetics.SwapMutator;
 import io.jenetics.engine.Engine;
+import io.jenetics.engine.EvolutionResult;
 import io.jenetics.ext.moea.MOEA;
 import io.jenetics.ext.moea.NSGA2Selector;
 import io.jenetics.ext.moea.Vec;
 import io.jenetics.util.ISeq;
 import io.jenetics.util.IntRange;
 
-public class HierarchicalModuleEERJenetics implements ISplitModulEER {	
+public class SOHierarchicalModuleEERJenetics implements ISplitModulEER {	
 	
 	@Override
 	public MEERModel splitModules(Module splittingModule) {			
 		int sizeOfModularizableElements = splittingModule.getModularizableElements().size();
 		int optimalNumberOfModules = sizeOfModularizableElements/ModuleFF.OPTIMAL_SIZE_PER_MODULE;
+		int maxOfReferences = ModularizableElementUtils.maxNumberofReferences(splittingModule.getModularizableElements());
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		final Engine engine = Engine
-				.builder(new MixedModularizableFF(splittingModule.getModularizableElements(),optimalNumberOfModules),
+				.builder(new SingleObjectiveModularizableFF(splittingModule.getModularizableElements(), maxOfReferences, optimalNumberOfModules),
 						encoding(sizeOfModularizableElements))
-				.constraint(new ModularizableDependenciesConstraint(ModularizableElementUtils.
-						dependenciesOfAllModularizableElements(splittingModule.getModularizableElements())))
+				//.constraint(new ModularizableDependenciesConstraint(ModularizableElementUtils.
+				//		dependenciesOfAllModularizableElements(splittingModule.getModularizableElements())))
 				.alterers(
 						//The `PartiallyMatchedCrossover` is used on chromosome with index 0.
-						PartialAlterer.of(new PartiallyMatchedCrossover(0.8), 0),
+						PartialAlterer.of(new PartiallyMatchedCrossover(0.9), 0),
 						//The `PartiallyMatchedCrossover` is used on chromosome with index 1.
-						PartialAlterer.of(new MultiPointCrossover(0.8), 1),
+						PartialAlterer.of(new MultiPointCrossover(0.9), 1),
 						//The SwapMutator is used on chromosome with index 0.
 						PartialAlterer.of(new SwapMutator(0.1), 0),
 						//The `Mutator` is used on chromosome with index 1.
 						PartialAlterer.of(new Mutator(0.1), 1)
 						)
-				.survivorsSelector(NSGA2Selector.ofVec())
+				.maximizing()
+				.survivorsSelector(new EliteSelector<>(8))
 				.populationSize(200)
 				.build();
 		
-		@SuppressWarnings({ "unchecked", "rawtypes" })
-		final ISeq<Phenotype> seqPhenotypes = (ISeq<Phenotype>) engine.stream()
-				.limit(500) 
-				.peek(new StatisticsModulEER())
-				.collect(MOEA.toParetoSet(IntRange.of(75, 100)));
-		Phenotype best = searchSolutionInPareto(seqPhenotypes);
+		@SuppressWarnings("unchecked")
+		final Genotype best = (Genotype) engine.stream()
+							 	.limit(100)
+							 	.collect(EvolutionResult.toBestGenotype());
 		System.out.println(best);		
 		return convertPhenotypeToModulEER(best,splittingModule);		
 	}
@@ -89,15 +92,15 @@ public class HierarchicalModuleEERJenetics implements ISplitModulEER {
 	}
 
 	@SuppressWarnings("rawtypes")
-	private MEERModel convertPhenotypeToModulEER(Phenotype phenotype, Module splittingModule) {
+	private MEERModel convertPhenotypeToModulEER(Genotype genotype, Module splittingModule) {
 		MEERModel splittedMEERModel = ModuleeerFactoryImpl.eINSTANCE.createMEERModel();
 		splittedMEERModel.setName("Splitted " + splittingModule.getName());
 		Copier copier = new Copier();
 		EList<Module> listOfModules = new BasicEList<Module>();
 		Module currentModule = ModuleeerFactoryImpl.eINSTANCE.createModule();
 		listOfModules.add(currentModule);
-		final PermutationChromosome pc = (PermutationChromosome) phenotype.genotype().get(0);
-		final BitChromosome bc = (BitChromosome) phenotype.genotype().get(1);
+		final PermutationChromosome pc = (PermutationChromosome) genotype.get(0);
+		final BitChromosome bc = (BitChromosome) genotype.get(1);
 		for (int i = 0; i < bc.length(); i++) {
 			currentModule.getModularizableElements().add( (ModularizableElement) 
 					copier.copy(splittingModule.getModularizableElements().get((Integer) pc.get(i).allele())));
