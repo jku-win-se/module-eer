@@ -32,12 +32,32 @@ public class SplitModuleAction implements IExternalJavaAction {
 			String projectName = getProjectBySession(session);
 			//Split Module
 			EList<MEERModel> listOfModuleEER = new BasicEList<MEERModel>();
+			int minModules = 0;
+			int maxModule = 0;
+			int allModules = 0;
 			for (int i = 0; i < 30; i++) {
 				MEERModel splittedModule = new SOHierarchicalModuleEERJenetics().splitModules(module);
 				listOfModuleEER.add(splittedModule);
-			}						
+				int tempModuleSize = splittedModule.getModules().size();
+				if(i == 0) {
+					minModules = tempModuleSize;
+					maxModule = tempModuleSize;
+					allModules = tempModuleSize;
+				} else {
+					if(tempModuleSize < minModules) {
+						minModules = tempModuleSize;
+					}
+					if(tempModuleSize > maxModule) {
+						maxModule = tempModuleSize;
+					}
+					allModules += tempModuleSize;
+				}
+			}
+			
+			String appendix = ".split-Mi" + minModules + "-Ma" + maxModule + "Av" + (String.valueOf(allModules/30));
+			
 			//Create Modelling Project with new MEERModel Split Diagram
-			new CreateProjectMEERModule(listOfModuleEER, projectName + ".split", 
+			new CreateProjectMEERModule(listOfModuleEER, projectName + appendix, 
 					module.eResource()).createProject();
 		}
 			

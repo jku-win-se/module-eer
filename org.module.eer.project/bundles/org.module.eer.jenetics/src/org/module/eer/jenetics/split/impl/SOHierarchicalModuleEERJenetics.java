@@ -67,6 +67,7 @@ public class SOHierarchicalModuleEERJenetics implements ISplitModulEER {
 		@SuppressWarnings("unchecked")
 		final Genotype best = (Genotype) engine.stream()
 							 	.limit(100)
+							 	.peek(new StatisticsModulEER())
 							 	.collect(EvolutionResult.toBestGenotype());
 		System.out.println(best);		
 		return convertPhenotypeToModulEER(best,splittingModule);		
