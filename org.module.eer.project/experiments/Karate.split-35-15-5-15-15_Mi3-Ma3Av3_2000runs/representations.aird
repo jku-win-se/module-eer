@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" uid="_7Sc0IKVpEeqhXpvznoMohA" selectedViews="_CU7_cKVqEeqhXpvznoMohA" version="14.3.0.201909031200">
+  <semanticResources>Karate.0.moduleeer</semanticResources>
+  <semanticResources>Karate.1.moduleeer</semanticResources>
+  <semanticResources>Karate.2.moduleeer</semanticResources>
+  <semanticResources>Karate.3.moduleeer</semanticResources>
+  <semanticResources>Karate.4.moduleeer</semanticResources>
+  <semanticResources>Karate.5.moduleeer</semanticResources>
+  <semanticResources>Karate.6.moduleeer</semanticResources>
+  <semanticResources>Karate.7.moduleeer</semanticResources>
+  <semanticResources>Karate.8.moduleeer</semanticResources>
+  <semanticResources>Karate.9.moduleeer</semanticResources>
+  <semanticResources>Karate.10.moduleeer</semanticResources>
+  <semanticResources>Karate.11.moduleeer</semanticResources>
+  <semanticResources>Karate.12.moduleeer</semanticResources>
+  <semanticResources>Karate.13.moduleeer</semanticResources>
+  <semanticResources>Karate.14.moduleeer</semanticResources>
+  <semanticResources>Karate.15.moduleeer</semanticResources>
+  <semanticResources>Karate.16.moduleeer</semanticResources>
+  <semanticResources>Karate.17.moduleeer</semanticResources>
+  <semanticResources>Karate.18.moduleeer</semanticResources>
+  <semanticResources>Karate.19.moduleeer</semanticResources>
+  <semanticResources>Karate.20.moduleeer</semanticResources>
+  <semanticResources>Karate.21.moduleeer</semanticResources>
+  <semanticResources>Karate.22.moduleeer</semanticResources>
+  <semanticResources>Karate.23.moduleeer</semanticResources>
+  <semanticResources>Karate.24.moduleeer</semanticResources>
+  <semanticResources>Karate.25.moduleeer</semanticResources>
+  <semanticResources>Karate.26.moduleeer</semanticResources>
+  <semanticResources>Karate.27.moduleeer</semanticResources>
+  <semanticResources>Karate.28.moduleeer</semanticResources>
+  <semanticResources>Karate.29.moduleeer</semanticResources>
+  <ownedViews xmi:type="viewpoint:DView" uid="_CU7_cKVqEeqhXpvznoMohA">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.module.eer.design/description/eer.odesign#//@ownedViewpoints[name='ModulEERViewpoint']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>
