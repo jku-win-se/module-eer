@@ -44,9 +44,9 @@ public class HierarchicalModuleEERJenetics implements ISplitModulEER {
 						dependenciesOfAllModularizableElements(splittingModule.getModularizableElements())))
 				.alterers(
 						//The `PartiallyMatchedCrossover` is used on chromosome with index 0.
-						PartialAlterer.of(new PartiallyMatchedCrossover(0.8), 0),
+						PartialAlterer.of(new PartiallyMatchedCrossover(0.9), 0),
 						//The `PartiallyMatchedCrossover` is used on chromosome with index 1.
-						PartialAlterer.of(new MultiPointCrossover(0.8), 1),
+						PartialAlterer.of(new MultiPointCrossover(0.9), 1),
 						//The SwapMutator is used on chromosome with index 0.
 						PartialAlterer.of(new SwapMutator(0.1), 0),
 						//The `Mutator` is used on chromosome with index 1.

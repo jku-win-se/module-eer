@@ -1,22 +1,18 @@
 package org.module.eer.jenetics.split.constraint;
 
-import static java.lang.String.format;
-
 import java.util.List;
 import java.util.Random;
 
+import org.module.eer.jenetics.config.utils.BitChromosomeUtils;
 import org.module.eer.jenetics.config.utils.ModularizableElementUtils;
 
 import io.jenetics.BitChromosome;
-import io.jenetics.BitGene;
 import io.jenetics.Chromosome;
 import io.jenetics.EnumGene;
 import io.jenetics.Genotype;
 import io.jenetics.PermutationChromosome;
 import io.jenetics.Phenotype;
 import io.jenetics.engine.Constraint;
-import io.jenetics.internal.util.Bits;
-import io.jenetics.internal.util.Requires;
 import io.jenetics.util.MSeq;
 
 
@@ -163,45 +159,14 @@ public class ModularizableDependenciesConstraint implements Constraint{
 		}	
 	}	
 	
-	//TODO BitChromosome.of not working well
 	@SuppressWarnings("unchecked")
 	private Phenotype newPhenotype(MSeq<EnumGene<Integer>> repairPc, String stringBitChromosome, double probabilityOnes, long generation) {
 		PermutationChromosome<Integer> pc = new PermutationChromosome<Integer>(repairPc.toISeq());
-		int l = stringBitChromosome.length();
-		//TODO Normal It seems that BitChromosome.of has a bug
-		CharSequence seq = stringBitChromosome;
-		BitChromosome bc = BitChromosome.of(seq, probabilityOnes);
-		
-		//My version
-		BitChromosome.of
-		
-		//BitChromosome bc = ofStringBitChromosome(stringBitChromosome);
-		int h = bc.length();
+		BitChromosome bc = BitChromosomeUtils.of(stringBitChromosome, probabilityOnes);		
 		final Genotype genoType = Genotype.of(
 				(Chromosome) pc,
 				(Chromosome) bc 
 				);
 		return Phenotype.of(genoType, generation);
-	}
-
-	private static BitChromosome ofStringBitChromosome(String stringBitChromosome) {
-		final byte[] bits = toByteArrayNew(stringBitChromosome);
-		return new BitChromosome(bits);	
-	}
-
-	private static byte[] toByteArrayNew(String stringBitChromosome) {
-		final byte[] bytes = Bits.newArray(stringBitChromosome.length());
-		int l = stringBitChromosome.length();
-		for (int i = 0; i < stringBitChromosome.length(); i++) {
-			final char c = stringBitChromosome.charAt(i);
-			if (c == '1') {
-				Bits.set(bytes, i);
-			} else if (c != '0') {
-				throw new IllegalArgumentException(format(
-					"Illegal character '%s' at position %d", c, i
-				));
-			}
-		}
-		return bytes;
 	}	
 }

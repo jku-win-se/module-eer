@@ -36,7 +36,7 @@ public class SplitModuleAction implements IExternalJavaAction {
 			int maxModule = 0;
 			int allModules = 0;
 			for (int i = 0; i < 30; i++) {
-				MEERModel splittedModule = new SOHierarchicalModuleEERJenetics().splitModules(module);
+				MEERModel splittedModule = new HierarchicalModuleEERJenetics().splitModules(module);
 				listOfModuleEER.add(splittedModule);
 				int tempModuleSize = splittedModule.getModules().size();
 				if(i == 0) {
