@@ -6,6 +6,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 import org.module.eer.jenetics.config.utils.ModularizableElementUtils;
 import org.module.eer.jenetics.split.ISplitModulEER;
 import org.module.eer.jenetics.split.constraint.ModularizableDependenciesConstraint;
+import org.module.eer.jenetics.split.ff.CRAIndexNumberOfModules;
 import org.module.eer.jenetics.split.ff.MixedModularizableFF;
 import org.module.eer.jenetics.split.ff.ModuleFF;
 import org.module.eer.jenetics.split.ff.SingleObjectiveModularizableFF;
@@ -42,7 +43,9 @@ public class SOHierarchicalModuleEERJenetics implements ISplitModulEER {
 		int maxOfReferences = ModularizableElementUtils.maxNumberofReferences(splittingModule.getModularizableElements());
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		final Engine engine = Engine
-				.builder(new SingleObjectiveModularizableFF(splittingModule.getModularizableElements(), maxOfReferences, optimalNumberOfModules),
+				.builder(new SingleObjectiveModularizableFF(splittingModule.getModularizableElements(), maxOfReferences, optimalNumberOfModules)
+						//new CRAIndexNumberOfModules(splittingModule.getModularizableElements())
+						,
 						encoding(sizeOfModularizableElements))
 				//.constraint(new ModularizableDependenciesConstraint(ModularizableElementUtils.
 				//		dependenciesOfAllModularizableElements(splittingModule.getModularizableElements())))

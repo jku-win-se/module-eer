@@ -8,6 +8,7 @@ import java.util.Random;
 import org.module.eer.jenetics.config.utils.ModularizableElementUtils;
 
 import io.jenetics.BitChromosome;
+import io.jenetics.BitGene;
 import io.jenetics.Chromosome;
 import io.jenetics.EnumGene;
 import io.jenetics.Genotype;
@@ -172,6 +173,7 @@ public class ModularizableDependenciesConstraint implements Constraint{
 		BitChromosome bc = BitChromosome.of(seq, probabilityOnes);
 		
 		//My version
+		BitChromosome.of
 		
 		//BitChromosome bc = ofStringBitChromosome(stringBitChromosome);
 		int h = bc.length();
