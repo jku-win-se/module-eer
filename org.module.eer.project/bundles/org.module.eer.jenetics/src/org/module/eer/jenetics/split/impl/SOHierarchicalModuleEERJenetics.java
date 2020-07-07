@@ -34,10 +34,11 @@ import io.jenetics.ext.moea.Vec;
 import io.jenetics.util.ISeq;
 import io.jenetics.util.IntRange;
 
+//TODO Single Objective remove?
 public class SOHierarchicalModuleEERJenetics implements ISplitModulEER {	
 	
 	@Override
-	public MEERModel splitModules(Module splittingModule) {			
+	public EList<MEERModel> splitModules(Module splittingModule) {			
 		int sizeOfModularizableElements = splittingModule.getModularizableElements().size();
 		int optimalNumberOfModules = sizeOfModularizableElements/ModuleFF.OPTIMAL_SIZE_PER_MODULE;
 		int maxOfReferences = ModularizableElementUtils.maxNumberofReferences(splittingModule.getModularizableElements());
@@ -67,33 +68,13 @@ public class SOHierarchicalModuleEERJenetics implements ISplitModulEER {
 		@SuppressWarnings("unchecked")
 		final Genotype best = (Genotype) engine.stream()
 							 	.limit(100)
-							 	.peek(new StatisticsModulEER())
+							 	//TODO statistics remove?
+							 	//.peek(new StatisticsModulEER())
 							 	.collect(EvolutionResult.toBestGenotype());
-		System.out.println(best);		
-		return convertPhenotypeToModulEER(best,splittingModule);		
-	}
-	
-	private Phenotype searchSolutionInPareto(ISeq<Phenotype> seqPhenotypes) {
-		int numberOfModules = 3;
-		int count = 0;
-		for (Phenotype phenotype : seqPhenotypes) {
-			Comparable fitness = phenotype.fitness();
-			if (fitness instanceof Vec) {
-				Vec fitnessVec = (Vec) fitness;
-				Object obj  = fitnessVec.data();
-				if (obj instanceof double[]) {
-					double numberOfClusters = ((double[]) obj)[2];
-					System.out.println("Number of Clusters: " + numberOfClusters);
-					if (numberOfClusters >= 13  && numberOfClusters <= 19) {
-						System.out.println("clusterss between values index: " + count);
-						return phenotype;
-					}
-				}				
-			}
-			count++;
-		}
-		return seqPhenotypes.get(0);
-	}
+		EList<MEERModel> resultOfSplittingModels = new BasicEList<MEERModel>();
+		resultOfSplittingModels.add(convertPhenotypeToModulEER(best,splittingModule));		
+		return resultOfSplittingModels;		
+	}	
 
 	@SuppressWarnings("rawtypes")
 	private MEERModel convertPhenotypeToModulEER(Genotype genotype, Module splittingModule) {

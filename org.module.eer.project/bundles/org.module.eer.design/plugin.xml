@@ -10,8 +10,16 @@
   <extension
         point="org.eclipse.sirius.externalJavaAction">
      <javaActions
-           actionClass="org.module.eer.design.split.SplitModuleAction"
+           actionClass="org.module.eer.design.action.menu.SplitModuleAction"
            id="module.eer.design.split.module">
      </javaActions>
+  </extension>
+  <extension
+        point="org.eclipse.ui.menus">
+     <menuContribution
+           allPopups="false"
+           class="org.module.eer.design.action.menu.MoveToModuleMenuContribution"
+           locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu">
+     </menuContribution>
   </extension>
 </plugin>

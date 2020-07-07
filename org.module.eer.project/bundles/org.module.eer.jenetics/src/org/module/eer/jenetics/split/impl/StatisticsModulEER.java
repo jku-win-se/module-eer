@@ -7,6 +7,7 @@ import io.jenetics.PermutationChromosome;
 import io.jenetics.Phenotype;
 import io.jenetics.engine.EvolutionResult;
 
+@Deprecated
 @SuppressWarnings("rawtypes")
 public class StatisticsModulEER implements Consumer {
 

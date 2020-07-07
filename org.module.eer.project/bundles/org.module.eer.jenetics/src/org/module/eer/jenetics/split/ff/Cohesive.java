@@ -10,6 +10,11 @@ public class Cohesive {
 		this.coupling = 0;
 	}
 
+	public Cohesive(int cohesion, int coupling) {
+		this.cohesion = cohesion;
+		this.coupling = coupling;
+	}
+
 	public int getCohesion() {
 		return cohesion;
 	}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
   <viewpoint:DAnalysis uid="_RvP9sG96EeqFtOqSngFcrA" selectedViews="_RxMecG96EeqFtOqSngFcrA _R1KYcG96EeqFtOqSngFcrA" version="14.3.0.201909031200">
     <semanticResources>moduleeer.ecore</semanticResources>
     <semanticResources>moduleeer.genmodel</semanticResources>
@@ -8,7 +8,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_R1KYcG96EeqFtOqSngFcrA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_6PCYsG-aEeqivtw-fkbXPA" name="moduleeer class diagram" repPath="#_6NL-kG-aEeqivtw-fkbXPA" changeId="6aa0f8c5-429a-4633-8b65-0570249b5092">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_6PCYsG-aEeqivtw-fkbXPA" name="moduleeer class diagram" repPath="#_6NL-kG-aEeqivtw-fkbXPA" changeId="7e62526f-b407-4436-bf11-c820d9d8bf79">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="moduleeer.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -507,7 +507,7 @@
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_7CjbQI3hEeqIacGQDXWg-w" type="4001" element="_7CM19o3hEeqIacGQDXWg-w" source="_7XToUG-aEeqivtw-fkbXPA" target="_7XcLMG-aEeqivtw-fkbXPA">
           <children xmi:type="notation:Node" xmi:id="_7CkCUI3hEeqIacGQDXWg-w" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7CkCUY3hEeqIacGQDXWg-w" x="-19" y="-68"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7CkCUY3hEeqIacGQDXWg-w" x="25" y="-69"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_7CkCUo3hEeqIacGQDXWg-w" type="6002">
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7CkCU43hEeqIacGQDXWg-w" y="10"/>

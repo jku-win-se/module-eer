@@ -4,17 +4,14 @@ import java.util.List;
 
 public class BasicConstraint {
 	
-	// Id of the Relationship Oject
+	// Id of the Relationship Element
 	private int elementId;
-	// Elements that relates size = 2
-	private List<Integer> elements;
-	// Elements that relates should be in the same module
-	private boolean sameModule;
-	
-	public BasicConstraint(int elementId, List<Integer> elements, boolean sameModule) {
+	// Elements that points to size <= 2
+	private List<Integer> elements;	
+		
+	public BasicConstraint(int elementId, List<Integer> elements) {
 		this.elementId = elementId;
-		this.elements = elements;
-		this.sameModule = sameModule;
+		this.elements = elements;		
 	}
 
 	public int getElementId() {
@@ -31,13 +28,5 @@ public class BasicConstraint {
 
 	public void setElements(List<Integer> elements) {
 		this.elements = elements;
-	}
-
-	public boolean isSameModule() {
-		return sameModule;
-	}
-
-	public void setSameModule(boolean sameModule) {
-		this.sameModule = sameModule;
 	}	
 }

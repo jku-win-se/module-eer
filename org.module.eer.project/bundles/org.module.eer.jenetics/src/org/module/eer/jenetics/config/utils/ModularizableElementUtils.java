@@ -6,10 +6,15 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.stream.Collectors;
 
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.module.eer.jenetics.split.constraint.BasicConstraint;
 import org.module.eer.mm.moduleeer.EntityType;
+import org.module.eer.mm.moduleeer.MEERModel;
+import org.module.eer.mm.moduleeer.Module;
 import org.module.eer.mm.moduleeer.ModularizableElement;
 import org.module.eer.mm.moduleeer.RelationshipType;
 import org.module.eer.mm.moduleeer.procedure.AccessElement;
@@ -60,7 +65,7 @@ public class ModularizableElementUtils {
 	}
 	
 	private static boolean belongsSameModuleForward(int modularizableId, int startPosition, MSeq<EnumGene<Integer>> repairPc, String stringBitChromosome) {
-		int nextSetPosition = stringBitChromosome.indexOf("1",startPosition);
+		int nextSetPosition = stringBitChromosome.indexOf("1",startPosition) == -1?stringBitChromosome.length()-1:stringBitChromosome.indexOf("1",startPosition);
 		for (int i = startPosition + 1; i <= nextSetPosition; i++) {
 			if (repairPc.get(i).allele() == modularizableId)
 				return true;
@@ -69,7 +74,7 @@ public class ModularizableElementUtils {
 	}
 	
 	private static boolean belongsSameModuleBackward(int modularizableId, int startPosition, MSeq<EnumGene<Integer>> repairPc, String stringBitChromosome) {
-		int previousSetPosition = stringBitChromosome.lastIndexOf("1",startPosition);
+		int previousSetPosition = stringBitChromosome.lastIndexOf("1",startPosition) == -1?0:stringBitChromosome.lastIndexOf("1",startPosition);
 		if (previousSetPosition != -1) {
 			for (int i = startPosition-1; i > previousSetPosition; i--) {
 				if (repairPc.get(i).allele() == modularizableId)
@@ -102,16 +107,8 @@ public class ModularizableElementUtils {
 		List<Integer> listOfDependencies = new LinkedList<Integer>();		
 		int sourceIndexElement = listOfElements.indexOf(relationshipType.getLinksToEntities().get(0).getEntity());
 		int targetIndexElement = listOfElements.indexOf(relationshipType.getLinksToEntities().get(1).getEntity());
-		boolean sameModule = false;
-		if (relationshipType.getLinksToEntities().get(0).getEntity().getLinks().size() == 1 &&
-				relationshipType.getLinksToEntities().get(1).getEntity().getLinks().size() == 1) {
-			listOfDependencies.add(sourceIndexElement);
-			listOfDependencies.add(targetIndexElement);
-			sameModule = true;
-		} else if (
-				relationshipType.getLinksToEntities().get(0).getEntity().getLinks().size() > 1 &&
-				relationshipType.getLinksToEntities().get(1).getEntity().getLinks().size() > 1
-			) {
+		if (relationshipType.getLinksToEntities().get(0).getEntity().getLinks().size() > 1 &&
+				relationshipType.getLinksToEntities().get(1).getEntity().getLinks().size() > 1) {
 			listOfDependencies.add(sourceIndexElement);
 			listOfDependencies.add(targetIndexElement);
 		} else if (relationshipType.getLinksToEntities().get(0).getEntity().getLinks().size() == 1) {
@@ -120,7 +117,7 @@ public class ModularizableElementUtils {
 			listOfDependencies.add(targetIndexElement);
 		}		
 		//Add to the list of constraints
-		listOfConstraints.add(new BasicConstraint(elementIndex, Collections.unmodifiableList(listOfDependencies), sameModule));					
+		listOfConstraints.add(new BasicConstraint(elementIndex, Collections.unmodifiableList(listOfDependencies)));					
 	}	
 	
 	private static void procedureDependency(int elementIndex, EList<ModularizableElement> listOfElements,
@@ -133,11 +130,38 @@ public class ModularizableElementUtils {
 			if (indexElement != -1)
 				dependenciesList.add(indexElement);
 		}
-		listOfConstraints.add(new BasicConstraint(elementIndex, Collections.unmodifiableList(dependenciesList), false));				
+		listOfConstraints.add(new BasicConstraint(elementIndex, Collections.unmodifiableList(dependenciesList)));				
 	}
 	
-	//TODO All modularizable elements belongs to the same module
-	//TODO Need a new implementation that compares eContainer of the elements
+	public static int numberOfElementsInModule(int position, StringBuilder strBuilder) {
+		int nextSetPosition = strBuilder.indexOf("1", position) == -1?strBuilder.length()-1:strBuilder.indexOf("1", position);
+		int previousSetPosition = strBuilder.lastIndexOf("1", position-1) == -1?0:strBuilder.lastIndexOf("1", position-1);
+		int numberOfElements = Math.abs(nextSetPosition-previousSetPosition);
+		return numberOfElements;
+	}	
+	
+	/*
+	 * Useful queries for ModulEER Models
+	 * */	
+	public static EList<Module> getAllModules(MEERModel meerModel) {
+		EList<Module> allModules = new BasicEList<Module>();
+		allModules.addAll(meerModel.getModules());
+		ListIterator<Module> itAllModules = allModules.listIterator();
+		while (itAllModules.hasNext()) {
+			Module module = (Module) itAllModules.next();
+			module.getModularizableElements().stream()
+				.forEach(element -> { 
+					if (element instanceof Module) {
+						allModules.add((Module) element);
+						itAllModules.add((Module) element);
+					}
+				});			
+		}		
+		return allModules;
+	}	
+	
+	//TODO All modularizable elements belongs to the same module remove?
+	//TODO Need a new implementation that compares eContainer of the elements remove?
 	public static int maxNumberofReferences(EList<ModularizableElement> listOfModElements) {
 		int maxOfReferences = 0;
 		for (ModularizableElement element : listOfModElements) {

@@ -8,8 +8,9 @@ import io.jenetics.Genotype;
 @SuppressWarnings("rawtypes")
 public class ModuleFF implements Function<Genotype, Double> {
 	
-	public static final int OPTIMAL_SIZE_PER_MODULE = 7;
 	
+	
+	public static final int OPTIMAL_SIZE_PER_MODULE = 7;
 	private int optimalNumberOfModules;
 	
 	public ModuleFF(int optimalNumberOfModules) {

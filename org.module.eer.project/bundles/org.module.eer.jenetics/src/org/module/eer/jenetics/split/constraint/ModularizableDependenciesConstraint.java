@@ -1,9 +1,13 @@
 package org.module.eer.jenetics.split.constraint;
 
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 
-import org.module.eer.jenetics.config.utils.BitChromosomeUtils;
+import org.module.eer.jenetics.config.utils.GenotypeUtils;
 import org.module.eer.jenetics.config.utils.ModularizableElementUtils;
 
 import io.jenetics.BitChromosome;
@@ -13,58 +17,56 @@ import io.jenetics.Genotype;
 import io.jenetics.PermutationChromosome;
 import io.jenetics.Phenotype;
 import io.jenetics.engine.Constraint;
+import io.jenetics.util.Factory;
 import io.jenetics.util.MSeq;
-
-
 
 @SuppressWarnings("rawtypes")
 public class ModularizableDependenciesConstraint implements Constraint{
 	
 	private List<BasicConstraint> listOfConstraints; 
+	private int minNumberOfModules;
+	private int maxNumberOfModules;
 	
-	public ModularizableDependenciesConstraint(List<BasicConstraint> listOfConstraints) {
+	public ModularizableDependenciesConstraint(List<BasicConstraint> listOfConstraints, int optimalNumberOfModules) {
 		this.listOfConstraints = listOfConstraints;
+		int half = optimalNumberOfModules/2;
+		this.minNumberOfModules = optimalNumberOfModules - half <= 1? 2 :optimalNumberOfModules-half;
+		this.maxNumberOfModules = optimalNumberOfModules + half;
 	}	
 		
-	@SuppressWarnings("unchecked")
 	@Override
-	public boolean test(Phenotype individual) {
-		PermutationChromosome<Integer> pc = (PermutationChromosome<Integer>) individual.genotype().get(0);
-		BitChromosome bc =  (BitChromosome) individual.genotype().get(1);
-		for (BasicConstraint basicConstraint : listOfConstraints) {
-			int chromosomePosition = getPositionInPChromosome(basicConstraint.getElementId(), pc);
-			boolean search = false;
-			for (int relatedElementId : basicConstraint.getElements()) {
-				search = ModularizableElementUtils.belongsToTheSameModule(relatedElementId, chromosomePosition, pc, bc);
-				if (search == true) 
-					break;						
-			}
-			if (search == false)
-				return false;
-			if (basicConstraint.isSameModule() == true) { 
-				if (basicConstraint.getElements().size() == 2) {
-					int sourceId = basicConstraint.getElements().get(0);
-					int targetId = basicConstraint.getElements().get(1);
-					int sourceChromosomePosition = getPositionInPChromosome(sourceId, pc);
-					search = ModularizableElementUtils.belongsToTheSameModule(targetId, sourceChromosomePosition, pc, bc);
-					if (search == false)
-						return false;
-				}
-				else
-					throw new UnsupportedOperationException("The List of related elements must be 2"); 
-			}			
-		}	
-		return true;
+	public boolean test(Phenotype individual) {		
+		return false;
 	}
 
-	private int getPositionInPChromosome(int elementId, PermutationChromosome<Integer> pc) {
-		for (int i = 0; i < pc.length(); i++) {
-			EnumGene<Integer> enumGene = pc.get(i);		
-			if (enumGene.allele() == elementId) {
-				return i;
+	private boolean validNumberOfModules(BitChromosome bc) {
+		int numberOfClusters = bc.bitCount() + 1;
+		if (numberOfClusters >= this.minNumberOfModules && numberOfClusters <= this.maxNumberOfModules)
+			return true;
+		return false;
+	}
+	
+	private void repairNumberOfModules(BitChromosome bitChromosome, StringBuilder strBuilder) {
+		int numberOfClusters = bitChromosome.bitCount() + 1;
+		if (numberOfClusters > this.maxNumberOfModules) { // Remove some clusters
+			int remove = numberOfClusters - this.maxNumberOfModules;
+			List<Integer> ones = bitChromosome.ones().boxed().collect(Collectors.toList());
+			Collections.shuffle(ones);
+			for (int i = 0; i < remove; i++) {
+				strBuilder.replace(ones.get(i), ones.get(i) + 1, "0");
 			}			
-		}		
-		throw new IllegalArgumentException("The Chromosome is invalid"); 
+		} else { // Add some clusters
+			int add = this.minNumberOfModules - numberOfClusters;
+			int addedCluster = 0;
+			Random random = new Random();
+			while (add != addedCluster) {
+				int randomPosition = random.nextInt(strBuilder.length());
+				if (strBuilder.charAt(randomPosition) == '0') {
+					strBuilder.replace(randomPosition, randomPosition + 1, "1");
+					addedCluster++;
+				}
+			}
+		}
 	}
 	
 	private int getPositionInPChromosome(MSeq<EnumGene<Integer>> repairPc, int elementId) {
@@ -80,45 +82,70 @@ public class ModularizableDependenciesConstraint implements Constraint{
 	public Phenotype repair(Phenotype individual, long generation) {
 		MSeq<EnumGene<Integer>> repairPc = MSeq.of((PermutationChromosome<Integer>) individual.genotype().get(0));
 		BitChromosome bitChromosome = ((BitChromosome) individual.genotype().get(1));
-		String stringBitChromosome = bitChromosome.toCanonicalString();
+		StringBuilder strBuilder = new StringBuilder(bitChromosome.toCanonicalString());	
+		boolean isValid = validNumberOfModules(bitChromosome);
+		if (isValid == false)					
+			repairNumberOfModules(bitChromosome, strBuilder);
 		for (BasicConstraint basicConstraint : listOfConstraints) {
 			int chromosomePosition = getPositionInPChromosome(repairPc, basicConstraint.getElementId());
 			boolean search = false;
 			for (int relatedElementId : basicConstraint.getElements()) {
-				search = ModularizableElementUtils.belongsToTheSameModule(relatedElementId, chromosomePosition, repairPc, stringBitChromosome);
+				search = ModularizableElementUtils.belongsToTheSameModule(relatedElementId, chromosomePosition, 
+						repairPc, strBuilder.toString());
 				if (search == true)
 					break;
-			}
-			if (search == false) {
-				//Randomly select one of dependencies to put the element in its same module
-				int randomId = new Random().nextInt(basicConstraint.getElements().size());
-				int toPosition = getPositionInPChromosome(repairPc,basicConstraint.getElements().get(randomId));
-				updateModuleOf(chromosomePosition, toPosition, repairPc, stringBitChromosome);
-			}
-			if (basicConstraint.isSameModule() == true) { 
-				if (basicConstraint.getElements().size() == 2) {
-					int sourceId = basicConstraint.getElements().get(0);
-					int targetId = basicConstraint.getElements().get(1);
-					int sourceChromosomePosition = getPositionInPChromosome(repairPc, sourceId);
-					search = ModularizableElementUtils.belongsToTheSameModule(targetId, sourceChromosomePosition, repairPc, stringBitChromosome);
-					if (search == false) {
-						int targetChromosomePosition = getPositionInPChromosome(repairPc, targetId);
-						//Randomly select one dependency to put the element in its same module
-						int randomId = new Random().nextInt(2);
-						if (randomId == 0)
-							updateModuleOf(sourceChromosomePosition, targetChromosomePosition, repairPc, stringBitChromosome);
-						else
-							updateModuleOf(targetChromosomePosition, sourceChromosomePosition, repairPc, stringBitChromosome);
-					}
-				} else
-					throw new IllegalArgumentException("The List of related elements must be 2");				
+			}			
+			if (search == false) {				
+				try {
+					int toPosition = prioritizeModuleLessElements(basicConstraint.getElements(), strBuilder, repairPc);
+					updateModuleOf(chromosomePosition, toPosition, repairPc, strBuilder);
+				} catch (Exception e) {					
+					e.printStackTrace();
+				} 				
+			}			
+		}	
+		return newPhenotype(repairPc, strBuilder.toString(), bitChromosome.oneProbability(), generation);
+	}	
+
+	//Select the module with less elements to insert the relationshipType instance
+	//If all the elements has the same number of elements, then the module is selected randomly
+	private int prioritizeModuleLessElements(List<Integer> listOfelements, StringBuilder strBuilder, 
+			MSeq<EnumGene<Integer>> enumChromosome) throws Exception {
+		//Map<Position of the Element, Number of Elements in that Module>
+		TreeMap<Integer, Integer> elementsNumberOfModule = new TreeMap<Integer, Integer>();
+		for (Integer element : listOfelements) {
+			int positionElement = getPositionInPChromosome(enumChromosome, element); 
+			int numberOfElementsInModule = ModularizableElementUtils.numberOfElementsInModule(positionElement, strBuilder);
+			if (elementsNumberOfModule.size() == 0)
+				elementsNumberOfModule.put(positionElement, numberOfElementsInModule);
+			else {
+				if (elementsNumberOfModule.firstEntry().getValue() > numberOfElementsInModule) {
+					elementsNumberOfModule.clear();
+					elementsNumberOfModule.put(positionElement,	numberOfElementsInModule);
+				} else if (elementsNumberOfModule.firstEntry().getValue() == numberOfElementsInModule){
+					elementsNumberOfModule.put(positionElement,	numberOfElementsInModule);
+				}
 			}
 		}		
-		return newPhenotype(repairPc, stringBitChromosome, bitChromosome.oneProbability(),generation);
+		if (elementsNumberOfModule.size() == 1) 
+			return elementsNumberOfModule.firstEntry().getKey();
+		else {
+			int randomId = new Random().nextInt(elementsNumberOfModule.size());
+			Iterator<Integer> itElementsPositions = elementsNumberOfModule.keySet().iterator();
+			int pos = 0;
+			while (itElementsPositions.hasNext()) {
+				Integer mapPosition = (Integer) itElementsPositions.next();
+				if (pos == randomId)
+					return mapPosition;
+				else
+					pos++;
+			}			
+		}
+		throw new Exception("It could not be found a priority Module");		
 	}
 	
-	private void updateModuleOf(int position, int toPosition, MSeq<EnumGene<Integer>> repairPc, String stringBitChromosome) {
-		StringBuilder strBuilder = new StringBuilder(stringBitChromosome);		
+	
+	private void updateModuleOf(int position, int toPosition, MSeq<EnumGene<Integer>> repairPc, StringBuilder strBuilder) {
 		removeSeparator(position, repairPc, strBuilder);
 		// Swap elements positions until toPosition
 		if (position > toPosition) {
@@ -127,7 +154,7 @@ public class ModularizableDependenciesConstraint implements Constraint{
 		} else {
 			swapElementsForWards(position, toPosition, repairPc);
 			strBuilder.insert(toPosition - 1, '0');
-		}
+		}		
 	}
 	
 	private void swapElementsBackwards(int startPosition, int endPosition, MSeq<EnumGene<Integer>> repairPc) {
@@ -137,7 +164,7 @@ public class ModularizableDependenciesConstraint implements Constraint{
 	}
 
 	private void swapElementsForWards(int startPosition, int endPosition, MSeq<EnumGene<Integer>> repairPc) {
-		for (int i = startPosition; i < endPosition; i++) {
+		for (int i = startPosition; i < endPosition - 1; i++) {
 			repairPc.swap(i, i+1);
 		}
 	}
@@ -150,23 +177,31 @@ public class ModularizableDependenciesConstraint implements Constraint{
 		else {
 			char nextSeparator = strBuilder.charAt(position);
 			char previousSeparator = strBuilder.charAt(position - 1);
-			strBuilder.delete(position, position + 2);
+			strBuilder.delete(position-1, position + 1);
+			char newBit = '1';
 			if (previousSeparator == nextSeparator && previousSeparator == '0') {
-				strBuilder.insert(position, '0');
+				newBit = '0';
+			} 
+			if (position >= strBuilder.length()) {
+				strBuilder.append(newBit);
 			} else {
-				strBuilder.insert(position, '1');				
-			}				
-		}	
-	}	
+				strBuilder.insert(position, newBit);
+			}						
+		}		
+	}
 	
 	@SuppressWarnings("unchecked")
-	private Phenotype newPhenotype(MSeq<EnumGene<Integer>> repairPc, String stringBitChromosome, double probabilityOnes, long generation) {
+	private Phenotype newPhenotype(MSeq<EnumGene<Integer>> repairPc, String stringBitChromosome, 
+			double probabilityOnes, long generation) {
 		PermutationChromosome<Integer> pc = new PermutationChromosome<Integer>(repairPc.toISeq());
-		BitChromosome bc = BitChromosomeUtils.of(stringBitChromosome, probabilityOnes);		
+		BitChromosome bc = BitChromosome.of(stringBitChromosome, stringBitChromosome.length(), probabilityOnes);				
 		final Genotype genoType = Genotype.of(
 				(Chromosome) pc,
 				(Chromosome) bc 
 				);
+		//Factory factory = GenotypeUtils.getFactoryPhenotype(this, genoType);
+				
 		return Phenotype.of(genoType, generation);
+		//return GenotypeUtils.getFactoryPhenotype(this, genoType);
 	}	
 }

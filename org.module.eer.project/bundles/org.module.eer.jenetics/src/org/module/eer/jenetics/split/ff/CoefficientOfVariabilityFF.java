@@ -32,7 +32,7 @@ public class CoefficientOfVariabilityFF implements Function<Genotype, Double> {
 		return variabilityCoefficient(elementsPerModule);		
 	}
 	
-	//TODO test
+	//TODO test remove?
 	private double variabilityCoefficient(Map<Integer, Integer> elementsPerModule) {
 		StandardDeviation stats = new StandardDeviation(false);		
 		double standardDeviation = stats.evaluate(Doubles.toArray(elementsPerModule.values()));
