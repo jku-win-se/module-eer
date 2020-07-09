@@ -849,7 +849,7 @@ public class ModuleeerPackageImpl extends EPackageImpl implements ModuleeerPacka
 				org.module.eer.mm.moduleeer.Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModule_ModularizableElements(), this.getModularizableElement(), null, "modularizableElements",
-				null, 0, -1, org.module.eer.mm.moduleeer.Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				null, 1, -1, org.module.eer.mm.moduleeer.Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
 				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nameElementEClass, NameElement.class, "NameElement", IS_ABSTRACT, !IS_INTERFACE,

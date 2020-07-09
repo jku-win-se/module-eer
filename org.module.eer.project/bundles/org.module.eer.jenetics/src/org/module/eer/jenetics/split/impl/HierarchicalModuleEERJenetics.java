@@ -6,7 +6,6 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
-import org.module.eer.jenetics.config.utils.GenotypeUtils;
 import org.module.eer.jenetics.config.utils.ModularizableElementUtils;
 import org.module.eer.jenetics.split.ISplitModulEER;
 import org.module.eer.jenetics.split.constraint.ModularizableDependenciesConstraint;
@@ -18,6 +17,8 @@ import org.module.eer.mm.moduleeer.ModularizableElement;
 import org.module.eer.mm.moduleeer.Module;
 import org.module.eer.mm.moduleeer.impl.ModuleeerFactoryImpl;
 
+import io.jenetics.Chromosome;
+import io.jenetics.Genotype;
 import io.jenetics.BitChromosome;
 import io.jenetics.MultiPointCrossover;
 import io.jenetics.Mutator;
@@ -40,14 +41,15 @@ public class HierarchicalModuleEERJenetics implements ISplitModulEER {
 	
 	@SuppressWarnings("rawtypes")
 	public ISeq<Phenotype> performParetoSet(Module splittingModule) {
-		int sizeOfModularizableElements = splittingModule.getModularizableElements().size();
-		int optimalNumberOfModules = sizeOfModularizableElements/OPTIMAL_SIZE_PER_MODULE;		
+		final int sizeOfModularizableElements = splittingModule.getModularizableElements().size();
+		final int optimalNumberOfModules = sizeOfModularizableElements/OPTIMAL_SIZE_PER_MODULE;		
 		final Constraint modulEERConstraint = new ModularizableDependenciesConstraint(ModularizableElementUtils.
 				dependenciesOfAllModularizableElements(splittingModule.getModularizableElements()), optimalNumberOfModules);		
 		@SuppressWarnings({ "unchecked" })
 		final Engine engine = Engine
-				.builder(new MixedModularizableFF(splittingModule.getModularizableElements()),
-						GenotypeUtils.getFactoryPhenotype(modulEERConstraint, sizeOfModularizableElements))
+				.builder(new MixedModularizableFF(splittingModule.getModularizableElements()), 
+						modulEERConstraint.constrain(encoding(sizeOfModularizableElements)))
+						//GenotypeUtils.getFactoryPhenotype(modulEERConstraint, sizeOfModularizableElements)) TODO remove
 				.constraint(modulEERConstraint)
 				.alterers(
 						//The `PartiallyMatchedCrossover` is used on chromosome with index 0.
@@ -133,4 +135,12 @@ public class HierarchicalModuleEERJenetics implements ISplitModulEER {
 		}
 		return null;
 	}	
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public static final Genotype encoding(int size) {		
+		return Genotype.of(
+				(Chromosome) PermutationChromosome.ofInteger(size),
+				(Chromosome) BitChromosome.of(size - 1)			
+				);
+	}
 }

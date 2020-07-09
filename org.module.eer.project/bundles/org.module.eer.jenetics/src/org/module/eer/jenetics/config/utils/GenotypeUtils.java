@@ -16,7 +16,7 @@ import io.jenetics.util.MSeq;
 public class GenotypeUtils {
 	
 	/*
-	 * Get the Factory and Genotype encoding
+	 * Get the Factory and Genotype encoding //TODO remove
 	 * */	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static Factory getFactoryPhenotype(Constraint constraint, int size) {
@@ -27,6 +27,7 @@ public class GenotypeUtils {
 		return getFactoryPhenotype(constraint, genotype);	
 	}
 	
+	//TODO remove
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static Factory getFactoryPhenotype(Constraint constraint, Genotype genotype) {
 		return () -> {

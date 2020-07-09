@@ -6,8 +6,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-import org.module.eer.jenetics.config.utils.GenotypeUtils;
+import org.apache.commons.lang.StringUtils;
 import org.module.eer.jenetics.config.utils.ModularizableElementUtils;
 
 import io.jenetics.BitChromosome;
@@ -17,7 +18,6 @@ import io.jenetics.Genotype;
 import io.jenetics.PermutationChromosome;
 import io.jenetics.Phenotype;
 import io.jenetics.engine.Constraint;
-import io.jenetics.util.Factory;
 import io.jenetics.util.MSeq;
 
 @SuppressWarnings("rawtypes")
@@ -38,34 +38,64 @@ public class ModularizableDependenciesConstraint implements Constraint{
 	public boolean test(Phenotype individual) {		
 		return false;
 	}
-
-	private boolean validNumberOfModules(BitChromosome bc) {
-		int numberOfClusters = bc.bitCount() + 1;
+	
+	private boolean validNumberOfModules(StringBuilder strBuilder) {
+		int numberOfClusters = StringUtils.countMatches(strBuilder.toString(), "1") + 1;
 		if (numberOfClusters >= this.minNumberOfModules && numberOfClusters <= this.maxNumberOfModules)
 			return true;
 		return false;
-	}
+	}	
 	
-	private void repairNumberOfModules(BitChromosome bitChromosome, StringBuilder strBuilder) {
-		int numberOfClusters = bitChromosome.bitCount() + 1;
-		if (numberOfClusters > this.maxNumberOfModules) { // Remove some clusters
-			int remove = numberOfClusters - this.maxNumberOfModules;
-			List<Integer> ones = bitChromosome.ones().boxed().collect(Collectors.toList());
-			Collections.shuffle(ones);
-			for (int i = 0; i < remove; i++) {
-				strBuilder.replace(ones.get(i), ones.get(i) + 1, "0");
-			}			
-		} else { // Add some clusters
-			int add = this.minNumberOfModules - numberOfClusters;
-			int addedCluster = 0;
-			Random random = new Random();
-			while (add != addedCluster) {
-				int randomPosition = random.nextInt(strBuilder.length());
-				if (strBuilder.charAt(randomPosition) == '0') {
-					strBuilder.replace(randomPosition, randomPosition + 1, "1");
-					addedCluster++;
+	private void repairNumberOfModules(StringBuilder strBuilder) {
+		int numberOfClusters = StringUtils.countMatches(strBuilder.toString(), "1") + 1;
+		if (!(numberOfClusters >= this.minNumberOfModules && numberOfClusters <= this.maxNumberOfModules)) {		
+			if (numberOfClusters > this.maxNumberOfModules) { // Remove some clusters
+				int remove = numberOfClusters - this.maxNumberOfModules;
+				List<Integer> ones = ones(strBuilder);						
+				Collections.shuffle(ones);
+				for (int i = 0; i < remove; i++) {
+					strBuilder.replace(ones.get(i), ones.get(i) + 1, "0");
+				}			
+			} else { // Add some clusters
+				int add = this.minNumberOfModules - numberOfClusters;
+				int addedCluster = 0;
+				Random random = new Random();
+				while (add != addedCluster) {
+					int randomPosition = random.nextInt(strBuilder.length());
+					if (strBuilder.charAt(randomPosition) == '0') {
+						strBuilder.replace(randomPosition, randomPosition + 1, "1");
+						addedCluster++;
+					}
 				}
 			}
+		}
+	}
+	
+	private List<Integer> ones(StringBuilder strBuilder) {
+		return IntStream
+		          .iterate(strBuilder.indexOf("1"), index -> index >= 0, index -> strBuilder.indexOf("1", index + 1))
+		          .boxed()
+		          .collect(Collectors.toList());
+	}
+
+	private void repairBasicConstraint(MSeq<EnumGene<Integer>> repairPc, StringBuilder strBuilder) {
+		for (BasicConstraint basicConstraint : this.listOfConstraints) {
+			int chromosomePosition = getPositionInPChromosome(repairPc, basicConstraint.getElementId());
+			boolean search = false;
+			for (int relatedElementId : basicConstraint.getElements()) {
+				search = ModularizableElementUtils.belongsToTheSameModule(relatedElementId, chromosomePosition, 
+						repairPc, strBuilder.toString());
+				if (search == true)
+					break;
+			}			
+			if (search == false) {				
+				try {
+					int toPosition = prioritizeModuleLessElements(basicConstraint.getElements(), strBuilder, repairPc);
+					updateModuleOf(chromosomePosition, toPosition, repairPc, strBuilder);					
+				} catch (Exception e) {					
+					e.printStackTrace();
+				} 				
+			}			
 		}
 	}
 	
@@ -82,28 +112,13 @@ public class ModularizableDependenciesConstraint implements Constraint{
 	public Phenotype repair(Phenotype individual, long generation) {
 		MSeq<EnumGene<Integer>> repairPc = MSeq.of((PermutationChromosome<Integer>) individual.genotype().get(0));
 		BitChromosome bitChromosome = ((BitChromosome) individual.genotype().get(1));
-		StringBuilder strBuilder = new StringBuilder(bitChromosome.toCanonicalString());	
-		boolean isValid = validNumberOfModules(bitChromosome);
-		if (isValid == false)					
-			repairNumberOfModules(bitChromosome, strBuilder);
-		for (BasicConstraint basicConstraint : listOfConstraints) {
-			int chromosomePosition = getPositionInPChromosome(repairPc, basicConstraint.getElementId());
-			boolean search = false;
-			for (int relatedElementId : basicConstraint.getElements()) {
-				search = ModularizableElementUtils.belongsToTheSameModule(relatedElementId, chromosomePosition, 
-						repairPc, strBuilder.toString());
-				if (search == true)
-					break;
-			}			
-			if (search == false) {				
-				try {
-					int toPosition = prioritizeModuleLessElements(basicConstraint.getElements(), strBuilder, repairPc);
-					updateModuleOf(chromosomePosition, toPosition, repairPc, strBuilder);
-				} catch (Exception e) {					
-					e.printStackTrace();
-				} 				
-			}			
-		}	
+		StringBuilder strBuilder = new StringBuilder(bitChromosome.toCanonicalString());
+		do {
+			repairNumberOfModules(strBuilder);			
+			repairBasicConstraint(repairPc, strBuilder);			
+		} 
+		while (validNumberOfModules(strBuilder) == false);
+		
 		return newPhenotype(repairPc, strBuilder.toString(), bitChromosome.oneProbability(), generation);
 	}	
 
@@ -198,10 +213,7 @@ public class ModularizableDependenciesConstraint implements Constraint{
 		final Genotype genoType = Genotype.of(
 				(Chromosome) pc,
 				(Chromosome) bc 
-				);
-		//Factory factory = GenotypeUtils.getFactoryPhenotype(this, genoType);
-				
-		return Phenotype.of(genoType, generation);
-		//return GenotypeUtils.getFactoryPhenotype(this, genoType);
+				);		
+		return Phenotype.of(genoType, generation);	
 	}	
 }

@@ -43,7 +43,7 @@ public interface Module extends ModularizableElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Modularizable Elements</em>' containment reference list.
 	 * @see org.module.eer.mm.moduleeer.ModuleeerPackage#getModule_ModularizableElements()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	EList<ModularizableElement> getModularizableElements();
