@@ -48,8 +48,7 @@ public class HierarchicalModuleEERJenetics implements ISplitModulEER {
 		@SuppressWarnings({ "unchecked" })
 		final Engine engine = Engine
 				.builder(new MixedModularizableFF(splittingModule.getModularizableElements()), 
-						modulEERConstraint.constrain(encoding(sizeOfModularizableElements)))
-						//GenotypeUtils.getFactoryPhenotype(modulEERConstraint, sizeOfModularizableElements)) TODO remove
+						modulEERConstraint.constrain(encoding(sizeOfModularizableElements)))						
 				.constraint(modulEERConstraint)
 				.alterers(
 						//The `PartiallyMatchedCrossover` is used on chromosome with index 0.

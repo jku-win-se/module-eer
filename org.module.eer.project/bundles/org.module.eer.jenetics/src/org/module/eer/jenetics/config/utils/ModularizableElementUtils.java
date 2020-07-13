@@ -6,10 +6,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.module.eer.jenetics.split.constraint.BasicConstraint;
 import org.module.eer.mm.moduleeer.EntityType;

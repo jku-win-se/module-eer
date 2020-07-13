@@ -111,7 +111,7 @@
           </style>
         </containerMappings>
         <toolSections name="EER Tools">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="CreateEntityTypeContainer" containerMappings="//@ownedViewpoints[name='ModulEERViewpoint']/@ownedRepresentations[name='ModuleRepresentation']/@defaultLayer/@containerMappings[name='EntityTypeContainer']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="CreateEntityTypeContainer" label="Create Entity " containerMappings="//@ownedViewpoints[name='ModulEERViewpoint']/@ownedRepresentations[name='ModuleRepresentation']/@defaultLayer/@containerMappings[name='EntityTypeContainer']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -129,7 +129,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Create Relationship" edgeMappings="//@ownedViewpoints[name='ModulEERViewpoint']/@ownedRepresentations[name='ModuleRepresentation']/@defaultLayer/@edgeMappings[name='Link']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Create Relationship" edgeMappings="//@ownedViewpoints[name='ModulEERViewpoint']/@ownedRepresentations[name='ModuleRepresentation']/@defaultLayer/@edgeMappings[name='Link']" iconPath="/org.module.eer.mm.edit/icons/full/obj16/RelationshipType.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -147,20 +147,29 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Create Generalization " edgeMappings="//@ownedViewpoints[name='ModulEERViewpoint']/@ownedRepresentations[name='ModuleRepresentation']/@defaultLayer/@edgeMappings[name='GeneralizationEdge']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Create Generalization " edgeMappings="//@ownedViewpoints[name='ModulEERViewpoint']/@ownedRepresentations[name='ModuleRepresentation']/@defaultLayer/@edgeMappings[name='GeneralizationEdge'] //@ownedViewpoints[name='ModulEERViewpoint']/@ownedRepresentations[name='ModuleRepresentation']/@defaultLayer/@edgeMappings[name='RelationshipInheritance']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="moduleeer::Generalization" referenceName="generalizations">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entity" valueExpression="var:target"/>
-                </subModelOperations>
+              <firstModelOperations xsi:type="tool_1:Switch">
+                <cases conditionExpression="aql:source.oclIsKindOf(moduleeer::EntityType)">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="moduleeer::Generalization" referenceName="generalizations">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="entity" valueExpression="var:target"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </cases>
+                <cases conditionExpression="aql:source.oclIsKindOf(moduleeer::RelationshipType)">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="generalizes" valueExpression="var:target"/>
+                  </subModelOperations>
+                </cases>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Create Aggregation" edgeMappings="//@ownedViewpoints[name='ModulEERViewpoint']/@ownedRepresentations[name='ModuleRepresentation']/@defaultLayer/@edgeMappings[name='Aggregation']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Create Aggregation" edgeMappings="//@ownedViewpoints[name='ModulEERViewpoint']/@ownedRepresentations[name='ModuleRepresentation']/@defaultLayer/@edgeMappings[name='Aggregation']" iconPath="/org.module.eer.mm.edit/icons/full/obj16/Aggregation.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -183,7 +192,7 @@
               </initialOperation>
             </menuItemDescription>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Create Association" edgeMappings="//@ownedViewpoints[name='ModulEERViewpoint']/@ownedRepresentations[name='ModuleRepresentation']/@defaultLayer/@edgeMappings[name='Link']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Create Association" edgeMappings="//@ownedViewpoints[name='ModulEERViewpoint']/@ownedRepresentations[name='ModuleRepresentation']/@defaultLayer/@edgeMappings[name='Link']" iconPath="/org.module.eer.mm.edit/icons/full/obj16/Association.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -193,17 +202,6 @@
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="moduleeer::LinkToEntity" referenceName="associations">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="entity" valueExpression="var:target"/>
                 </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Create Relationship Inheritance" edgeMappings="//@ownedViewpoints[name='ModulEERViewpoint']/@ownedRepresentations[name='ModuleRepresentation']/@defaultLayer/@edgeMappings[name='RelationshipInheritance']">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="generalizes" valueExpression="var:target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

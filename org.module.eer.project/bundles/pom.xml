@@ -18,6 +18,7 @@
         <module>org.jenetics.libraryr6.0.1</module> 
         <module>org.module.eer.design</module>  
         <module>org.module.eer.jenetics</module>  
+        <module>org.module.eer.samples</module> 
         <module>org.module.eer.project.rcp</module>                                  
     </modules>
 </project>
