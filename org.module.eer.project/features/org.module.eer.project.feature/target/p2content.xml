@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <units size='2'>
-  <unit id='org.module.eer.project.feature.feature.group' version='1.0.0.202005311619' singleton='false'>
-    <update id='org.module.eer.project.feature.feature.group' range='[0.0.0,1.0.0.202005311619)' severity='0'/>
+  <unit id='org.module.eer.project.feature.feature.group' version='1.0.0.202007271857' singleton='false'>
+    <update id='org.module.eer.project.feature.feature.group' range='[0.0.0,1.0.0.202007271857)' severity='0'/>
     <properties size='7'>
       <property name='org.eclipse.equinox.p2.name' value='ModulEER-core'/>
       <property name='org.eclipse.equinox.p2.description' value='[Enter Feature Description here.]'/>
@@ -12,16 +12,17 @@
       <property name='maven-version' value='1.0.0-SNAPSHOT'/>
     </properties>
     <provides size='1'>
-      <provided namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.project.feature.feature.group' version='1.0.0.202005311619'/>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.project.feature.feature.group' version='1.0.0.202007271857'/>
     </provides>
-    <requires size='7'>
-      <required namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.mm' range='[0.1.0.202005311619,0.1.0.202005311619]'/>
-      <required namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.design' range='[1.0.0.202005311619,1.0.0.202005311619]'/>
-      <required namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.mm.edit' range='[1.0.0.202005311619,1.0.0.202005311619]'/>
-      <required namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.mm.editor' range='[1.0.0.202005311619,1.0.0.202005311619]'/>
-      <required namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.jenetics' range='[1.0.0.202005311619,1.0.0.202005311619]'/>
-      <required namespace='org.eclipse.equinox.p2.iu' name='org.jenetics.library' range='[6.0.0,6.0.0]'/>
-      <required namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.project.feature.feature.jar' range='[1.0.0.202005311619,1.0.0.202005311619]'>
+    <requires size='8'>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.mm' range='[0.1.0.202007271857,0.1.0.202007271857]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.design' range='[1.0.0.202007271857,1.0.0.202007271857]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.mm.edit' range='[1.0.0.202007271857,1.0.0.202007271857]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.mm.editor' range='[1.0.0.202007271857,1.0.0.202007271857]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.jenetics' range='[1.0.0.202007271857,1.0.0.202007271857]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.jenetics.libraryr6.0.1' range='[1.0.0,1.0.0]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.samples' range='[1.0.0.202007271857,1.0.0.202007271857]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.project.feature.feature.jar' range='[1.0.0.202007271857,1.0.0.202007271857]'>
         <filter>
           (org.eclipse.update.install.features=true)
         </filter>
@@ -37,7 +38,7 @@
       [Enter Copyright Description here.]
     </copyright>
   </unit>
-  <unit id='org.module.eer.project.feature.feature.jar' version='1.0.0.202005311619'>
+  <unit id='org.module.eer.project.feature.feature.jar' version='1.0.0.202007271857'>
     <properties size='6'>
       <property name='org.eclipse.equinox.p2.name' value='ModulEER-core'/>
       <property name='org.eclipse.equinox.p2.description' value='[Enter Feature Description here.]'/>
@@ -47,15 +48,15 @@
       <property name='maven-version' value='1.0.0-SNAPSHOT'/>
     </properties>
     <provides size='3'>
-      <provided namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.project.feature.feature.jar' version='1.0.0.202005311619'/>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='org.module.eer.project.feature.feature.jar' version='1.0.0.202007271857'/>
       <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
-      <provided namespace='org.eclipse.update.feature' name='org.module.eer.project.feature' version='1.0.0.202005311619'/>
+      <provided namespace='org.eclipse.update.feature' name='org.module.eer.project.feature' version='1.0.0.202007271857'/>
     </provides>
     <filter>
       (org.eclipse.update.install.features=true)
     </filter>
     <artifacts size='1'>
-      <artifact classifier='org.eclipse.update.feature' id='org.module.eer.project.feature' version='1.0.0.202005311619'/>
+      <artifact classifier='org.eclipse.update.feature' id='org.module.eer.project.feature' version='1.0.0.202007271857'/>
     </artifacts>
     <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
     <touchpointData size='1'>

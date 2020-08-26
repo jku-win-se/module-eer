@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: 1
+Bundle-SymbolicName: org.jenetics.libraryr6.0.1
+Bundle-Version: 1.0.0
+Automatic-Module-Name: org.jenetics.libraryr6.0.1
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: io.jenetics,
+ io.jenetics.engine,
+ io.jenetics.ext.moea,
+ io.jenetics.util

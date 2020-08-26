@@ -2,7 +2,7 @@
 <feature
       id="org.module.eer.project.feature"
       label="ModulEER-core"
-      version="1.0.0.202005311619">
+      version="1.0.0.202007271857">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -20,42 +20,49 @@
          id="org.module.eer.mm"
          download-size="107"
          install-size="396"
-         version="0.1.0.202005311619"
+         version="0.1.0.202007271857"
          unpack="false"/>
 
    <plugin
          id="org.module.eer.design"
-         download-size="9"
-         install-size="39"
-         version="1.0.0.202005311619"
+         download-size="13"
+         install-size="56"
+         version="1.0.0.202007271857"
          unpack="false"/>
 
    <plugin
          id="org.module.eer.mm.edit"
-         download-size="54"
-         install-size="110"
-         version="1.0.0.202005311619"
+         download-size="56"
+         install-size="115"
+         version="1.0.0.202007271857"
          unpack="false"/>
 
    <plugin
          id="org.module.eer.mm.editor"
          download-size="184"
          install-size="371"
-         version="1.0.0.202005311619"
+         version="1.0.0.202007271857"
          unpack="false"/>
 
    <plugin
          id="org.module.eer.jenetics"
-         download-size="27"
-         install-size="54"
-         version="1.0.0.202005311619"
+         download-size="49"
+         install-size="105"
+         version="1.0.0.202007271857"
          unpack="false"/>
 
    <plugin
-         id="org.jenetics.library"
-         download-size="1193"
-         install-size="3372"
-         version="6.0.0"
+         id="org.jenetics.libraryr6.0.1"
+         download-size="813"
+         install-size="2352"
+         version="1.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.module.eer.samples"
+         download-size="62"
+         install-size="1121"
+         version="1.0.0.202007271857"
          unpack="false"/>
 
 </feature>
