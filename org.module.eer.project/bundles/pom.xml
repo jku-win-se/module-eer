@@ -20,7 +20,6 @@
         <module>org.module.eer.design</module>  
         <module>org.module.eer.jenetics</module>  
         <module>org.module.eer.samples</module> 
-        <module>org.module.eer.project.rcp</module>
-    <module>jenetics.example</module>
+        <module>org.module.eer.project.rcp</module>   
   </modules>
 </project>
