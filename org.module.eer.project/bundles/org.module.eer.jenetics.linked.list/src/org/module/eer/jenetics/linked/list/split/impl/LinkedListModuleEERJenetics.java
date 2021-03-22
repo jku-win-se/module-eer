@@ -2,11 +2,16 @@ package org.module.eer.jenetics.linked.list.split.impl;
 
 import io.jenetics.Genotype;
 import io.jenetics.IntegerGene;
+import io.jenetics.Phenotype;
 import io.jenetics.engine.Engine;
+import io.jenetics.ext.moea.MOEA;
 import io.jenetics.ext.moea.NSGA2Selector;
 import io.jenetics.ext.moea.Vec;
 import io.jenetics.util.Factory;
+import io.jenetics.util.ISeq;
+import io.jenetics.util.IntRange;
 
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.module.eer.jenetics.linked.list.chromosome.LinkedListChromosome;
 import org.module.eer.jenetics.linked.list.chromosome.crossover.GreedyPartitionCrossover;
@@ -19,8 +24,7 @@ import org.module.eer.mm.moduleeer.Module;
 
 public class LinkedListModuleEERJenetics implements ISplitModulEER {
 
-	@Override
-	public EList<MEERModel> splitModules(Module splittingModule) {
+	public ISeq<Phenotype<IntegerGene, Vec<double[]>>> performParetoSet(Module splittingModule) {
 		int modularizableElementsSize = splittingModule.getModularizableElements().size();
 		//Mutator Rate is set to 1, Crossover Rate is set to 0,25
 		final double croosoverRate = 0.25;
@@ -33,10 +37,31 @@ public class LinkedListModuleEERJenetics implements ISplitModulEER {
 				.alterers(new GreedyPartitionCrossover(croosoverRate), 
 						new GraftingMutator(mutatorRate))
 				.survivorsSelector(NSGA2Selector.ofVec())
-				.populationSize(200)
+				.populationSize(300)
 				.build();		
 		
-		return null;
+		final ISeq<Phenotype<IntegerGene, Vec<double[]>>> seqPhenotypes = 
+				(ISeq<Phenotype<IntegerGene, Vec<double[]>>>) engine.stream()
+				.limit(300)				
+				.collect(MOEA.toParetoSet(IntRange.of(75, 100)));
+		
+		return seqPhenotypes;
+	}
+	
+	
+	@Override
+	public EList<MEERModel> splitModules(Module splittingModule) {
+		final ISeq<Phenotype<IntegerGene, Vec<double[]>>> seqPhenotypes = performParetoSet(splittingModule);		
+		EList<MEERModel> resultOfSplittingModels = new BasicEList<MEERModel>();
+		for (Phenotype<IntegerGene, Vec<double[]>> phenotype : seqPhenotypes) {
+			convertPhenotypeToModulEER(phenotype, splittingModule);
+		}		
+		return resultOfSplittingModels;
+	}
+	
+	//Convert Phenotype to the actual splitted module
+	private MEERModel convertPhenotypeToModulEER(Phenotype<IntegerGene, Vec<double[]>> phenotype, Module splittingModule) {
+		throw new UnsupportedOperationException("Not supported");
 	}
 	
 	//Enconding is a chromosome of Integer Genes

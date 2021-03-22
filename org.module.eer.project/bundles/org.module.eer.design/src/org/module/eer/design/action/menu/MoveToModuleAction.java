@@ -1,6 +1,5 @@
 package org.module.eer.design.action.menu;
 
-import org.eclipse.emf.edit.command.ChangeCommand;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;

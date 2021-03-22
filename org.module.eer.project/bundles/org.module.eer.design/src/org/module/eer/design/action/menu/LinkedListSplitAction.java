@@ -8,15 +8,10 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.module.eer.design.utils.ModulEERUtils;
-import org.module.eer.jenetics.split.impl.HierarchicalModuleEERJenetics;
+import org.module.eer.jenetics.linked.list.split.impl.LinkedListModuleEERJenetics;
 import org.module.eer.mm.moduleeer.Module;
 
-
-public class SplitModuleAction implements IExternalJavaAction {
-
-	public SplitModuleAction() {
-		// Do Nothing
-	}
+public class LinkedListSplitAction implements IExternalJavaAction {
 
 	@Override
 	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
@@ -28,12 +23,12 @@ public class SplitModuleAction implements IExternalJavaAction {
 			//Split Module
 			ModulEERUtils.createProject(projectName,
 										module, 
-										new HierarchicalModuleEERJenetics());		
-		}			
-	}	
-
+										new LinkedListModuleEERJenetics());		
+		}		
+	}
+	
 	@Override
 	public boolean canExecute(Collection<? extends EObject> selections) {
 		return true;
-	}
+	}	
 }

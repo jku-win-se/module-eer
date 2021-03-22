@@ -17,8 +17,14 @@ public class GraftingMutator implements Alterer<IntegerGene, Vec<double[]>>{
 
 	@Override
 	public AltererResult<IntegerGene, Vec<double[]>> alter(Seq<Phenotype<IntegerGene, Vec<double[]>>> population, long generation) {
-		// TODO Auto-generated method stub
-		return null;
+		AltererResult<IntegerGene, Vec<double[]>> result = null;
+		if (population.size() >= 2) {
+			//Perform 
+			System.out.println("Perform Suff");
+		} else {
+			result = AltererResult.of(population.asISeq());
+		}			
+		return result;
 	}
 
 }

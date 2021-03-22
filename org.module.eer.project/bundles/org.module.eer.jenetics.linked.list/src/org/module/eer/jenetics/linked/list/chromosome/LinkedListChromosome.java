@@ -1,6 +1,7 @@
 package org.module.eer.jenetics.linked.list.chromosome;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -25,14 +26,13 @@ public class LinkedListChromosome implements Chromosome<IntegerGene>{
 	public static ISeq<IntegerGene> seq(int size) {
 		MSeq<IntegerGene> genes = MSeq.ofLength(size);
 		Random integerRandom = new Random();
-		List<Integer> numberOfGenesSameValue = new ArrayList<Integer>(size);
 		//Initialize with zeros
-		//Collections.fill(listOfCounts, 0);
+		List<Integer> numberOfGenesSameValue = new ArrayList<Integer>(Collections.nCopies(60, 0));
 		for (int i = 0; i < genes.size(); i++) {
 			int value = integerRandom.nextInt(size);
 			//Check that it is Fulfilled the First Constraint (right part)
 			//(1. The integer value stored in each gene is greater than or equal to its index)
-			if (value > i && fullfilledSecondConstraint(value, i, numberOfGenesSameValue) == true) {
+			if (value >= i && fullfilledSecondConstraint(value, i, numberOfGenesSameValue) == true) {
 				genes.set(i, IntegerGene.of(value, 0, size));//Add the gene
 				numberOfGenesSameValue.set(value, numberOfGenesSameValue.get(value) + 1);//Update table 
 			} else {
@@ -43,20 +43,22 @@ public class LinkedListChromosome implements Chromosome<IntegerGene>{
 	}
 	
 	//Check that it is Fulfilled the Second Constraint
-	// 2. No two genes in the chromosome have the same value with the exception that at most two genes
+	// 2. No two genes in the Chromosome have the same value with the exception that at most two genes
 	//can have the same integer value if the integer is the index of an ending node
 	private static boolean fullfilledSecondConstraint(int value, int pos, List<Integer> numberOfGenesSameValue) {
 		if (numberOfGenesSameValue.get(value) + 1 > 2) {
 			return false;
 		} else if (numberOfGenesSameValue.get(value) + 1 == 2) {
-			//Ending node
 			if (pos == value) {
+				//Ending node
 				return true;
 			} else {
+				//Not an ending node
 				return false;
 			}				
 		}
-		return false;
+		//Fulfilled the second constraint (Not two genes has the same value)
+		return true;
 	}
 
 	@Override

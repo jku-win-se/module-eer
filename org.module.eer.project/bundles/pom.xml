@@ -16,7 +16,7 @@
         <module>org.module.eer.mm</module>  
         <module>org.module.eer.mm.edit</module>  
         <module>org.module.eer.mm.editor</module>  
-        <module>org.jenetics.libraryr6.0.1</module> 
+        <module>org.jenetics.libraryr6.2.0</module> 
         <module>org.module.eer.design</module>  
         <module>org.module.eer.jenetics</module>  
         <module>org.module.eer.samples</module> 

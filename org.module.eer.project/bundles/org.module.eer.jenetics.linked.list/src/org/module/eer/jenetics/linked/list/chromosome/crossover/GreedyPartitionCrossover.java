@@ -16,9 +16,15 @@ public class GreedyPartitionCrossover implements Alterer<IntegerGene, Vec<double
 	}
 
 	@Override
-	public AltererResult<IntegerGene, Vec<double[]>> alter(Seq<Phenotype<IntegerGene, Vec<double[]>>> arg0, long arg1) {
-		// TODO Auto-generated method stub
-		return null;
+	public AltererResult<IntegerGene, Vec<double[]>> alter(Seq<Phenotype<IntegerGene, Vec<double[]>>> population, long generation) {
+		AltererResult<IntegerGene, Vec<double[]>> result = null;
+		if (population.size() >= 2) {
+			//Perform 
+			System.out.println("Perform Suff");
+		} else {
+			result = AltererResult.of(population.asISeq());
+		}			
+		return result;
 	}
 
 	
