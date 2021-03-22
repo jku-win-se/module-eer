@@ -19,6 +19,7 @@
         <module>org.jenetics.libraryr6.2.0</module> 
         <module>org.module.eer.design</module>  
         <module>org.module.eer.jenetics</module>  
+        <module>org.module.eer.jenetics.linked.list</module> 
         <module>org.module.eer.samples</module> 
         <module>org.module.eer.project.rcp</module>   
   </modules>
