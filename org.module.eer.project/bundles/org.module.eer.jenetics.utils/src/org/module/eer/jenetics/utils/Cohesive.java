@@ -1,4 +1,4 @@
-package org.module.eer.jenetics.split.ff;
+package org.module.eer.jenetics.utils;
 
 public class Cohesive {
 	
@@ -27,10 +27,6 @@ public class Cohesive {
 		return coupling;
 	}
 
-	public void setCoupling(int coupling) {
-		this.coupling = coupling;
-	}	
-	
 	public int calculatesCRAIndex() {
 		return this.cohesion - this.coupling;
 	}

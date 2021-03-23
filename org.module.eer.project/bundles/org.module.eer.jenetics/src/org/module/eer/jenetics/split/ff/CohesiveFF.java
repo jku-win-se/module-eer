@@ -5,6 +5,7 @@ import java.util.function.Function;
 
 import org.eclipse.emf.common.util.EList;
 import org.module.eer.jenetics.config.utils.ModularizableElementUtils;
+import org.module.eer.jenetics.utils.Cohesive;
 import org.module.eer.mm.moduleeer.Aggregation;
 import org.module.eer.mm.moduleeer.EntityType;
 import org.module.eer.mm.moduleeer.Generalization;

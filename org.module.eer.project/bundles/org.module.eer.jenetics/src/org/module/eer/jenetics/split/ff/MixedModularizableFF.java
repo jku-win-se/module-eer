@@ -8,6 +8,7 @@ import io.jenetics.ext.moea.VecFactory;
 import java.util.function.Function;
 
 import org.eclipse.emf.common.util.EList;
+import org.module.eer.jenetics.utils.Cohesive;
 import org.module.eer.mm.moduleeer.ModularizableElement;
 
 @SuppressWarnings("rawtypes")

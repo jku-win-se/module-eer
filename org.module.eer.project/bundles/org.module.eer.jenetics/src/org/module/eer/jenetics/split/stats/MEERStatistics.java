@@ -1,6 +1,6 @@
 package org.module.eer.jenetics.split.stats;
 
-import org.module.eer.jenetics.split.ff.Cohesive;
+import org.module.eer.jenetics.utils.Cohesive;
 
 public class MEERStatistics {
 	

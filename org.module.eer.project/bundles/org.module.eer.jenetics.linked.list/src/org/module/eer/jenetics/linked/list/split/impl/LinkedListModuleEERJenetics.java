@@ -33,7 +33,8 @@ public class LinkedListModuleEERJenetics implements ISplitModulEER {
 		final Factory<Genotype<IntegerGene>> gtf = 
 				Genotype.of(encondig(modularizableElementsSize));
 		//Execution Environment
-		final Engine<IntegerGene, Vec<double[]>> engine = Engine.builder(new ModularizableFF(), gtf)
+		final Engine<IntegerGene, Vec<double[]>> engine = Engine.builder(
+				new ModularizableFF(splittingModule.getModularizableElements()), gtf)
 				.alterers(new GreedyPartitionCrossover(croosoverRate), 
 						new GraftingMutator(mutatorRate))
 				.survivorsSelector(NSGA2Selector.ofVec())
