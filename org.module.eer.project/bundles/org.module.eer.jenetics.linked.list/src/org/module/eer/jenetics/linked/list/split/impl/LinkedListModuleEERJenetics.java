@@ -28,7 +28,7 @@ public class LinkedListModuleEERJenetics implements ISplitModulEER {
 		int modularizableElementsSize = splittingModule.getModularizableElements().size();
 		//Mutator Rate is set to 1, Crossover Rate is set to 0,25
 		final double croosoverRate = 0.25;
-		final double mutatorRate = 1;
+		final double mutatorRate = 0.9;
 		//Define the Genotype
 		final Factory<Genotype<IntegerGene>> gtf = 
 				Genotype.of(encondig(modularizableElementsSize));

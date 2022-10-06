@@ -23,7 +23,7 @@ public class GreedyPartitionCrossover implements Alterer<IntegerGene, Vec<double
 			//Perform 
 			System.out.println("Perform Suff");
 		} else {
-			result = AltererResult.of(population.asISeq());
+			result = new AltererResult<IntegerGene, Vec<double[]>>(population.asISeq());			
 		}			
 		return result;
 	}

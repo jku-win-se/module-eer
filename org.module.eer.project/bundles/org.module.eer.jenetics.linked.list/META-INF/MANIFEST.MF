@@ -4,11 +4,11 @@ Bundle-Name: List
 Bundle-SymbolicName: org.module.eer.jenetics.linked.list
 Bundle-Version: 1.0.0.qualifier
 Automatic-Module-Name: org.module.eer.jenetics.linked.list
-Bundle-RequiredExecutionEnvironment: JavaSE-11
-Require-Bundle: org.jenetics.libraryr6.2.0;bundle-version="1.0.0",
- org.module.eer.jenetics;bundle-version="1.0.0",
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Require-Bundle: org.module.eer.jenetics;bundle-version="1.0.0",
  org.module.eer.mm;bundle-version="0.1.0",
- org.module.eer.jenetics.utils;bundle-version="1.0.0"
+ org.module.eer.jenetics.utils;bundle-version="1.0.0",
+ wrapped.io.jenetics.jenetics;bundle-version="7.1.0"
 Import-Package: io.jenetics,
  io.jenetics.ext.moea
 Export-Package: org.module.eer.jenetics.linked.list.split.impl

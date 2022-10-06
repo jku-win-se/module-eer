@@ -13,8 +13,9 @@ Require-Bundle: org.module.eer.mm;bundle-version="0.1.0",
  com.google.guava;bundle-version="27.1.0",
  org.eclipse.equinox.registry,
  org.apache.commons.csv;bundle-version="1.4.0",
- org.jenetics.libraryr6.2.0;bundle-version="1.0.0",
- org.module.eer.jenetics.utils;bundle-version="1.0.0"
+ org.module.eer.jenetics.utils;bundle-version="1.0.0",
+ wrapped.io.jenetics.jenetics;bundle-version="7.1.0",
+ wrapped.io.jenetics.jenetics.ext;bundle-version="7.1.0"
 Export-Package: org.module.eer.jenetics.action,
  org.module.eer.jenetics.config,
  org.module.eer.jenetics.config.utils,
